@@ -11,3 +11,13 @@ D:\Git\VirusDetector\VirusDetector\obj\Debug\VirusDetector.pdb
 D:\Git\VirusDetector\VirusDetector\obj\Debug\VirusDetector.PrintRibbonControllerResources.resources
 D:\Git\VirusDetector\VirusDetector\obj\Debug\VirusDetector.XRDesignRibbonControllerResources.resources
 D:\Git\VirusDetector\VirusDetector\obj\Debug\VirusDetector.DetectorSetting.resources
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Debug\VirusDetector.exe.config
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.exe
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.pdb
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Debug\VirusDetector.exe
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Debug\VirusDetector.pdb
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.csprojResolveAssemblyReference.cache
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.Properties.Resources.resources
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.csproj.GenerateResource.Cache
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.exe.licenses
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.frmMain.resources
