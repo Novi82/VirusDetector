@@ -21,3 +21,4 @@ D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.Proper
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.csproj.GenerateResource.Cache
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.exe.licenses
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.frmMain.resources
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Debug\VirusDetector.FormMain.resources
