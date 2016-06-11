@@ -62,5 +62,10 @@ namespace VirusDetector
             xtcContent.SelectedTabPage = xtpScan;
         }
 
+        private void navScanResult_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            xtcContent.SelectedTabPage = xtpScanRs;
+        }
+
     }
 }

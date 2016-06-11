@@ -28,33 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesView pointSeriesView1 = new DevExpress.XtraCharts.PointSeriesView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navDectector = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navDecSetting = new DevExpress.XtraNavBar.NavBarItem();
-            this.navDecResult = new DevExpress.XtraNavBar.NavBarItem();
+            this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navScan = new DevExpress.XtraNavBar.NavBarItem();
+            this.navScanResult = new DevExpress.XtraNavBar.NavBarItem();
             this.navHome = new DevExpress.XtraNavBar.NavBarGroup();
             this.navAbout = new DevExpress.XtraNavBar.NavBarItem();
             this.navExit = new DevExpress.XtraNavBar.NavBarItem();
+            this.navDectector = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navDecSetting = new DevExpress.XtraNavBar.NavBarItem();
+            this.navDecResult = new DevExpress.XtraNavBar.NavBarItem();
             this.navClustering = new DevExpress.XtraNavBar.NavBarGroup();
             this.navCluSetting = new DevExpress.XtraNavBar.NavBarItem();
             this.navClusResult = new DevExpress.XtraNavBar.NavBarItem();
             this.navClassifier = new DevExpress.XtraNavBar.NavBarGroup();
             this.navClaSetting = new DevExpress.XtraNavBar.NavBarItem();
             this.navClaResult = new DevExpress.XtraNavBar.NavBarItem();
-            this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navScan = new DevExpress.XtraNavBar.NavBarItem();
             this.xtcContent = new DevExpress.XtraTab.XtraTabControl();
             this.xtpDeSetting = new DevExpress.XtraTab.XtraTabPage();
             this.pnlDS = new DevExpress.XtraEditors.PanelControl();
             this.grpOutput = new DevExpress.XtraEditors.GroupControl();
             this.txtbDBenignFile = new DevExpress.XtraEditors.TextEdit();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController();
+            this.styleMain = new DevExpress.XtraEditors.StyleController(this.components);
             this.txtbDDetectorFile = new DevExpress.XtraEditors.TextEdit();
             this.btnDBenignFile = new DevExpress.XtraEditors.SimpleButton();
             this.btnDLoadDetector = new DevExpress.XtraEditors.SimpleButton();
-            this.styleButon = new DevExpress.XtraEditors.StyleController();
+            this.styleButon = new DevExpress.XtraEditors.StyleController(this.components);
             this.btnDSaveDetector = new DevExpress.XtraEditors.SimpleButton();
             this.btnDDetectorFile = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -85,6 +92,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtpDeResult = new DevExpress.XtraTab.XtraTabPage();
             this.pnlDR = new DevExpress.XtraEditors.PanelControl();
+            this.dtNegativeSelection = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtpClusSetting = new DevExpress.XtraTab.XtraTabPage();
             this.pnlUS = new DevExpress.XtraEditors.PanelControl();
             this.grpMixFile = new DevExpress.XtraEditors.GroupControl();
@@ -126,14 +135,60 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.xtpClusReult = new DevExpress.XtraTab.XtraTabPage();
             this.pnlUR = new DevExpress.XtraEditors.PanelControl();
+            this.dangerLevel = new DevExpress.XtraCharts.ChartControl();
             this.xtpClasSetting = new DevExpress.XtraTab.XtraTabPage();
             this.pnlAS = new DevExpress.XtraEditors.PanelControl();
+            this.grpASFile = new DevExpress.XtraEditors.GroupControl();
+            this.txtbFCFileClassifierFile = new DevExpress.XtraEditors.TextEdit();
+            this.btnFCFileClassifierFile = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.btnFCLoad = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFCSave = new DevExpress.XtraEditors.SimpleButton();
+            this.grpASProc = new DevExpress.XtraEditors.GroupControl();
+            this.txtbCFErrorThresold = new DevExpress.XtraEditors.TextEdit();
+            this.txtbCFNumIterator = new DevExpress.XtraEditors.TextEdit();
+            this.txtbFCNumHiddenNeuron = new DevExpress.XtraEditors.TextEdit();
+            this.txtbCFNumOutputNeuron = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
+            this.btnFCStop = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFCStartFileClassifier = new DevExpress.XtraEditors.SimpleButton();
+            this.grpASPreProc = new DevExpress.XtraEditors.GroupControl();
+            this.txtbCFFormatRange = new DevExpress.XtraEditors.TextEdit();
+            this.txtbFCBenignFolder = new DevExpress.XtraEditors.TextEdit();
+            this.txtbFCVirusFolder = new DevExpress.XtraEditors.TextEdit();
+            this.btnFCBenignFolder = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFCPreprocesser = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFCVirusFolder = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.xtpClassReult = new DevExpress.XtraTab.XtraTabPage();
             this.pnlAR = new DevExpress.XtraEditors.PanelControl();
+            this.chartFC = new DevExpress.XtraCharts.ChartControl();
             this.xtpScan = new DevExpress.XtraTab.XtraTabPage();
             this.pnlScan = new DevExpress.XtraEditors.PanelControl();
-            this.imcNavIcon = new DevExpress.Utils.ImageCollection();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.grpScanResult = new DevExpress.XtraEditors.GroupControl();
+            this.txtbFCNumVirus = new DevExpress.XtraEditors.TextEdit();
+            this.txtbFCNumBenign = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
+            this.grpScan = new DevExpress.XtraEditors.GroupControl();
+            this.txtbVSTestFolder = new DevExpress.XtraEditors.TextEdit();
+            this.btnFCTestFolder = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.btnVSStop = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFCScanVirus = new DevExpress.XtraEditors.SimpleButton();
+            this.xtpScanRs = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dgvVirus = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.imcNavIcon = new DevExpress.Utils.ImageCollection(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.xtpAbout = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -145,7 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpOutput)).BeginInit();
             this.grpOutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDBenignFile.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDDetectorFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleButon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParam)).BeginInit();
@@ -164,6 +219,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.rbtnDBuildAddDetector.Properties)).BeginInit();
             this.xtpDeResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDR)).BeginInit();
+            this.pnlDR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNegativeSelection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.xtpClusSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlUS)).BeginInit();
             this.pnlUS.SuspendLayout();
@@ -188,12 +246,49 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbCBenignVirusRate.Properties)).BeginInit();
             this.xtpClusReult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).BeginInit();
+            this.pnlUR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             this.xtpClasSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).BeginInit();
+            this.pnlAS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpASFile)).BeginInit();
+            this.grpASFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCFileClassifierFile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpASProc)).BeginInit();
+            this.grpASProc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFErrorThresold.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFNumIterator.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumHiddenNeuron.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFNumOutputNeuron.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpASPreProc)).BeginInit();
+            this.grpASPreProc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFFormatRange.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCBenignFolder.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCVirusFolder.Properties)).BeginInit();
             this.xtpClassReult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).BeginInit();
+            this.pnlAR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartFC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).BeginInit();
             this.xtpScan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).BeginInit();
+            this.pnlScan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpScanResult)).BeginInit();
+            this.grpScanResult.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumVirus.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumBenign.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpScan)).BeginInit();
+            this.grpScan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbVSTestFolder.Properties)).BeginInit();
+            this.xtpScanRs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVirus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imcNavIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -215,13 +310,13 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.xtcContent);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1024, 700);
-            this.splitContainerControl1.SplitterPosition = 235;
+            this.splitContainerControl1.SplitterPosition = 183;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navDectector;
+            this.navBarControl1.ActiveGroup = this.navDetection;
             this.navBarControl1.Appearance.Background.BackColor = System.Drawing.Color.Gray;
             this.navBarControl1.Appearance.Background.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.navBarControl1.Appearance.Background.Options.UseBackColor = true;
@@ -243,40 +338,41 @@
             this.navClaResult,
             this.navScan,
             this.navDecSetting,
-            this.navDecResult});
+            this.navDecResult,
+            this.navScanResult});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 235;
-            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(235, 700);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 183;
+            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
+            this.navBarControl1.Size = new System.Drawing.Size(183, 700);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("DevExpress Dark Style");
             // 
-            // navDectector
+            // navDetection
             // 
-            this.navDectector.Caption = "Detector";
-            this.navDectector.Expanded = true;
-            this.navDectector.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
-            this.navDectector.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navDecSetting),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navDecResult)});
-            this.navDectector.Name = "navDectector";
+            this.navDetection.Caption = "Detection";
+            this.navDetection.Expanded = true;
+            this.navDetection.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
+            this.navDetection.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navScan),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navScanResult)});
+            this.navDetection.Name = "navDetection";
             // 
-            // navDecSetting
+            // navScan
             // 
-            this.navDecSetting.Caption = "Setting";
-            this.navDecSetting.LargeImage = global::VirusDetector.Properties.Resources.setting2;
-            this.navDecSetting.Name = "navDecSetting";
-            this.navDecSetting.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navDecSetting_LinkClicked);
+            this.navScan.Caption = "Scan";
+            this.navScan.LargeImage = global::VirusDetector.Properties.Resources.scan;
+            this.navScan.Name = "navScan";
+            this.navScan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScan_LinkClicked);
             // 
-            // navDecResult
+            // navScanResult
             // 
-            this.navDecResult.Caption = "Result";
-            this.navDecResult.LargeImage = global::VirusDetector.Properties.Resources.result2;
-            this.navDecResult.Name = "navDecResult";
-            this.navDecResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navDecResult_LinkClicked);
+            this.navScanResult.Caption = "Scan Result";
+            this.navScanResult.LargeImage = global::VirusDetector.Properties.Resources.result2;
+            this.navScanResult.Name = "navScanResult";
+            this.navScanResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScanResult_LinkClicked);
             // 
             // navHome
             // 
@@ -300,6 +396,29 @@
             this.navExit.LargeImage = ((System.Drawing.Image)(resources.GetObject("navExit.LargeImage")));
             this.navExit.Name = "navExit";
             this.navExit.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navExit_LinkClicked);
+            // 
+            // navDectector
+            // 
+            this.navDectector.Caption = "Detector";
+            this.navDectector.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
+            this.navDectector.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navDecSetting),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navDecResult)});
+            this.navDectector.Name = "navDectector";
+            // 
+            // navDecSetting
+            // 
+            this.navDecSetting.Caption = "Setting";
+            this.navDecSetting.LargeImage = global::VirusDetector.Properties.Resources.setting2;
+            this.navDecSetting.Name = "navDecSetting";
+            this.navDecSetting.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navDecSetting_LinkClicked);
+            // 
+            // navDecResult
+            // 
+            this.navDecResult.Caption = "Result";
+            this.navDecResult.LargeImage = global::VirusDetector.Properties.Resources.result2;
+            this.navDecResult.Name = "navDecResult";
+            this.navDecResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navDecResult_LinkClicked);
             // 
             // navClustering
             // 
@@ -347,21 +466,6 @@
             this.navClaResult.Name = "navClaResult";
             this.navClaResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navClaResult_LinkClicked);
             // 
-            // navDetection
-            // 
-            this.navDetection.Caption = "Detection";
-            this.navDetection.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
-            this.navDetection.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navScan)});
-            this.navDetection.Name = "navDetection";
-            // 
-            // navScan
-            // 
-            this.navScan.Caption = "Scan";
-            this.navScan.LargeImage = global::VirusDetector.Properties.Resources.scan;
-            this.navScan.Name = "navScan";
-            this.navScan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScan_LinkClicked);
-            // 
             // xtcContent
             // 
             this.xtcContent.Appearance.BackColor = System.Drawing.Color.Gray;
@@ -378,7 +482,7 @@
             this.xtcContent.Name = "xtcContent";
             this.xtcContent.SelectedTabPage = this.xtpDeSetting;
             this.xtcContent.ShowTabHeader = DevExpress.Utils.DefaultBoolean.True;
-            this.xtcContent.Size = new System.Drawing.Size(784, 700);
+            this.xtcContent.Size = new System.Drawing.Size(836, 700);
             this.xtcContent.TabIndex = 0;
             this.xtcContent.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpDeSetting,
@@ -387,7 +491,9 @@
             this.xtpClusReult,
             this.xtpClasSetting,
             this.xtpClassReult,
-            this.xtpScan});
+            this.xtpScan,
+            this.xtpScanRs,
+            this.xtpAbout});
             // 
             // xtpDeSetting
             // 
@@ -398,7 +504,7 @@
             this.xtpDeSetting.Appearance.PageClient.Options.UseBorderColor = true;
             this.xtpDeSetting.Controls.Add(this.pnlDS);
             this.xtpDeSetting.Name = "xtpDeSetting";
-            this.xtpDeSetting.Size = new System.Drawing.Size(778, 672);
+            this.xtpDeSetting.Size = new System.Drawing.Size(830, 672);
             this.xtpDeSetting.Text = "DS";
             // 
             // pnlDS
@@ -420,7 +526,7 @@
             this.pnlDS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlDS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlDS.Name = "pnlDS";
-            this.pnlDS.Size = new System.Drawing.Size(778, 672);
+            this.pnlDS.Size = new System.Drawing.Size(830, 672);
             this.pnlDS.TabIndex = 0;
             // 
             // grpOutput
@@ -439,9 +545,9 @@
             this.grpOutput.Controls.Add(this.btnDDetectorFile);
             this.grpOutput.Controls.Add(this.labelControl9);
             this.grpOutput.Controls.Add(this.labelControl10);
-            this.grpOutput.Location = new System.Drawing.Point(408, 359);
+            this.grpOutput.Location = new System.Drawing.Point(412, 179);
             this.grpOutput.Name = "grpOutput";
-            this.grpOutput.Size = new System.Drawing.Size(361, 227);
+            this.grpOutput.Size = new System.Drawing.Size(400, 227);
             this.grpOutput.TabIndex = 0;
             this.grpOutput.Text = "Output";
             // 
@@ -451,16 +557,16 @@
             this.txtbDBenignFile.Name = "txtbDBenignFile";
             this.txtbDBenignFile.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDBenignFile.Properties.Appearance.Options.UseFont = true;
-            this.txtbDBenignFile.Size = new System.Drawing.Size(295, 22);
-            this.txtbDBenignFile.StyleController = this.styleController1;
+            this.txtbDBenignFile.Size = new System.Drawing.Size(338, 22);
+            this.txtbDBenignFile.StyleController = this.styleMain;
             this.txtbDBenignFile.TabIndex = 4;
             // 
-            // styleController1
+            // styleMain
             // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styleController1.Appearance.Options.UseFont = true;
-            this.styleController1.LookAndFeel.SkinName = "Office 2016 Colorful";
-            this.styleController1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.styleMain.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styleMain.Appearance.Options.UseFont = true;
+            this.styleMain.LookAndFeel.SkinName = "Office 2016 Colorful";
+            this.styleMain.LookAndFeel.UseDefaultLookAndFeel = false;
             // 
             // txtbDDetectorFile
             // 
@@ -468,18 +574,18 @@
             this.txtbDDetectorFile.Name = "txtbDDetectorFile";
             this.txtbDDetectorFile.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDDetectorFile.Properties.Appearance.Options.UseFont = true;
-            this.txtbDDetectorFile.Size = new System.Drawing.Size(295, 22);
-            this.txtbDDetectorFile.StyleController = this.styleController1;
+            this.txtbDDetectorFile.Size = new System.Drawing.Size(338, 22);
+            this.txtbDDetectorFile.StyleController = this.styleMain;
             this.txtbDDetectorFile.TabIndex = 1;
             // 
             // btnDBenignFile
             // 
             this.btnDBenignFile.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDBenignFile.Appearance.Options.UseFont = true;
-            this.btnDBenignFile.Location = new System.Drawing.Point(306, 127);
+            this.btnDBenignFile.Location = new System.Drawing.Point(349, 127);
             this.btnDBenignFile.Name = "btnDBenignFile";
             this.btnDBenignFile.Size = new System.Drawing.Size(46, 23);
-            this.btnDBenignFile.StyleController = this.styleController1;
+            this.btnDBenignFile.StyleController = this.styleMain;
             this.btnDBenignFile.TabIndex = 5;
             this.btnDBenignFile.Text = "...";
             // 
@@ -521,10 +627,10 @@
             // 
             this.btnDDetectorFile.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDDetectorFile.Appearance.Options.UseFont = true;
-            this.btnDDetectorFile.Location = new System.Drawing.Point(306, 65);
+            this.btnDDetectorFile.Location = new System.Drawing.Point(349, 64);
             this.btnDDetectorFile.Name = "btnDDetectorFile";
             this.btnDDetectorFile.Size = new System.Drawing.Size(46, 23);
-            this.btnDDetectorFile.StyleController = this.styleController1;
+            this.btnDDetectorFile.StyleController = this.styleMain;
             this.btnDDetectorFile.TabIndex = 2;
             this.btnDDetectorFile.Text = "...";
             // 
@@ -534,7 +640,7 @@
             this.labelControl9.Location = new System.Drawing.Point(6, 103);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(45, 18);
-            this.labelControl9.StyleController = this.styleController1;
+            this.labelControl9.StyleController = this.styleMain;
             this.labelControl9.TabIndex = 3;
             this.labelControl9.Text = "Benign";
             // 
@@ -544,7 +650,7 @@
             this.labelControl10.Location = new System.Drawing.Point(6, 41);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(33, 18);
-            this.labelControl10.StyleController = this.styleController1;
+            this.labelControl10.StyleController = this.styleMain;
             this.labelControl10.TabIndex = 0;
             this.labelControl10.Text = "Virus";
             // 
@@ -567,15 +673,15 @@
             this.grpParam.Controls.Add(this.labelControl4);
             this.grpParam.Controls.Add(this.labelControl5);
             this.grpParam.Controls.Add(this.labelControl6);
-            this.grpParam.Location = new System.Drawing.Point(408, 6);
+            this.grpParam.Location = new System.Drawing.Point(412, 6);
             this.grpParam.Name = "grpParam";
-            this.grpParam.Size = new System.Drawing.Size(361, 347);
+            this.grpParam.Size = new System.Drawing.Size(400, 167);
             this.grpParam.TabIndex = 1;
             this.grpParam.Text = "Parameters";
             // 
             // cbxDRContinuous
             // 
-            this.cbxDRContinuous.Location = new System.Drawing.Point(243, 246);
+            this.cbxDRContinuous.Location = new System.Drawing.Point(243, 128);
             this.cbxDRContinuous.Name = "cbxDRContinuous";
             this.cbxDRContinuous.Properties.OffText = "Off";
             this.cbxDRContinuous.Properties.OnText = "On";
@@ -584,7 +690,7 @@
             // 
             // cbxDHamming
             // 
-            this.cbxDHamming.Location = new System.Drawing.Point(243, 201);
+            this.cbxDHamming.Location = new System.Drawing.Point(243, 100);
             this.cbxDHamming.Name = "cbxDHamming";
             this.cbxDHamming.Properties.OffText = "Off";
             this.cbxDHamming.Properties.OnText = "On";
@@ -593,7 +699,7 @@
             // 
             // txtbDContinuous
             // 
-            this.txtbDContinuous.Location = new System.Drawing.Point(117, 247);
+            this.txtbDContinuous.Location = new System.Drawing.Point(117, 129);
             this.txtbDContinuous.Name = "txtbDContinuous";
             this.txtbDContinuous.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDContinuous.Properties.Appearance.Options.UseFont = true;
@@ -602,38 +708,38 @@
             // 
             // txtbDHamming
             // 
-            this.txtbDHamming.Location = new System.Drawing.Point(117, 202);
+            this.txtbDHamming.Location = new System.Drawing.Point(117, 101);
             this.txtbDHamming.Name = "txtbDHamming";
             this.txtbDHamming.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDHamming.Properties.Appearance.Options.UseFont = true;
             this.txtbDHamming.Size = new System.Drawing.Size(114, 22);
-            this.txtbDHamming.StyleController = this.styleController1;
+            this.txtbDHamming.StyleController = this.styleMain;
             this.txtbDHamming.TabIndex = 5;
             // 
             // txtDStepSize
             // 
-            this.txtDStepSize.Location = new System.Drawing.Point(117, 130);
+            this.txtDStepSize.Location = new System.Drawing.Point(117, 65);
             this.txtDStepSize.Name = "txtDStepSize";
             this.txtDStepSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDStepSize.Properties.Appearance.Options.UseFont = true;
             this.txtDStepSize.Size = new System.Drawing.Size(114, 22);
-            this.txtDStepSize.StyleController = this.styleController1;
+            this.txtDStepSize.StyleController = this.styleMain;
             this.txtDStepSize.TabIndex = 3;
             // 
             // txtDLength
             // 
-            this.txtDLength.Location = new System.Drawing.Point(117, 84);
+            this.txtDLength.Location = new System.Drawing.Point(117, 39);
             this.txtDLength.Name = "txtDLength";
             this.txtDLength.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDLength.Properties.Appearance.Options.UseFont = true;
             this.txtDLength.Size = new System.Drawing.Size(114, 22);
-            this.txtDLength.StyleController = this.styleController1;
+            this.txtDLength.StyleController = this.styleMain;
             this.txtDLength.TabIndex = 1;
             // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(6, 249);
+            this.labelControl7.Location = new System.Drawing.Point(6, 131);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(92, 18);
             this.labelControl7.TabIndex = 7;
@@ -642,30 +748,30 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Location = new System.Drawing.Point(6, 204);
+            this.labelControl4.Location = new System.Drawing.Point(6, 103);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(64, 18);
-            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.StyleController = this.styleMain;
             this.labelControl4.TabIndex = 4;
             this.labelControl4.Text = "Hamming";
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Location = new System.Drawing.Point(5, 132);
+            this.labelControl5.Location = new System.Drawing.Point(5, 67);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(30, 18);
-            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.StyleController = this.styleMain;
             this.labelControl5.TabIndex = 2;
             this.labelControl5.Text = "Step";
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Location = new System.Drawing.Point(5, 86);
+            this.labelControl6.Location = new System.Drawing.Point(5, 41);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(44, 18);
-            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.StyleController = this.styleMain;
             this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "Length";
             // 
@@ -696,43 +802,43 @@
             this.grpInput.Location = new System.Drawing.Point(6, 6);
             this.grpInput.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpInput.Name = "grpInput";
-            this.grpInput.Size = new System.Drawing.Size(396, 346);
+            this.grpInput.Size = new System.Drawing.Size(400, 400);
             this.grpInput.TabIndex = 0;
             this.grpInput.Text = "Input";
             // 
             // txtbDAdditionFolder
             // 
-            this.txtbDAdditionFolder.Location = new System.Drawing.Point(130, 128);
+            this.txtbDAdditionFolder.Location = new System.Drawing.Point(6, 200);
             this.txtbDAdditionFolder.Name = "txtbDAdditionFolder";
             this.txtbDAdditionFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDAdditionFolder.Properties.Appearance.Options.UseFont = true;
-            this.txtbDAdditionFolder.Size = new System.Drawing.Size(204, 22);
-            this.txtbDAdditionFolder.StyleController = this.styleController1;
+            this.txtbDAdditionFolder.Size = new System.Drawing.Size(327, 22);
+            this.txtbDAdditionFolder.StyleController = this.styleMain;
             this.txtbDAdditionFolder.TabIndex = 7;
             // 
             // txtbDBenignFolder
             // 
-            this.txtbDBenignFolder.Location = new System.Drawing.Point(130, 85);
+            this.txtbDBenignFolder.Location = new System.Drawing.Point(6, 129);
             this.txtbDBenignFolder.Name = "txtbDBenignFolder";
             this.txtbDBenignFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDBenignFolder.Properties.Appearance.Options.UseFont = true;
-            this.txtbDBenignFolder.Size = new System.Drawing.Size(204, 22);
-            this.txtbDBenignFolder.StyleController = this.styleController1;
+            this.txtbDBenignFolder.Size = new System.Drawing.Size(328, 22);
+            this.txtbDBenignFolder.StyleController = this.styleMain;
             this.txtbDBenignFolder.TabIndex = 4;
             // 
             // txtbDVirusFolder
             // 
-            this.txtbDVirusFolder.Location = new System.Drawing.Point(130, 39);
+            this.txtbDVirusFolder.Location = new System.Drawing.Point(6, 65);
             this.txtbDVirusFolder.Name = "txtbDVirusFolder";
             this.txtbDVirusFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDVirusFolder.Properties.Appearance.Options.UseFont = true;
-            this.txtbDVirusFolder.Size = new System.Drawing.Size(204, 22);
-            this.txtbDVirusFolder.StyleController = this.styleController1;
+            this.txtbDVirusFolder.Size = new System.Drawing.Size(329, 22);
+            this.txtbDVirusFolder.StyleController = this.styleMain;
             this.txtbDVirusFolder.TabIndex = 1;
             // 
             // rbtnDBuildAddDetector
             // 
-            this.rbtnDBuildAddDetector.Location = new System.Drawing.Point(8, 184);
+            this.rbtnDBuildAddDetector.Location = new System.Drawing.Point(6, 245);
             this.rbtnDBuildAddDetector.Name = "rbtnDBuildAddDetector";
             this.rbtnDBuildAddDetector.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.rbtnDBuildAddDetector.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -742,18 +848,18 @@
             this.rbtnDBuildAddDetector.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Build Detector"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Addition Negative")});
-            this.rbtnDBuildAddDetector.Size = new System.Drawing.Size(378, 94);
-            this.rbtnDBuildAddDetector.StyleController = this.styleController1;
+            this.rbtnDBuildAddDetector.Size = new System.Drawing.Size(378, 88);
+            this.rbtnDBuildAddDetector.StyleController = this.styleMain;
             this.rbtnDBuildAddDetector.TabIndex = 9;
             // 
             // btnDAdditionFolder
             // 
             this.btnDAdditionFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDAdditionFolder.Appearance.Options.UseFont = true;
-            this.btnDAdditionFolder.Location = new System.Drawing.Point(340, 128);
+            this.btnDAdditionFolder.Location = new System.Drawing.Point(340, 200);
             this.btnDAdditionFolder.Name = "btnDAdditionFolder";
             this.btnDAdditionFolder.Size = new System.Drawing.Size(46, 23);
-            this.btnDAdditionFolder.StyleController = this.styleController1;
+            this.btnDAdditionFolder.StyleController = this.styleMain;
             this.btnDAdditionFolder.TabIndex = 8;
             this.btnDAdditionFolder.Text = "...";
             // 
@@ -761,10 +867,10 @@
             // 
             this.btnDBenignFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDBenignFolder.Appearance.Options.UseFont = true;
-            this.btnDBenignFolder.Location = new System.Drawing.Point(340, 85);
+            this.btnDBenignFolder.Location = new System.Drawing.Point(340, 129);
             this.btnDBenignFolder.Name = "btnDBenignFolder";
             this.btnDBenignFolder.Size = new System.Drawing.Size(46, 23);
-            this.btnDBenignFolder.StyleController = this.styleController1;
+            this.btnDBenignFolder.StyleController = this.styleMain;
             this.btnDBenignFolder.TabIndex = 5;
             this.btnDBenignFolder.Text = "...";
             // 
@@ -772,7 +878,7 @@
             // 
             this.btnDStop.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDStop.Appearance.Options.UseFont = true;
-            this.btnDStop.Location = new System.Drawing.Point(130, 295);
+            this.btnDStop.Location = new System.Drawing.Point(121, 352);
             this.btnDStop.Name = "btnDStop";
             this.btnDStop.Size = new System.Drawing.Size(81, 34);
             this.btnDStop.StyleController = this.styleButon;
@@ -783,7 +889,7 @@
             // 
             this.btnDStart.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDStart.Appearance.Options.UseFont = true;
-            this.btnDStart.Location = new System.Drawing.Point(8, 295);
+            this.btnDStart.Location = new System.Drawing.Point(6, 352);
             this.btnDStart.Name = "btnDStart";
             this.btnDStart.Size = new System.Drawing.Size(85, 34);
             this.btnDStart.StyleController = this.styleButon;
@@ -794,30 +900,30 @@
             // 
             this.btnDVirusFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDVirusFolder.Appearance.Options.UseFont = true;
-            this.btnDVirusFolder.Location = new System.Drawing.Point(340, 39);
+            this.btnDVirusFolder.Location = new System.Drawing.Point(340, 65);
             this.btnDVirusFolder.Name = "btnDVirusFolder";
             this.btnDVirusFolder.Size = new System.Drawing.Size(46, 23);
-            this.btnDVirusFolder.StyleController = this.styleController1;
+            this.btnDVirusFolder.StyleController = this.styleMain;
             this.btnDVirusFolder.TabIndex = 2;
             this.btnDVirusFolder.Text = "...";
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Location = new System.Drawing.Point(6, 130);
+            this.labelControl3.Location = new System.Drawing.Point(6, 167);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(116, 18);
-            this.labelControl3.StyleController = this.styleController1;
+            this.labelControl3.StyleController = this.styleMain;
             this.labelControl3.TabIndex = 6;
             this.labelControl3.Text = "Addition Directory";
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Location = new System.Drawing.Point(6, 87);
+            this.labelControl2.Location = new System.Drawing.Point(6, 103);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(117, 18);
-            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.StyleController = this.styleMain;
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Benign Dicrectory";
             // 
@@ -827,7 +933,7 @@
             this.labelControl1.Location = new System.Drawing.Point(6, 41);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(97, 18);
-            this.labelControl1.StyleController = this.styleController1;
+            this.labelControl1.StyleController = this.styleMain;
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Virus Directory";
             // 
@@ -835,7 +941,7 @@
             // 
             this.xtpDeResult.Controls.Add(this.pnlDR);
             this.xtpDeResult.Name = "xtpDeResult";
-            this.xtpDeResult.Size = new System.Drawing.Size(778, 672);
+            this.xtpDeResult.Size = new System.Drawing.Size(830, 672);
             this.xtpDeResult.Text = "DR";
             // 
             // pnlDR
@@ -845,6 +951,7 @@
             this.pnlDR.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlDR.Appearance.Options.UseBackColor = true;
             this.pnlDR.Appearance.Options.UseBorderColor = true;
+            this.pnlDR.Controls.Add(this.dtNegativeSelection);
             this.pnlDR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDR.Location = new System.Drawing.Point(0, 0);
             this.pnlDR.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
@@ -852,14 +959,30 @@
             this.pnlDR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlDR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlDR.Name = "pnlDR";
-            this.pnlDR.Size = new System.Drawing.Size(778, 672);
+            this.pnlDR.Size = new System.Drawing.Size(830, 672);
             this.pnlDR.TabIndex = 1;
+            // 
+            // dtNegativeSelection
+            // 
+            this.dtNegativeSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtNegativeSelection.Location = new System.Drawing.Point(3, 3);
+            this.dtNegativeSelection.MainView = this.gridView2;
+            this.dtNegativeSelection.Name = "dtNegativeSelection";
+            this.dtNegativeSelection.Size = new System.Drawing.Size(824, 666);
+            this.dtNegativeSelection.TabIndex = 0;
+            this.dtNegativeSelection.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.GridControl = this.dtNegativeSelection;
+            this.gridView2.Name = "gridView2";
             // 
             // xtpClusSetting
             // 
             this.xtpClusSetting.Controls.Add(this.pnlUS);
             this.xtpClusSetting.Name = "xtpClusSetting";
-            this.xtpClusSetting.Size = new System.Drawing.Size(778, 672);
+            this.xtpClusSetting.Size = new System.Drawing.Size(830, 672);
             this.xtpClusSetting.Text = "US";
             // 
             // pnlUS
@@ -879,7 +1002,7 @@
             this.pnlUS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlUS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlUS.Name = "pnlUS";
-            this.pnlUS.Size = new System.Drawing.Size(778, 672);
+            this.pnlUS.Size = new System.Drawing.Size(830, 672);
             this.pnlUS.TabIndex = 1;
             // 
             // grpMixFile
@@ -897,9 +1020,9 @@
             this.grpMixFile.Controls.Add(this.labelControl20);
             this.grpMixFile.Controls.Add(this.btnCLoad);
             this.grpMixFile.Controls.Add(this.btnCSave);
-            this.grpMixFile.Location = new System.Drawing.Point(391, 413);
+            this.grpMixFile.Location = new System.Drawing.Point(412, 412);
             this.grpMixFile.Name = "grpMixFile";
-            this.grpMixFile.Size = new System.Drawing.Size(380, 167);
+            this.grpMixFile.Size = new System.Drawing.Size(400, 167);
             this.grpMixFile.TabIndex = 2;
             // 
             // txtbCClusteringFile
@@ -909,7 +1032,7 @@
             this.txtbCClusteringFile.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCClusteringFile.Properties.Appearance.Options.UseFont = true;
             this.txtbCClusteringFile.Size = new System.Drawing.Size(308, 22);
-            this.txtbCClusteringFile.StyleController = this.styleController1;
+            this.txtbCClusteringFile.StyleController = this.styleMain;
             this.txtbCClusteringFile.TabIndex = 1;
             // 
             // btnCClusteringFile
@@ -919,7 +1042,7 @@
             this.btnCClusteringFile.Location = new System.Drawing.Point(322, 72);
             this.btnCClusteringFile.Name = "btnCClusteringFile";
             this.btnCClusteringFile.Size = new System.Drawing.Size(46, 23);
-            this.btnCClusteringFile.StyleController = this.styleController1;
+            this.btnCClusteringFile.StyleController = this.styleMain;
             this.btnCClusteringFile.TabIndex = 2;
             this.btnCClusteringFile.Text = "...";
             // 
@@ -929,7 +1052,7 @@
             this.labelControl20.Location = new System.Drawing.Point(8, 39);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(111, 18);
-            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.StyleController = this.styleMain;
             this.labelControl20.TabIndex = 0;
             this.labelControl20.Text = "Mix Detector File";
             // 
@@ -942,7 +1065,7 @@
             this.btnCLoad.Size = new System.Drawing.Size(81, 34);
             this.btnCLoad.StyleController = this.styleButon;
             this.btnCLoad.TabIndex = 4;
-            this.btnCLoad.Text = "Save";
+            this.btnCLoad.Text = "Load";
             // 
             // btnCSave
             // 
@@ -956,7 +1079,7 @@
             this.btnCSave.Size = new System.Drawing.Size(85, 34);
             this.btnCSave.StyleController = this.styleButon;
             this.btnCSave.TabIndex = 3;
-            this.btnCSave.Text = "Load";
+            this.btnCSave.Text = "Save";
             // 
             // grpClustering
             // 
@@ -984,9 +1107,9 @@
             this.grpClustering.Controls.Add(this.labelControl15);
             this.grpClustering.Controls.Add(this.labelControl17);
             this.grpClustering.Controls.Add(this.labelControl16);
-            this.grpClustering.Location = new System.Drawing.Point(391, 6);
+            this.grpClustering.Location = new System.Drawing.Point(412, 6);
             this.grpClustering.Name = "grpClustering";
-            this.grpClustering.Size = new System.Drawing.Size(380, 401);
+            this.grpClustering.Size = new System.Drawing.Size(400, 400);
             this.grpClustering.TabIndex = 0;
             this.grpClustering.Text = "Clustering";
             // 
@@ -1034,7 +1157,7 @@
             this.txtbCNumNeuronY.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCNumNeuronY.Properties.Appearance.Options.UseFont = true;
             this.txtbCNumNeuronY.Size = new System.Drawing.Size(229, 22);
-            this.txtbCNumNeuronY.StyleController = this.styleController1;
+            this.txtbCNumNeuronY.StyleController = this.styleMain;
             this.txtbCNumNeuronY.TabIndex = 5;
             // 
             // txtbCNumInputNeuron
@@ -1053,7 +1176,7 @@
             this.txtbCNumNeuronX.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCNumNeuronX.Properties.Appearance.Options.UseFont = true;
             this.txtbCNumNeuronX.Size = new System.Drawing.Size(229, 22);
-            this.txtbCNumNeuronX.StyleController = this.styleController1;
+            this.txtbCNumNeuronX.StyleController = this.styleMain;
             this.txtbCNumNeuronX.TabIndex = 3;
             // 
             // btnCStopClustering
@@ -1123,7 +1246,7 @@
             this.labelControl15.Location = new System.Drawing.Point(6, 133);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(98, 18);
-            this.labelControl15.StyleController = this.styleController1;
+            this.labelControl15.StyleController = this.styleMain;
             this.labelControl15.TabIndex = 4;
             this.labelControl15.Text = "Num Neuron Y";
             // 
@@ -1142,7 +1265,7 @@
             this.labelControl16.Location = new System.Drawing.Point(6, 88);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(99, 18);
-            this.labelControl16.StyleController = this.styleController1;
+            this.labelControl16.StyleController = this.styleMain;
             this.labelControl16.TabIndex = 2;
             this.labelControl16.Text = "Num Neuron X";
             // 
@@ -1171,7 +1294,7 @@
             this.grpPreProc.Controls.Add(this.labelControl12);
             this.grpPreProc.Location = new System.Drawing.Point(6, 6);
             this.grpPreProc.Name = "grpPreProc";
-            this.grpPreProc.Size = new System.Drawing.Size(380, 401);
+            this.grpPreProc.Size = new System.Drawing.Size(400, 400);
             this.grpPreProc.TabIndex = 0;
             this.grpPreProc.Text = "Pre-Process";
             // 
@@ -1182,7 +1305,7 @@
             this.txtbCMixDetectorFile.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCMixDetectorFile.Properties.Appearance.Options.UseFont = true;
             this.txtbCMixDetectorFile.Size = new System.Drawing.Size(187, 22);
-            this.txtbCMixDetectorFile.StyleController = this.styleController1;
+            this.txtbCMixDetectorFile.StyleController = this.styleMain;
             this.txtbCMixDetectorFile.TabIndex = 9;
             // 
             // btnCMixDetectorFile
@@ -1192,7 +1315,7 @@
             this.btnCMixDetectorFile.Location = new System.Drawing.Point(323, 221);
             this.btnCMixDetectorFile.Name = "btnCMixDetectorFile";
             this.btnCMixDetectorFile.Size = new System.Drawing.Size(46, 23);
-            this.btnCMixDetectorFile.StyleController = this.styleController1;
+            this.btnCMixDetectorFile.StyleController = this.styleMain;
             this.btnCMixDetectorFile.TabIndex = 10;
             this.btnCMixDetectorFile.Text = "...";
             // 
@@ -1202,7 +1325,7 @@
             this.labelControl13.Location = new System.Drawing.Point(6, 223);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(111, 18);
-            this.labelControl13.StyleController = this.styleController1;
+            this.labelControl13.StyleController = this.styleMain;
             this.labelControl13.TabIndex = 8;
             this.labelControl13.Text = "Mix Detector File";
             // 
@@ -1233,7 +1356,7 @@
             this.txtbCBenignSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCBenignSize.Properties.Appearance.Options.UseFont = true;
             this.txtbCBenignSize.Size = new System.Drawing.Size(239, 22);
-            this.txtbCBenignSize.StyleController = this.styleController1;
+            this.txtbCBenignSize.StyleController = this.styleMain;
             this.txtbCBenignSize.TabIndex = 6;
             // 
             // txtbCVirusSize
@@ -1243,7 +1366,7 @@
             this.txtbCVirusSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCVirusSize.Properties.Appearance.Options.UseFont = true;
             this.txtbCVirusSize.Size = new System.Drawing.Size(239, 22);
-            this.txtbCVirusSize.StyleController = this.styleController1;
+            this.txtbCVirusSize.StyleController = this.styleMain;
             this.txtbCVirusSize.TabIndex = 4;
             // 
             // txtbCBenignVirusRate
@@ -1254,7 +1377,7 @@
             this.txtbCBenignVirusRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCBenignVirusRate.Properties.Appearance.Options.UseFont = true;
             this.txtbCBenignVirusRate.Size = new System.Drawing.Size(138, 22);
-            this.txtbCBenignVirusRate.StyleController = this.styleController1;
+            this.txtbCBenignVirusRate.StyleController = this.styleMain;
             this.txtbCBenignVirusRate.TabIndex = 2;
             // 
             // btnCLoadMixDetector
@@ -1288,7 +1411,7 @@
             this.labelControl8.Location = new System.Drawing.Point(6, 133);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(78, 18);
-            this.labelControl8.StyleController = this.styleController1;
+            this.labelControl8.StyleController = this.styleMain;
             this.labelControl8.TabIndex = 5;
             this.labelControl8.Text = "Benign Size";
             // 
@@ -1298,7 +1421,7 @@
             this.labelControl11.Location = new System.Drawing.Point(6, 88);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(66, 18);
-            this.labelControl11.StyleController = this.styleController1;
+            this.labelControl11.StyleController = this.styleMain;
             this.labelControl11.TabIndex = 3;
             this.labelControl11.Text = "Virus Size";
             // 
@@ -1308,7 +1431,7 @@
             this.labelControl12.Location = new System.Drawing.Point(128, 40);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(82, 18);
-            this.labelControl12.StyleController = this.styleController1;
+            this.labelControl12.StyleController = this.styleMain;
             this.labelControl12.TabIndex = 1;
             this.labelControl12.Text = "Benign/Virus";
             // 
@@ -1316,7 +1439,7 @@
             // 
             this.xtpClusReult.Controls.Add(this.pnlUR);
             this.xtpClusReult.Name = "xtpClusReult";
-            this.xtpClusReult.Size = new System.Drawing.Size(778, 672);
+            this.xtpClusReult.Size = new System.Drawing.Size(830, 672);
             this.xtpClusReult.Text = "UR";
             // 
             // pnlUR
@@ -1326,6 +1449,7 @@
             this.pnlUR.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlUR.Appearance.Options.UseBackColor = true;
             this.pnlUR.Appearance.Options.UseBorderColor = true;
+            this.pnlUR.Controls.Add(this.dangerLevel);
             this.pnlUR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlUR.Location = new System.Drawing.Point(0, 0);
             this.pnlUR.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
@@ -1333,14 +1457,28 @@
             this.pnlUR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlUR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlUR.Name = "pnlUR";
-            this.pnlUR.Size = new System.Drawing.Size(778, 672);
+            this.pnlUR.Size = new System.Drawing.Size(830, 672);
             this.pnlUR.TabIndex = 1;
+            // 
+            // dangerLevel
+            // 
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.dangerLevel.Diagram = xyDiagram1;
+            this.dangerLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dangerLevel.Location = new System.Drawing.Point(3, 3);
+            this.dangerLevel.Name = "dangerLevel";
+            series1.Name = "dangerLevel";
+            this.dangerLevel.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1};
+            this.dangerLevel.Size = new System.Drawing.Size(824, 666);
+            this.dangerLevel.TabIndex = 0;
             // 
             // xtpClasSetting
             // 
             this.xtpClasSetting.Controls.Add(this.pnlAS);
             this.xtpClasSetting.Name = "xtpClasSetting";
-            this.xtpClasSetting.Size = new System.Drawing.Size(778, 672);
+            this.xtpClasSetting.Size = new System.Drawing.Size(830, 672);
             this.xtpClasSetting.Text = "AS";
             // 
             // pnlAS
@@ -1350,6 +1488,9 @@
             this.pnlAS.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlAS.Appearance.Options.UseBackColor = true;
             this.pnlAS.Appearance.Options.UseBorderColor = true;
+            this.pnlAS.Controls.Add(this.grpASFile);
+            this.pnlAS.Controls.Add(this.grpASProc);
+            this.pnlAS.Controls.Add(this.grpASPreProc);
             this.pnlAS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAS.Location = new System.Drawing.Point(0, 0);
             this.pnlAS.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
@@ -1357,14 +1498,340 @@
             this.pnlAS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlAS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlAS.Name = "pnlAS";
-            this.pnlAS.Size = new System.Drawing.Size(778, 672);
+            this.pnlAS.Size = new System.Drawing.Size(830, 672);
             this.pnlAS.TabIndex = 1;
+            // 
+            // grpASFile
+            // 
+            this.grpASFile.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpASFile.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASFile.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.grpASFile.Appearance.Options.UseBackColor = true;
+            this.grpASFile.Appearance.Options.UseFont = true;
+            this.grpASFile.Appearance.Options.UseForeColor = true;
+            this.grpASFile.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASFile.AppearanceCaption.Options.UseFont = true;
+            this.grpASFile.Controls.Add(this.txtbFCFileClassifierFile);
+            this.grpASFile.Controls.Add(this.btnFCFileClassifierFile);
+            this.grpASFile.Controls.Add(this.labelControl25);
+            this.grpASFile.Controls.Add(this.btnFCLoad);
+            this.grpASFile.Controls.Add(this.btnFCSave);
+            this.grpASFile.Location = new System.Drawing.Point(412, 309);
+            this.grpASFile.Name = "grpASFile";
+            this.grpASFile.Size = new System.Drawing.Size(400, 167);
+            this.grpASFile.TabIndex = 3;
+            this.grpASFile.Text = "Classifier File";
+            // 
+            // txtbFCFileClassifierFile
+            // 
+            this.txtbFCFileClassifierFile.Location = new System.Drawing.Point(8, 72);
+            this.txtbFCFileClassifierFile.Name = "txtbFCFileClassifierFile";
+            this.txtbFCFileClassifierFile.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCFileClassifierFile.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCFileClassifierFile.Size = new System.Drawing.Size(333, 22);
+            this.txtbFCFileClassifierFile.StyleController = this.styleMain;
+            this.txtbFCFileClassifierFile.TabIndex = 1;
+            // 
+            // btnFCFileClassifierFile
+            // 
+            this.btnFCFileClassifierFile.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCFileClassifierFile.Appearance.Options.UseFont = true;
+            this.btnFCFileClassifierFile.Location = new System.Drawing.Point(349, 72);
+            this.btnFCFileClassifierFile.Name = "btnFCFileClassifierFile";
+            this.btnFCFileClassifierFile.Size = new System.Drawing.Size(46, 23);
+            this.btnFCFileClassifierFile.StyleController = this.styleMain;
+            this.btnFCFileClassifierFile.TabIndex = 2;
+            this.btnFCFileClassifierFile.Text = "...";
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl25.Location = new System.Drawing.Point(8, 39);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(88, 18);
+            this.labelControl25.StyleController = this.styleMain;
+            this.labelControl25.TabIndex = 0;
+            this.labelControl25.Text = "Classifier File";
+            // 
+            // btnFCLoad
+            // 
+            this.btnFCLoad.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCLoad.Appearance.Options.UseFont = true;
+            this.btnFCLoad.Location = new System.Drawing.Point(140, 118);
+            this.btnFCLoad.Name = "btnFCLoad";
+            this.btnFCLoad.Size = new System.Drawing.Size(81, 34);
+            this.btnFCLoad.StyleController = this.styleButon;
+            this.btnFCLoad.TabIndex = 4;
+            this.btnFCLoad.Text = "Load";
+            // 
+            // btnFCSave
+            // 
+            this.btnFCSave.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCSave.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnFCSave.Appearance.Options.UseBorderColor = true;
+            this.btnFCSave.Appearance.Options.UseFont = true;
+            this.btnFCSave.Appearance.Options.UseForeColor = true;
+            this.btnFCSave.Location = new System.Drawing.Point(8, 118);
+            this.btnFCSave.Name = "btnFCSave";
+            this.btnFCSave.Size = new System.Drawing.Size(85, 34);
+            this.btnFCSave.StyleController = this.styleButon;
+            this.btnFCSave.TabIndex = 3;
+            this.btnFCSave.Text = "Save";
+            // 
+            // grpASProc
+            // 
+            this.grpASProc.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.grpASProc.Appearance.BackColor2 = System.Drawing.Color.Gray;
+            this.grpASProc.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASProc.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.grpASProc.Appearance.Options.UseBackColor = true;
+            this.grpASProc.Appearance.Options.UseFont = true;
+            this.grpASProc.Appearance.Options.UseForeColor = true;
+            this.grpASProc.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASProc.AppearanceCaption.Options.UseFont = true;
+            this.grpASProc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpASProc.Controls.Add(this.txtbCFErrorThresold);
+            this.grpASProc.Controls.Add(this.txtbCFNumIterator);
+            this.grpASProc.Controls.Add(this.txtbFCNumHiddenNeuron);
+            this.grpASProc.Controls.Add(this.txtbCFNumOutputNeuron);
+            this.grpASProc.Controls.Add(this.labelControl29);
+            this.grpASProc.Controls.Add(this.labelControl30);
+            this.grpASProc.Controls.Add(this.labelControl31);
+            this.grpASProc.Controls.Add(this.labelControl32);
+            this.grpASProc.Controls.Add(this.btnFCStop);
+            this.grpASProc.Controls.Add(this.btnFCStartFileClassifier);
+            this.grpASProc.Location = new System.Drawing.Point(412, 3);
+            this.grpASProc.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.grpASProc.Name = "grpASProc";
+            this.grpASProc.Size = new System.Drawing.Size(400, 300);
+            this.grpASProc.TabIndex = 2;
+            this.grpASProc.Text = "Processer";
+            // 
+            // txtbCFErrorThresold
+            // 
+            this.txtbCFErrorThresold.EditValue = "";
+            this.txtbCFErrorThresold.Location = new System.Drawing.Point(139, 198);
+            this.txtbCFErrorThresold.Name = "txtbCFErrorThresold";
+            this.txtbCFErrorThresold.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbCFErrorThresold.Properties.Appearance.Options.UseFont = true;
+            this.txtbCFErrorThresold.Size = new System.Drawing.Size(247, 22);
+            this.txtbCFErrorThresold.TabIndex = 19;
+            // 
+            // txtbCFNumIterator
+            // 
+            this.txtbCFNumIterator.Location = new System.Drawing.Point(139, 144);
+            this.txtbCFNumIterator.Name = "txtbCFNumIterator";
+            this.txtbCFNumIterator.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbCFNumIterator.Properties.Appearance.Options.UseFont = true;
+            this.txtbCFNumIterator.Size = new System.Drawing.Size(247, 22);
+            this.txtbCFNumIterator.StyleController = this.styleMain;
+            this.txtbCFNumIterator.TabIndex = 17;
+            // 
+            // txtbFCNumHiddenNeuron
+            // 
+            this.txtbFCNumHiddenNeuron.Location = new System.Drawing.Point(139, 36);
+            this.txtbFCNumHiddenNeuron.Name = "txtbFCNumHiddenNeuron";
+            this.txtbFCNumHiddenNeuron.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCNumHiddenNeuron.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumHiddenNeuron.Size = new System.Drawing.Size(247, 22);
+            this.txtbFCNumHiddenNeuron.TabIndex = 13;
+            // 
+            // txtbCFNumOutputNeuron
+            // 
+            this.txtbCFNumOutputNeuron.Location = new System.Drawing.Point(139, 90);
+            this.txtbCFNumOutputNeuron.Name = "txtbCFNumOutputNeuron";
+            this.txtbCFNumOutputNeuron.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbCFNumOutputNeuron.Properties.Appearance.Options.UseFont = true;
+            this.txtbCFNumOutputNeuron.Size = new System.Drawing.Size(247, 22);
+            this.txtbCFNumOutputNeuron.StyleController = this.styleMain;
+            this.txtbCFNumOutputNeuron.TabIndex = 15;
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl29.Location = new System.Drawing.Point(5, 200);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(96, 18);
+            this.labelControl29.TabIndex = 18;
+            this.labelControl29.Text = "Error Thresold";
+            // 
+            // labelControl30
+            // 
+            this.labelControl30.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl30.Location = new System.Drawing.Point(5, 146);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(82, 18);
+            this.labelControl30.StyleController = this.styleMain;
+            this.labelControl30.TabIndex = 16;
+            this.labelControl30.Text = "Num Iterator";
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl31.Location = new System.Drawing.Point(5, 38);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(135, 18);
+            this.labelControl31.TabIndex = 12;
+            this.labelControl31.Text = "Num Hidden Neuron";
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl32.Location = new System.Drawing.Point(5, 92);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(133, 18);
+            this.labelControl32.StyleController = this.styleMain;
+            this.labelControl32.TabIndex = 14;
+            this.labelControl32.Text = "Num Output Neuron";
+            // 
+            // btnFCStop
+            // 
+            this.btnFCStop.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCStop.Appearance.Options.UseFont = true;
+            this.btnFCStop.Location = new System.Drawing.Point(121, 242);
+            this.btnFCStop.Name = "btnFCStop";
+            this.btnFCStop.Size = new System.Drawing.Size(81, 34);
+            this.btnFCStop.StyleController = this.styleButon;
+            this.btnFCStop.TabIndex = 11;
+            this.btnFCStop.Text = "Stop";
+            // 
+            // btnFCStartFileClassifier
+            // 
+            this.btnFCStartFileClassifier.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCStartFileClassifier.Appearance.Options.UseFont = true;
+            this.btnFCStartFileClassifier.Location = new System.Drawing.Point(5, 242);
+            this.btnFCStartFileClassifier.Name = "btnFCStartFileClassifier";
+            this.btnFCStartFileClassifier.Size = new System.Drawing.Size(85, 34);
+            this.btnFCStartFileClassifier.StyleController = this.styleButon;
+            this.btnFCStartFileClassifier.TabIndex = 10;
+            this.btnFCStartFileClassifier.Text = "Start";
+            // 
+            // grpASPreProc
+            // 
+            this.grpASPreProc.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.grpASPreProc.Appearance.BackColor2 = System.Drawing.Color.Gray;
+            this.grpASPreProc.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASPreProc.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.grpASPreProc.Appearance.Options.UseBackColor = true;
+            this.grpASPreProc.Appearance.Options.UseFont = true;
+            this.grpASPreProc.Appearance.Options.UseForeColor = true;
+            this.grpASPreProc.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpASPreProc.AppearanceCaption.Options.UseFont = true;
+            this.grpASPreProc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpASPreProc.Controls.Add(this.txtbCFFormatRange);
+            this.grpASPreProc.Controls.Add(this.txtbFCBenignFolder);
+            this.grpASPreProc.Controls.Add(this.txtbFCVirusFolder);
+            this.grpASPreProc.Controls.Add(this.btnFCBenignFolder);
+            this.grpASPreProc.Controls.Add(this.btnFCPreprocesser);
+            this.grpASPreProc.Controls.Add(this.btnFCVirusFolder);
+            this.grpASPreProc.Controls.Add(this.labelControl22);
+            this.grpASPreProc.Controls.Add(this.labelControl23);
+            this.grpASPreProc.Controls.Add(this.labelControl24);
+            this.grpASPreProc.Location = new System.Drawing.Point(6, 3);
+            this.grpASPreProc.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.grpASPreProc.Name = "grpASPreProc";
+            this.grpASPreProc.Size = new System.Drawing.Size(400, 300);
+            this.grpASPreProc.TabIndex = 1;
+            this.grpASPreProc.Text = "Preprocesser";
+            // 
+            // txtbCFFormatRange
+            // 
+            this.txtbCFFormatRange.Location = new System.Drawing.Point(6, 200);
+            this.txtbCFFormatRange.Name = "txtbCFFormatRange";
+            this.txtbCFFormatRange.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbCFFormatRange.Properties.Appearance.Options.UseFont = true;
+            this.txtbCFFormatRange.Size = new System.Drawing.Size(337, 22);
+            this.txtbCFFormatRange.StyleController = this.styleMain;
+            this.txtbCFFormatRange.TabIndex = 7;
+            // 
+            // txtbFCBenignFolder
+            // 
+            this.txtbFCBenignFolder.Location = new System.Drawing.Point(6, 129);
+            this.txtbFCBenignFolder.Name = "txtbFCBenignFolder";
+            this.txtbFCBenignFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCBenignFolder.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCBenignFolder.Size = new System.Drawing.Size(337, 22);
+            this.txtbFCBenignFolder.StyleController = this.styleMain;
+            this.txtbFCBenignFolder.TabIndex = 4;
+            // 
+            // txtbFCVirusFolder
+            // 
+            this.txtbFCVirusFolder.Location = new System.Drawing.Point(6, 65);
+            this.txtbFCVirusFolder.Name = "txtbFCVirusFolder";
+            this.txtbFCVirusFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCVirusFolder.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCVirusFolder.Size = new System.Drawing.Size(337, 22);
+            this.txtbFCVirusFolder.StyleController = this.styleMain;
+            this.txtbFCVirusFolder.TabIndex = 1;
+            // 
+            // btnFCBenignFolder
+            // 
+            this.btnFCBenignFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCBenignFolder.Appearance.Options.UseFont = true;
+            this.btnFCBenignFolder.Location = new System.Drawing.Point(349, 129);
+            this.btnFCBenignFolder.Name = "btnFCBenignFolder";
+            this.btnFCBenignFolder.Size = new System.Drawing.Size(46, 23);
+            this.btnFCBenignFolder.StyleController = this.styleMain;
+            this.btnFCBenignFolder.TabIndex = 5;
+            this.btnFCBenignFolder.Text = "...";
+            // 
+            // btnFCPreprocesser
+            // 
+            this.btnFCPreprocesser.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCPreprocesser.Appearance.Options.UseFont = true;
+            this.btnFCPreprocesser.Location = new System.Drawing.Point(5, 242);
+            this.btnFCPreprocesser.Name = "btnFCPreprocesser";
+            this.btnFCPreprocesser.Size = new System.Drawing.Size(133, 34);
+            this.btnFCPreprocesser.StyleController = this.styleButon;
+            this.btnFCPreprocesser.TabIndex = 10;
+            this.btnFCPreprocesser.Text = "Preprocesser";
+            // 
+            // btnFCVirusFolder
+            // 
+            this.btnFCVirusFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCVirusFolder.Appearance.Options.UseFont = true;
+            this.btnFCVirusFolder.Location = new System.Drawing.Point(349, 65);
+            this.btnFCVirusFolder.Name = "btnFCVirusFolder";
+            this.btnFCVirusFolder.Size = new System.Drawing.Size(46, 23);
+            this.btnFCVirusFolder.StyleController = this.styleMain;
+            this.btnFCVirusFolder.TabIndex = 2;
+            this.btnFCVirusFolder.Text = "...";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl22.Location = new System.Drawing.Point(6, 167);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(95, 18);
+            this.labelControl22.StyleController = this.styleMain;
+            this.labelControl22.TabIndex = 6;
+            this.labelControl22.Text = "Format Range";
+            // 
+            // labelControl23
+            // 
+            this.labelControl23.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl23.Location = new System.Drawing.Point(6, 103);
+            this.labelControl23.Name = "labelControl23";
+            this.labelControl23.Size = new System.Drawing.Size(117, 18);
+            this.labelControl23.StyleController = this.styleMain;
+            this.labelControl23.TabIndex = 3;
+            this.labelControl23.Text = "Benign Dicrectory";
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl24.Location = new System.Drawing.Point(6, 41);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(97, 18);
+            this.labelControl24.StyleController = this.styleMain;
+            this.labelControl24.TabIndex = 0;
+            this.labelControl24.Text = "Virus Directory";
             // 
             // xtpClassReult
             // 
             this.xtpClassReult.Controls.Add(this.pnlAR);
             this.xtpClassReult.Name = "xtpClassReult";
-            this.xtpClassReult.Size = new System.Drawing.Size(778, 672);
+            this.xtpClassReult.Size = new System.Drawing.Size(830, 672);
             this.xtpClassReult.Text = "AR";
             // 
             // pnlAR
@@ -1374,6 +1841,7 @@
             this.pnlAR.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlAR.Appearance.Options.UseBackColor = true;
             this.pnlAR.Appearance.Options.UseBorderColor = true;
+            this.pnlAR.Controls.Add(this.chartFC);
             this.pnlAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAR.Location = new System.Drawing.Point(0, 0);
             this.pnlAR.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
@@ -1381,14 +1849,29 @@
             this.pnlAR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlAR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlAR.Name = "pnlAR";
-            this.pnlAR.Size = new System.Drawing.Size(778, 672);
+            this.pnlAR.Size = new System.Drawing.Size(830, 672);
             this.pnlAR.TabIndex = 1;
+            // 
+            // chartFC
+            // 
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartFC.Diagram = xyDiagram2;
+            this.chartFC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartFC.Location = new System.Drawing.Point(3, 3);
+            this.chartFC.Name = "chartFC";
+            series2.Name = "chartFC";
+            series2.View = pointSeriesView1;
+            this.chartFC.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series2};
+            this.chartFC.Size = new System.Drawing.Size(824, 666);
+            this.chartFC.TabIndex = 0;
             // 
             // xtpScan
             // 
             this.xtpScan.Controls.Add(this.pnlScan);
             this.xtpScan.Name = "xtpScan";
-            this.xtpScan.Size = new System.Drawing.Size(778, 672);
+            this.xtpScan.Size = new System.Drawing.Size(830, 672);
             this.xtpScan.Text = "Scan";
             // 
             // pnlScan
@@ -1398,6 +1881,8 @@
             this.pnlScan.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlScan.Appearance.Options.UseBackColor = true;
             this.pnlScan.Appearance.Options.UseBorderColor = true;
+            this.pnlScan.Controls.Add(this.grpScanResult);
+            this.pnlScan.Controls.Add(this.grpScan);
             this.pnlScan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlScan.Location = new System.Drawing.Point(0, 0);
             this.pnlScan.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
@@ -1405,8 +1890,186 @@
             this.pnlScan.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlScan.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlScan.Name = "pnlScan";
-            this.pnlScan.Size = new System.Drawing.Size(778, 672);
+            this.pnlScan.Size = new System.Drawing.Size(830, 672);
             this.pnlScan.TabIndex = 1;
+            // 
+            // grpScanResult
+            // 
+            this.grpScanResult.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.grpScanResult.Appearance.BackColor2 = System.Drawing.Color.Gray;
+            this.grpScanResult.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpScanResult.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.grpScanResult.Appearance.Options.UseBackColor = true;
+            this.grpScanResult.Appearance.Options.UseFont = true;
+            this.grpScanResult.Appearance.Options.UseForeColor = true;
+            this.grpScanResult.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpScanResult.AppearanceCaption.Options.UseFont = true;
+            this.grpScanResult.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpScanResult.Controls.Add(this.txtbFCNumVirus);
+            this.grpScanResult.Controls.Add(this.txtbFCNumBenign);
+            this.grpScanResult.Controls.Add(this.labelControl33);
+            this.grpScanResult.Controls.Add(this.labelControl34);
+            this.grpScanResult.Location = new System.Drawing.Point(6, 179);
+            this.grpScanResult.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.grpScanResult.Name = "grpScanResult";
+            this.grpScanResult.Size = new System.Drawing.Size(400, 133);
+            this.grpScanResult.TabIndex = 5;
+            this.grpScanResult.Text = "Result";
+            // 
+            // txtbFCNumVirus
+            // 
+            this.txtbFCNumVirus.Location = new System.Drawing.Point(139, 36);
+            this.txtbFCNumVirus.Name = "txtbFCNumVirus";
+            this.txtbFCNumVirus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCNumVirus.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumVirus.Size = new System.Drawing.Size(247, 22);
+            this.txtbFCNumVirus.TabIndex = 13;
+            // 
+            // txtbFCNumBenign
+            // 
+            this.txtbFCNumBenign.Location = new System.Drawing.Point(139, 90);
+            this.txtbFCNumBenign.Name = "txtbFCNumBenign";
+            this.txtbFCNumBenign.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCNumBenign.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumBenign.Size = new System.Drawing.Size(247, 22);
+            this.txtbFCNumBenign.StyleController = this.styleMain;
+            this.txtbFCNumBenign.TabIndex = 15;
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl33.Location = new System.Drawing.Point(5, 38);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(69, 18);
+            this.labelControl33.TabIndex = 12;
+            this.labelControl33.Text = "Num Virus";
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl34.Location = new System.Drawing.Point(5, 92);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(81, 18);
+            this.labelControl34.StyleController = this.styleMain;
+            this.labelControl34.TabIndex = 14;
+            this.labelControl34.Text = "Num Benign";
+            // 
+            // grpScan
+            // 
+            this.grpScan.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpScan.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpScan.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.grpScan.Appearance.Options.UseBackColor = true;
+            this.grpScan.Appearance.Options.UseFont = true;
+            this.grpScan.Appearance.Options.UseForeColor = true;
+            this.grpScan.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.grpScan.AppearanceCaption.Options.UseFont = true;
+            this.grpScan.Controls.Add(this.txtbVSTestFolder);
+            this.grpScan.Controls.Add(this.btnFCTestFolder);
+            this.grpScan.Controls.Add(this.labelControl26);
+            this.grpScan.Controls.Add(this.btnVSStop);
+            this.grpScan.Controls.Add(this.btnFCScanVirus);
+            this.grpScan.Location = new System.Drawing.Point(6, 6);
+            this.grpScan.Name = "grpScan";
+            this.grpScan.Size = new System.Drawing.Size(400, 167);
+            this.grpScan.TabIndex = 4;
+            // 
+            // txtbVSTestFolder
+            // 
+            this.txtbVSTestFolder.Location = new System.Drawing.Point(8, 72);
+            this.txtbVSTestFolder.Name = "txtbVSTestFolder";
+            this.txtbVSTestFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbVSTestFolder.Properties.Appearance.Options.UseFont = true;
+            this.txtbVSTestFolder.Size = new System.Drawing.Size(333, 22);
+            this.txtbVSTestFolder.StyleController = this.styleMain;
+            this.txtbVSTestFolder.TabIndex = 1;
+            // 
+            // btnFCTestFolder
+            // 
+            this.btnFCTestFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCTestFolder.Appearance.Options.UseFont = true;
+            this.btnFCTestFolder.Location = new System.Drawing.Point(349, 72);
+            this.btnFCTestFolder.Name = "btnFCTestFolder";
+            this.btnFCTestFolder.Size = new System.Drawing.Size(46, 23);
+            this.btnFCTestFolder.StyleController = this.styleMain;
+            this.btnFCTestFolder.TabIndex = 2;
+            this.btnFCTestFolder.Text = "...";
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl26.Location = new System.Drawing.Point(8, 39);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(75, 18);
+            this.labelControl26.StyleController = this.styleMain;
+            this.labelControl26.TabIndex = 0;
+            this.labelControl26.Text = "Test Folder";
+            // 
+            // btnVSStop
+            // 
+            this.btnVSStop.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVSStop.Appearance.Options.UseFont = true;
+            this.btnVSStop.Location = new System.Drawing.Point(140, 118);
+            this.btnVSStop.Name = "btnVSStop";
+            this.btnVSStop.Size = new System.Drawing.Size(81, 34);
+            this.btnVSStop.StyleController = this.styleButon;
+            this.btnVSStop.TabIndex = 4;
+            this.btnVSStop.Text = "Stop";
+            // 
+            // btnFCScanVirus
+            // 
+            this.btnFCScanVirus.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFCScanVirus.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnFCScanVirus.Appearance.Options.UseBorderColor = true;
+            this.btnFCScanVirus.Appearance.Options.UseFont = true;
+            this.btnFCScanVirus.Appearance.Options.UseForeColor = true;
+            this.btnFCScanVirus.Location = new System.Drawing.Point(8, 118);
+            this.btnFCScanVirus.Name = "btnFCScanVirus";
+            this.btnFCScanVirus.Size = new System.Drawing.Size(85, 34);
+            this.btnFCScanVirus.StyleController = this.styleButon;
+            this.btnFCScanVirus.TabIndex = 3;
+            this.btnFCScanVirus.Text = "Start";
+            // 
+            // xtpScanRs
+            // 
+            this.xtpScanRs.Controls.Add(this.panelControl1);
+            this.xtpScanRs.Name = "xtpScanRs";
+            this.xtpScanRs.Size = new System.Drawing.Size(830, 672);
+            this.xtpScanRs.Text = "ScanRS";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.panelControl1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelControl1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.Appearance.Options.UseBorderColor = true;
+            this.panelControl1.Controls.Add(this.dgvVirus);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
+            this.panelControl1.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.White;
+            this.panelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
+            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(830, 672);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // dgvVirus
+            // 
+            this.dgvVirus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvVirus.Location = new System.Drawing.Point(3, 3);
+            this.dgvVirus.MainView = this.gridView1;
+            this.dgvVirus.Name = "dgvVirus";
+            this.dgvVirus.Size = new System.Drawing.Size(824, 666);
+            this.dgvVirus.TabIndex = 0;
+            this.dgvVirus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.dgvVirus;
+            this.gridView1.Name = "gridView1";
             // 
             // imcNavIcon
             // 
@@ -1415,6 +2078,12 @@
             this.imcNavIcon.Images.SetKeyName(1, "1465515696_close_blue.png");
             this.imcNavIcon.Images.SetKeyName(2, "setting.png");
             this.imcNavIcon.Images.SetKeyName(3, "icon-results.png");
+            // 
+            // xtpAbout
+            // 
+            this.xtpAbout.Name = "xtpAbout";
+            this.xtpAbout.Size = new System.Drawing.Size(830, 672);
+            this.xtpAbout.Text = "About";
             // 
             // frmMain
             // 
@@ -1439,7 +2108,7 @@
             this.grpOutput.ResumeLayout(false);
             this.grpOutput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDBenignFile.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDDetectorFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleButon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParam)).EndInit();
@@ -1460,6 +2129,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.rbtnDBuildAddDetector.Properties)).EndInit();
             this.xtpDeResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlDR)).EndInit();
+            this.pnlDR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtNegativeSelection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.xtpClusSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlUS)).EndInit();
             this.pnlUS.ResumeLayout(false);
@@ -1487,12 +2159,54 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbCBenignVirusRate.Properties)).EndInit();
             this.xtpClusReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).EndInit();
+            this.pnlUR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).EndInit();
             this.xtpClasSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).EndInit();
+            this.pnlAS.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpASFile)).EndInit();
+            this.grpASFile.ResumeLayout(false);
+            this.grpASFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCFileClassifierFile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpASProc)).EndInit();
+            this.grpASProc.ResumeLayout(false);
+            this.grpASProc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFErrorThresold.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFNumIterator.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumHiddenNeuron.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFNumOutputNeuron.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpASPreProc)).EndInit();
+            this.grpASPreProc.ResumeLayout(false);
+            this.grpASPreProc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbCFFormatRange.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCBenignFolder.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCVirusFolder.Properties)).EndInit();
             this.xtpClassReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).EndInit();
+            this.pnlAR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartFC)).EndInit();
             this.xtpScan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).EndInit();
+            this.pnlScan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpScanResult)).EndInit();
+            this.grpScanResult.ResumeLayout(false);
+            this.grpScanResult.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumVirus.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbFCNumBenign.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpScan)).EndInit();
+            this.grpScan.ResumeLayout(false);
+            this.grpScan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbVSTestFolder.Properties)).EndInit();
+            this.xtpScanRs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVirus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imcNavIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -1545,7 +2259,7 @@
         private DevExpress.XtraEditors.SimpleButton btnDStop;
         private DevExpress.XtraEditors.SimpleButton btnDStart;
         private DevExpress.XtraEditors.TextEdit txtbDAdditionFolder;
-        private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraEditors.StyleController styleMain;
         private DevExpress.XtraEditors.TextEdit txtbDBenignFolder;
         private DevExpress.XtraEditors.TextEdit txtbDVirusFolder;
         private DevExpress.XtraEditors.GroupControl grpParam;
@@ -1606,6 +2320,55 @@
         private DevExpress.XtraEditors.SimpleButton btnCSave;
         private DevExpress.XtraEditors.TextEdit txtbCErrorThresold;
         private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.GroupControl grpASPreProc;
+        private DevExpress.XtraEditors.TextEdit txtbCFFormatRange;
+        private DevExpress.XtraEditors.TextEdit txtbFCBenignFolder;
+        private DevExpress.XtraEditors.TextEdit txtbFCVirusFolder;
+        private DevExpress.XtraEditors.SimpleButton btnFCBenignFolder;
+        private DevExpress.XtraEditors.SimpleButton btnFCVirusFolder;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl23;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.SimpleButton btnFCPreprocesser;
+        private DevExpress.XtraEditors.GroupControl grpASProc;
+        private DevExpress.XtraEditors.TextEdit txtbCFErrorThresold;
+        private DevExpress.XtraEditors.TextEdit txtbCFNumIterator;
+        private DevExpress.XtraEditors.TextEdit txtbFCNumHiddenNeuron;
+        private DevExpress.XtraEditors.TextEdit txtbCFNumOutputNeuron;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
+        private DevExpress.XtraEditors.LabelControl labelControl31;
+        private DevExpress.XtraEditors.LabelControl labelControl32;
+        private DevExpress.XtraEditors.SimpleButton btnFCStop;
+        private DevExpress.XtraEditors.SimpleButton btnFCStartFileClassifier;
+        private DevExpress.XtraEditors.GroupControl grpASFile;
+        private DevExpress.XtraEditors.TextEdit txtbFCFileClassifierFile;
+        private DevExpress.XtraEditors.SimpleButton btnFCFileClassifierFile;
+        private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraEditors.SimpleButton btnFCLoad;
+        private DevExpress.XtraEditors.SimpleButton btnFCSave;
+        private DevExpress.XtraEditors.GroupControl grpScanResult;
+        private DevExpress.XtraEditors.TextEdit txtbFCNumVirus;
+        private DevExpress.XtraEditors.TextEdit txtbFCNumBenign;
+        private DevExpress.XtraEditors.LabelControl labelControl33;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.GroupControl grpScan;
+        private DevExpress.XtraEditors.TextEdit txtbVSTestFolder;
+        private DevExpress.XtraEditors.SimpleButton btnFCTestFolder;
+        private DevExpress.XtraEditors.LabelControl labelControl26;
+        private DevExpress.XtraEditors.SimpleButton btnVSStop;
+        private DevExpress.XtraEditors.SimpleButton btnFCScanVirus;
+        private DevExpress.XtraNavBar.NavBarItem navScanResult;
+        private DevExpress.XtraCharts.ChartControl dangerLevel;
+        private DevExpress.XtraCharts.ChartControl chartFC;
+        private DevExpress.XtraTab.XtraTabPage xtpScanRs;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraGrid.GridControl dgvVirus;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraGrid.GridControl dtNegativeSelection;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraTab.XtraTabPage xtpAbout;
     }
 }
 
