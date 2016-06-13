@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.PointSeriesView pointSeriesView1 = new DevExpress.XtraCharts.PointSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram7 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.XYDiagram xyDiagram8 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesView pointSeriesView4 = new DevExpress.XtraCharts.PointSeriesView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
@@ -52,12 +52,16 @@
             this.navClassifier = new DevExpress.XtraNavBar.NavBarGroup();
             this.navClaSetting = new DevExpress.XtraNavBar.NavBarItem();
             this.navClaResult = new DevExpress.XtraNavBar.NavBarItem();
+            this.panelFooter = new DevExpress.XtraEditors.PanelControl();
+            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
+            this.styleMain = new DevExpress.XtraEditors.StyleController(this.components);
+            this.txtStatusBar = new DevExpress.XtraEditors.TextEdit();
+            this.txtTimeBox = new DevExpress.XtraEditors.TextEdit();
             this.xtcContent = new DevExpress.XtraTab.XtraTabControl();
             this.xtpDeSetting = new DevExpress.XtraTab.XtraTabPage();
             this.pnlDS = new DevExpress.XtraEditors.PanelControl();
             this.grpOutput = new DevExpress.XtraEditors.GroupControl();
             this.txtbDBenignFile = new DevExpress.XtraEditors.TextEdit();
-            this.styleMain = new DevExpress.XtraEditors.StyleController(this.components);
             this.txtbDDetectorFile = new DevExpress.XtraEditors.TextEdit();
             this.btnDBenignFile = new DevExpress.XtraEditors.SimpleButton();
             this.btnDLoadDetector = new DevExpress.XtraEditors.SimpleButton();
@@ -185,13 +189,20 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dgvVirus = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtpAbout = new DevExpress.XtraTab.XtraTabPage();
             this.imcNavIcon = new DevExpress.Utils.ImageCollection(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.xtpAbout = new DevExpress.XtraTab.XtraTabPage();
+            this._timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelFooter)).BeginInit();
+            this.panelFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStatusBar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimeBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcContent)).BeginInit();
             this.xtcContent.SuspendLayout();
             this.xtpDeSetting.SuspendLayout();
@@ -200,7 +211,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpOutput)).BeginInit();
             this.grpOutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDBenignFile.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDDetectorFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleButon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParam)).BeginInit();
@@ -248,8 +258,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).BeginInit();
             this.pnlUR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
             this.xtpClasSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).BeginInit();
             this.pnlAS.SuspendLayout();
@@ -271,9 +281,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).BeginInit();
             this.pnlAR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartFC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView4)).BeginInit();
             this.xtpScan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).BeginInit();
             this.pnlScan.SuspendLayout();
@@ -307,6 +317,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.Gray;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelFooter);
             this.splitContainerControl1.Panel2.Controls.Add(this.xtcContent);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1024, 700);
@@ -319,8 +330,44 @@
             this.navBarControl1.ActiveGroup = this.navDetection;
             this.navBarControl1.Appearance.Background.BackColor = System.Drawing.Color.Gray;
             this.navBarControl1.Appearance.Background.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.navBarControl1.Appearance.Background.Font = new System.Drawing.Font("Tahoma", 10F);
             this.navBarControl1.Appearance.Background.Options.UseBackColor = true;
             this.navBarControl1.Appearance.Background.Options.UseBorderColor = true;
+            this.navBarControl1.Appearance.Background.Options.UseFont = true;
+            this.navBarControl1.Appearance.Button.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.Button.Options.UseFont = true;
+            this.navBarControl1.Appearance.ButtonDisabled.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ButtonDisabled.Options.UseFont = true;
+            this.navBarControl1.Appearance.ButtonHotTracked.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ButtonHotTracked.Options.UseFont = true;
+            this.navBarControl1.Appearance.ButtonPressed.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ButtonPressed.Options.UseFont = true;
+            this.navBarControl1.Appearance.GroupBackground.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.GroupBackground.Options.UseFont = true;
+            this.navBarControl1.Appearance.GroupHeader.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.GroupHeader.Options.UseFont = true;
+            this.navBarControl1.Appearance.GroupHeaderActive.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.GroupHeaderActive.Options.UseFont = true;
+            this.navBarControl1.Appearance.GroupHeaderHotTracked.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.GroupHeaderHotTracked.Options.UseFont = true;
+            this.navBarControl1.Appearance.GroupHeaderPressed.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.GroupHeaderPressed.Options.UseFont = true;
+            this.navBarControl1.Appearance.Hint.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.Hint.Options.UseFont = true;
+            this.navBarControl1.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.Item.Options.UseFont = true;
+            this.navBarControl1.Appearance.ItemActive.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ItemActive.Options.UseFont = true;
+            this.navBarControl1.Appearance.ItemDisabled.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ItemDisabled.Options.UseFont = true;
+            this.navBarControl1.Appearance.ItemHotTracked.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ItemHotTracked.Options.UseFont = true;
+            this.navBarControl1.Appearance.ItemPressed.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.ItemPressed.Options.UseFont = true;
+            this.navBarControl1.Appearance.LinkDropTarget.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.LinkDropTarget.Options.UseFont = true;
+            this.navBarControl1.Appearance.NavigationPaneHeader.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.navBarControl1.Appearance.NavigationPaneHeader.Options.UseFont = true;
             this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -348,7 +395,7 @@
             this.navBarControl1.Size = new System.Drawing.Size(183, 700);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("DevExpress Dark Style");
+            this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Office 2016 Dark");
             // 
             // navDetection
             // 
@@ -466,6 +513,58 @@
             this.navClaResult.Name = "navClaResult";
             this.navClaResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navClaResult_LinkClicked);
             // 
+            // panelFooter
+            // 
+            this.panelFooter.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.panelFooter.Appearance.BackColor2 = System.Drawing.Color.Gray;
+            this.panelFooter.Appearance.BorderColor = System.Drawing.Color.Gray;
+            this.panelFooter.Appearance.Options.UseBackColor = true;
+            this.panelFooter.Appearance.Options.UseBorderColor = true;
+            this.panelFooter.Controls.Add(this.progressBar);
+            this.panelFooter.Controls.Add(this.txtStatusBar);
+            this.panelFooter.Controls.Add(this.txtTimeBox);
+            this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelFooter.Location = new System.Drawing.Point(0, 625);
+            this.panelFooter.LookAndFeel.SkinName = "Office 2016 Dark";
+            this.panelFooter.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.panelFooter.Name = "panelFooter";
+            this.panelFooter.Size = new System.Drawing.Size(836, 75);
+            this.panelFooter.TabIndex = 1;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(5, 40);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Properties.ShowTitle = true;
+            this.progressBar.Properties.Step = 1;
+            this.progressBar.Properties.TextOrientation = DevExpress.Utils.Drawing.TextOrientation.Horizontal;
+            this.progressBar.Size = new System.Drawing.Size(826, 26);
+            this.progressBar.StyleController = this.styleMain;
+            this.progressBar.TabIndex = 2;
+            // 
+            // styleMain
+            // 
+            this.styleMain.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.styleMain.Appearance.Options.UseFont = true;
+            this.styleMain.LookAndFeel.SkinName = "Office 2016 Colorful";
+            this.styleMain.LookAndFeel.UseDefaultLookAndFeel = false;
+            // 
+            // txtStatusBar
+            // 
+            this.txtStatusBar.Location = new System.Drawing.Point(128, 7);
+            this.txtStatusBar.Name = "txtStatusBar";
+            this.txtStatusBar.Size = new System.Drawing.Size(703, 26);
+            this.txtStatusBar.StyleController = this.styleMain;
+            this.txtStatusBar.TabIndex = 1;
+            // 
+            // txtTimeBox
+            // 
+            this.txtTimeBox.Location = new System.Drawing.Point(5, 7);
+            this.txtTimeBox.Name = "txtTimeBox";
+            this.txtTimeBox.Size = new System.Drawing.Size(117, 26);
+            this.txtTimeBox.StyleController = this.styleMain;
+            this.txtTimeBox.TabIndex = 0;
+            // 
             // xtcContent
             // 
             this.xtcContent.Appearance.BackColor = System.Drawing.Color.Gray;
@@ -477,12 +576,12 @@
             this.xtcContent.AppearancePage.PageClient.Options.UseBorderColor = true;
             this.xtcContent.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtcContent.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.xtcContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtcContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.xtcContent.Location = new System.Drawing.Point(0, 0);
             this.xtcContent.Name = "xtcContent";
             this.xtcContent.SelectedTabPage = this.xtpDeSetting;
             this.xtcContent.ShowTabHeader = DevExpress.Utils.DefaultBoolean.True;
-            this.xtcContent.Size = new System.Drawing.Size(836, 700);
+            this.xtcContent.Size = new System.Drawing.Size(836, 641);
             this.xtcContent.TabIndex = 0;
             this.xtcContent.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpDeSetting,
@@ -504,7 +603,7 @@
             this.xtpDeSetting.Appearance.PageClient.Options.UseBorderColor = true;
             this.xtpDeSetting.Controls.Add(this.pnlDS);
             this.xtpDeSetting.Name = "xtpDeSetting";
-            this.xtpDeSetting.Size = new System.Drawing.Size(830, 672);
+            this.xtpDeSetting.Size = new System.Drawing.Size(830, 613);
             this.xtpDeSetting.Text = "DS";
             // 
             // pnlDS
@@ -526,7 +625,7 @@
             this.pnlDS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlDS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlDS.Name = "pnlDS";
-            this.pnlDS.Size = new System.Drawing.Size(830, 672);
+            this.pnlDS.Size = new System.Drawing.Size(830, 613);
             this.pnlDS.TabIndex = 0;
             // 
             // grpOutput
@@ -561,13 +660,6 @@
             this.txtbDBenignFile.StyleController = this.styleMain;
             this.txtbDBenignFile.TabIndex = 4;
             // 
-            // styleMain
-            // 
-            this.styleMain.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styleMain.Appearance.Options.UseFont = true;
-            this.styleMain.LookAndFeel.SkinName = "Office 2016 Colorful";
-            this.styleMain.LookAndFeel.UseDefaultLookAndFeel = false;
-            // 
             // txtbDDetectorFile
             // 
             this.txtbDDetectorFile.Location = new System.Drawing.Point(5, 65);
@@ -588,6 +680,7 @@
             this.btnDBenignFile.StyleController = this.styleMain;
             this.btnDBenignFile.TabIndex = 5;
             this.btnDBenignFile.Text = "...";
+            this.btnDBenignFile.Click += new System.EventHandler(this.btnDBenignFile_Click);
             // 
             // btnDLoadDetector
             // 
@@ -599,6 +692,7 @@
             this.btnDLoadDetector.StyleController = this.styleButon;
             this.btnDLoadDetector.TabIndex = 7;
             this.btnDLoadDetector.Text = "Load";
+            this.btnDLoadDetector.Click += new System.EventHandler(this.btnDLoadDetector_Click);
             // 
             // styleButon
             // 
@@ -622,6 +716,7 @@
             this.btnDSaveDetector.StyleController = this.styleButon;
             this.btnDSaveDetector.TabIndex = 6;
             this.btnDSaveDetector.Text = "Save";
+            this.btnDSaveDetector.Click += new System.EventHandler(this.btnDSaveDetector_Click);
             // 
             // btnDDetectorFile
             // 
@@ -633,6 +728,7 @@
             this.btnDDetectorFile.StyleController = this.styleMain;
             this.btnDDetectorFile.TabIndex = 2;
             this.btnDDetectorFile.Text = "...";
+            this.btnDDetectorFile.Click += new System.EventHandler(this.btnDDetectorFile_Click);
             // 
             // labelControl9
             // 
@@ -851,6 +947,7 @@
             this.rbtnDBuildAddDetector.Size = new System.Drawing.Size(378, 88);
             this.rbtnDBuildAddDetector.StyleController = this.styleMain;
             this.rbtnDBuildAddDetector.TabIndex = 9;
+            this.rbtnDBuildAddDetector.SelectedIndexChanged += new System.EventHandler(this.rbtnDBuildAddDetector_SelectedIndexChanged);
             // 
             // btnDAdditionFolder
             // 
@@ -862,6 +959,7 @@
             this.btnDAdditionFolder.StyleController = this.styleMain;
             this.btnDAdditionFolder.TabIndex = 8;
             this.btnDAdditionFolder.Text = "...";
+            this.btnDAdditionFolder.Click += new System.EventHandler(this.btnDAdditionFolder_Click);
             // 
             // btnDBenignFolder
             // 
@@ -873,6 +971,7 @@
             this.btnDBenignFolder.StyleController = this.styleMain;
             this.btnDBenignFolder.TabIndex = 5;
             this.btnDBenignFolder.Text = "...";
+            this.btnDBenignFolder.Click += new System.EventHandler(this.btnDBenignFolder_Click);
             // 
             // btnDStop
             // 
@@ -884,6 +983,7 @@
             this.btnDStop.StyleController = this.styleButon;
             this.btnDStop.TabIndex = 11;
             this.btnDStop.Text = "Stop";
+            this.btnDStop.Click += new System.EventHandler(this.btnDStop_Click);
             // 
             // btnDStart
             // 
@@ -895,6 +995,7 @@
             this.btnDStart.StyleController = this.styleButon;
             this.btnDStart.TabIndex = 10;
             this.btnDStart.Text = "Start";
+            this.btnDStart.Click += new System.EventHandler(this.btnDStart_Click);
             // 
             // btnDVirusFolder
             // 
@@ -906,6 +1007,7 @@
             this.btnDVirusFolder.StyleController = this.styleMain;
             this.btnDVirusFolder.TabIndex = 2;
             this.btnDVirusFolder.Text = "...";
+            this.btnDVirusFolder.Click += new System.EventHandler(this.btnDVirusFolder_Click);
             // 
             // labelControl3
             // 
@@ -941,7 +1043,7 @@
             // 
             this.xtpDeResult.Controls.Add(this.pnlDR);
             this.xtpDeResult.Name = "xtpDeResult";
-            this.xtpDeResult.Size = new System.Drawing.Size(830, 672);
+            this.xtpDeResult.Size = new System.Drawing.Size(830, 613);
             this.xtpDeResult.Text = "DR";
             // 
             // pnlDR
@@ -959,7 +1061,7 @@
             this.pnlDR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlDR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlDR.Name = "pnlDR";
-            this.pnlDR.Size = new System.Drawing.Size(830, 672);
+            this.pnlDR.Size = new System.Drawing.Size(830, 613);
             this.pnlDR.TabIndex = 1;
             // 
             // dtNegativeSelection
@@ -968,7 +1070,7 @@
             this.dtNegativeSelection.Location = new System.Drawing.Point(3, 3);
             this.dtNegativeSelection.MainView = this.gridView2;
             this.dtNegativeSelection.Name = "dtNegativeSelection";
-            this.dtNegativeSelection.Size = new System.Drawing.Size(824, 666);
+            this.dtNegativeSelection.Size = new System.Drawing.Size(824, 607);
             this.dtNegativeSelection.TabIndex = 0;
             this.dtNegativeSelection.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -982,7 +1084,7 @@
             // 
             this.xtpClusSetting.Controls.Add(this.pnlUS);
             this.xtpClusSetting.Name = "xtpClusSetting";
-            this.xtpClusSetting.Size = new System.Drawing.Size(830, 672);
+            this.xtpClusSetting.Size = new System.Drawing.Size(830, 613);
             this.xtpClusSetting.Text = "US";
             // 
             // pnlUS
@@ -1002,7 +1104,7 @@
             this.pnlUS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlUS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlUS.Name = "pnlUS";
-            this.pnlUS.Size = new System.Drawing.Size(830, 672);
+            this.pnlUS.Size = new System.Drawing.Size(830, 613);
             this.pnlUS.TabIndex = 1;
             // 
             // grpMixFile
@@ -1045,6 +1147,7 @@
             this.btnCClusteringFile.StyleController = this.styleMain;
             this.btnCClusteringFile.TabIndex = 2;
             this.btnCClusteringFile.Text = "...";
+            this.btnCClusteringFile.Click += new System.EventHandler(this.btnCClusteringFile_Click);
             // 
             // labelControl20
             // 
@@ -1066,6 +1169,7 @@
             this.btnCLoad.StyleController = this.styleButon;
             this.btnCLoad.TabIndex = 4;
             this.btnCLoad.Text = "Load";
+            this.btnCLoad.Click += new System.EventHandler(this.btnCLoad_Click);
             // 
             // btnCSave
             // 
@@ -1080,6 +1184,7 @@
             this.btnCSave.StyleController = this.styleButon;
             this.btnCSave.TabIndex = 3;
             this.btnCSave.Text = "Save";
+            this.btnCSave.Click += new System.EventHandler(this.btnCSave_Click);
             // 
             // grpClustering
             // 
@@ -1189,6 +1294,7 @@
             this.btnCStopClustering.StyleController = this.styleButon;
             this.btnCStopClustering.TabIndex = 15;
             this.btnCStopClustering.Text = "Stop";
+            this.btnCStopClustering.Click += new System.EventHandler(this.btnCStop_Click);
             // 
             // btnCStartClustering
             // 
@@ -1203,6 +1309,7 @@
             this.btnCStartClustering.StyleController = this.styleButon;
             this.btnCStartClustering.TabIndex = 14;
             this.btnCStartClustering.Text = "Start";
+            this.btnCStartClustering.Click += new System.EventHandler(this.btnCStartClustering_Click);
             // 
             // labelControl21
             // 
@@ -1318,6 +1425,7 @@
             this.btnCMixDetectorFile.StyleController = this.styleMain;
             this.btnCMixDetectorFile.TabIndex = 10;
             this.btnCMixDetectorFile.Text = "...";
+            this.btnCMixDetectorFile.Click += new System.EventHandler(this.btnCMixDetectorFile_Click);
             // 
             // labelControl13
             // 
@@ -1339,6 +1447,7 @@
             this.btnCMixDetector.StyleController = this.styleButon;
             this.btnCMixDetector.TabIndex = 7;
             this.btnCMixDetector.Text = "Mix Detector";
+            this.btnCMixDetector.Click += new System.EventHandler(this.btnCMixDetector_Click);
             // 
             // cbxCUseRate
             // 
@@ -1390,6 +1499,7 @@
             this.btnCLoadMixDetector.StyleController = this.styleButon;
             this.btnCLoadMixDetector.TabIndex = 12;
             this.btnCLoadMixDetector.Text = "Load";
+            this.btnCLoadMixDetector.Click += new System.EventHandler(this.btnCLoadMixDetector_Click);
             // 
             // btnCSaveMixDetector
             // 
@@ -1404,6 +1514,7 @@
             this.btnCSaveMixDetector.StyleController = this.styleButon;
             this.btnCSaveMixDetector.TabIndex = 11;
             this.btnCSaveMixDetector.Text = "Save";
+            this.btnCSaveMixDetector.Click += new System.EventHandler(this.btnCSaveMixDetector_Click);
             // 
             // labelControl8
             // 
@@ -1439,7 +1550,7 @@
             // 
             this.xtpClusReult.Controls.Add(this.pnlUR);
             this.xtpClusReult.Name = "xtpClusReult";
-            this.xtpClusReult.Size = new System.Drawing.Size(830, 672);
+            this.xtpClusReult.Size = new System.Drawing.Size(830, 613);
             this.xtpClusReult.Text = "UR";
             // 
             // pnlUR
@@ -1457,28 +1568,28 @@
             this.pnlUR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlUR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlUR.Name = "pnlUR";
-            this.pnlUR.Size = new System.Drawing.Size(830, 672);
+            this.pnlUR.Size = new System.Drawing.Size(830, 613);
             this.pnlUR.TabIndex = 1;
             // 
             // dangerLevel
             // 
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.dangerLevel.Diagram = xyDiagram1;
+            xyDiagram7.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram7.AxisY.VisibleInPanesSerializable = "-1";
+            this.dangerLevel.Diagram = xyDiagram7;
             this.dangerLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dangerLevel.Location = new System.Drawing.Point(3, 3);
             this.dangerLevel.Name = "dangerLevel";
-            series1.Name = "dangerLevel";
+            series7.Name = "dangerLevel";
             this.dangerLevel.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.dangerLevel.Size = new System.Drawing.Size(824, 666);
+        series7};
+            this.dangerLevel.Size = new System.Drawing.Size(824, 607);
             this.dangerLevel.TabIndex = 0;
             // 
             // xtpClasSetting
             // 
             this.xtpClasSetting.Controls.Add(this.pnlAS);
             this.xtpClasSetting.Name = "xtpClasSetting";
-            this.xtpClasSetting.Size = new System.Drawing.Size(830, 672);
+            this.xtpClasSetting.Size = new System.Drawing.Size(830, 613);
             this.xtpClasSetting.Text = "AS";
             // 
             // pnlAS
@@ -1498,7 +1609,7 @@
             this.pnlAS.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlAS.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlAS.Name = "pnlAS";
-            this.pnlAS.Size = new System.Drawing.Size(830, 672);
+            this.pnlAS.Size = new System.Drawing.Size(830, 613);
             this.pnlAS.TabIndex = 1;
             // 
             // grpASFile
@@ -1542,6 +1653,7 @@
             this.btnFCFileClassifierFile.StyleController = this.styleMain;
             this.btnFCFileClassifierFile.TabIndex = 2;
             this.btnFCFileClassifierFile.Text = "...";
+            this.btnFCFileClassifierFile.Click += new System.EventHandler(this.btnFCFileClassifierFile_Click);
             // 
             // labelControl25
             // 
@@ -1563,6 +1675,7 @@
             this.btnFCLoad.StyleController = this.styleButon;
             this.btnFCLoad.TabIndex = 4;
             this.btnFCLoad.Text = "Load";
+            this.btnFCLoad.Click += new System.EventHandler(this.btnFCLoad_Click);
             // 
             // btnFCSave
             // 
@@ -1577,6 +1690,7 @@
             this.btnFCSave.StyleController = this.styleButon;
             this.btnFCSave.TabIndex = 3;
             this.btnFCSave.Text = "Save";
+            this.btnFCSave.Click += new System.EventHandler(this.btnFCSave_Click);
             // 
             // grpASProc
             // 
@@ -1694,6 +1808,7 @@
             this.btnFCStop.StyleController = this.styleButon;
             this.btnFCStop.TabIndex = 11;
             this.btnFCStop.Text = "Stop";
+            this.btnFCStop.Click += new System.EventHandler(this.btnFCStop_Click);
             // 
             // btnFCStartFileClassifier
             // 
@@ -1705,6 +1820,7 @@
             this.btnFCStartFileClassifier.StyleController = this.styleButon;
             this.btnFCStartFileClassifier.TabIndex = 10;
             this.btnFCStartFileClassifier.Text = "Start";
+            this.btnFCStartFileClassifier.Click += new System.EventHandler(this.btnFCStartFileClassifier_Click);
             // 
             // grpASPreProc
             // 
@@ -1774,6 +1890,7 @@
             this.btnFCBenignFolder.StyleController = this.styleMain;
             this.btnFCBenignFolder.TabIndex = 5;
             this.btnFCBenignFolder.Text = "...";
+            this.btnFCBenignFolder.Click += new System.EventHandler(this.btnFCBenignFolder_Click);
             // 
             // btnFCPreprocesser
             // 
@@ -1785,6 +1902,7 @@
             this.btnFCPreprocesser.StyleController = this.styleButon;
             this.btnFCPreprocesser.TabIndex = 10;
             this.btnFCPreprocesser.Text = "Preprocesser";
+            this.btnFCPreprocesser.Click += new System.EventHandler(this.btnFCPreprocesser_Click);
             // 
             // btnFCVirusFolder
             // 
@@ -1796,6 +1914,7 @@
             this.btnFCVirusFolder.StyleController = this.styleMain;
             this.btnFCVirusFolder.TabIndex = 2;
             this.btnFCVirusFolder.Text = "...";
+            this.btnFCVirusFolder.Click += new System.EventHandler(this.btnFCVirusFolder_Click);
             // 
             // labelControl22
             // 
@@ -1831,7 +1950,7 @@
             // 
             this.xtpClassReult.Controls.Add(this.pnlAR);
             this.xtpClassReult.Name = "xtpClassReult";
-            this.xtpClassReult.Size = new System.Drawing.Size(830, 672);
+            this.xtpClassReult.Size = new System.Drawing.Size(830, 613);
             this.xtpClassReult.Text = "AR";
             // 
             // pnlAR
@@ -1849,29 +1968,29 @@
             this.pnlAR.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlAR.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlAR.Name = "pnlAR";
-            this.pnlAR.Size = new System.Drawing.Size(830, 672);
+            this.pnlAR.Size = new System.Drawing.Size(830, 613);
             this.pnlAR.TabIndex = 1;
             // 
             // chartFC
             // 
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartFC.Diagram = xyDiagram2;
+            xyDiagram8.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram8.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartFC.Diagram = xyDiagram8;
             this.chartFC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartFC.Location = new System.Drawing.Point(3, 3);
             this.chartFC.Name = "chartFC";
-            series2.Name = "chartFC";
-            series2.View = pointSeriesView1;
+            series8.Name = "chartFC";
+            series8.View = pointSeriesView4;
             this.chartFC.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
-            this.chartFC.Size = new System.Drawing.Size(824, 666);
+        series8};
+            this.chartFC.Size = new System.Drawing.Size(824, 607);
             this.chartFC.TabIndex = 0;
             // 
             // xtpScan
             // 
             this.xtpScan.Controls.Add(this.pnlScan);
             this.xtpScan.Name = "xtpScan";
-            this.xtpScan.Size = new System.Drawing.Size(830, 672);
+            this.xtpScan.Size = new System.Drawing.Size(830, 613);
             this.xtpScan.Text = "Scan";
             // 
             // pnlScan
@@ -1890,7 +2009,7 @@
             this.pnlScan.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.pnlScan.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlScan.Name = "pnlScan";
-            this.pnlScan.Size = new System.Drawing.Size(830, 672);
+            this.pnlScan.Size = new System.Drawing.Size(830, 613);
             this.pnlScan.TabIndex = 1;
             // 
             // grpScanResult
@@ -1994,6 +2113,7 @@
             this.btnFCTestFolder.StyleController = this.styleMain;
             this.btnFCTestFolder.TabIndex = 2;
             this.btnFCTestFolder.Text = "...";
+            this.btnFCTestFolder.Click += new System.EventHandler(this.btnTestFolder_Click);
             // 
             // labelControl26
             // 
@@ -2015,6 +2135,7 @@
             this.btnVSStop.StyleController = this.styleButon;
             this.btnVSStop.TabIndex = 4;
             this.btnVSStop.Text = "Stop";
+            this.btnVSStop.Click += new System.EventHandler(this.btnVSStop_Click);
             // 
             // btnFCScanVirus
             // 
@@ -2029,12 +2150,13 @@
             this.btnFCScanVirus.StyleController = this.styleButon;
             this.btnFCScanVirus.TabIndex = 3;
             this.btnFCScanVirus.Text = "Start";
+            this.btnFCScanVirus.Click += new System.EventHandler(this.btnScanVirus_Click);
             // 
             // xtpScanRs
             // 
             this.xtpScanRs.Controls.Add(this.panelControl1);
             this.xtpScanRs.Name = "xtpScanRs";
-            this.xtpScanRs.Size = new System.Drawing.Size(830, 672);
+            this.xtpScanRs.Size = new System.Drawing.Size(830, 613);
             this.xtpScanRs.Text = "ScanRS";
             // 
             // panelControl1
@@ -2052,7 +2174,7 @@
             this.panelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(830, 672);
+            this.panelControl1.Size = new System.Drawing.Size(830, 613);
             this.panelControl1.TabIndex = 2;
             // 
             // dgvVirus
@@ -2061,7 +2183,7 @@
             this.dgvVirus.Location = new System.Drawing.Point(3, 3);
             this.dgvVirus.MainView = this.gridView1;
             this.dgvVirus.Name = "dgvVirus";
-            this.dgvVirus.Size = new System.Drawing.Size(824, 666);
+            this.dgvVirus.Size = new System.Drawing.Size(824, 607);
             this.dgvVirus.TabIndex = 0;
             this.dgvVirus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2071,6 +2193,12 @@
             this.gridView1.GridControl = this.dgvVirus;
             this.gridView1.Name = "gridView1";
             // 
+            // xtpAbout
+            // 
+            this.xtpAbout.Name = "xtpAbout";
+            this.xtpAbout.Size = new System.Drawing.Size(830, 613);
+            this.xtpAbout.Text = "About";
+            // 
             // imcNavIcon
             // 
             this.imcNavIcon.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imcNavIcon.ImageStream")));
@@ -2079,13 +2207,11 @@
             this.imcNavIcon.Images.SetKeyName(2, "setting.png");
             this.imcNavIcon.Images.SetKeyName(3, "icon-results.png");
             // 
-            // xtpAbout
+            // _timer
             // 
-            this.xtpAbout.Name = "xtpAbout";
-            this.xtpAbout.Size = new System.Drawing.Size(830, 672);
-            this.xtpAbout.Text = "About";
+            this._timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // frmMain
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2093,12 +2219,18 @@
             this.ClientSize = new System.Drawing.Size(1024, 700);
             this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmMain";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Virus Detector";
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelFooter)).EndInit();
+            this.panelFooter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStatusBar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimeBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtcContent)).EndInit();
             this.xtcContent.ResumeLayout(false);
             this.xtpDeSetting.ResumeLayout(false);
@@ -2108,7 +2240,6 @@
             this.grpOutput.ResumeLayout(false);
             this.grpOutput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDBenignFile.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbDDetectorFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleButon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParam)).EndInit();
@@ -2160,8 +2291,8 @@
             this.xtpClusReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).EndInit();
             this.pnlUR.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).EndInit();
             this.xtpClasSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).EndInit();
@@ -2186,9 +2317,9 @@
             this.xtpClassReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).EndInit();
             this.pnlAR.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartFC)).EndInit();
             this.xtpScan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).EndInit();
@@ -2369,6 +2500,11 @@
         private DevExpress.XtraGrid.GridControl dtNegativeSelection;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraTab.XtraTabPage xtpAbout;
+        private System.Windows.Forms.Timer _timer;
+        private DevExpress.XtraEditors.PanelControl panelFooter;
+        private DevExpress.XtraEditors.ProgressBarControl progressBar;
+        private DevExpress.XtraEditors.TextEdit txtStatusBar;
+        private DevExpress.XtraEditors.TextEdit txtTimeBox;
     }
 }
 

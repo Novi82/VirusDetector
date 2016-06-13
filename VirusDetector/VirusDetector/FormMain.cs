@@ -14,6 +14,7 @@ using VirusDetector.FileClassifier;
 using VirusDetector.VirusScanner;
 using VirusDetector.StringCompare;
 using VirusDetector.Utils;
+using VirusDetector.FormCustomize;
 
 namespace VirusDetector
 {
@@ -34,6 +35,8 @@ namespace VirusDetector
 
     public partial class FormMain : Form
     {
+        #region variable
+
         // Declare variable
         private bool _isWorking;
         private DateTime startTime;
@@ -72,6 +75,9 @@ namespace VirusDetector
 
         // Thread
         EProcessType _currentProcessType;
+
+        #endregion
+
         public FormMain()
         {
             InitializeComponent();
@@ -80,53 +86,11 @@ namespace VirusDetector
             _initialize();
         }
 
-        private void initDemo()
-        {
-            txtbDVirusFolder.Text = CustomSettings.DETECTOR_VIRUS_FOLDER;
-            txtbDBenignFolder.Text = CustomSettings.DETECTOR_BENIGN_FOLDER;
-
-            txtbVSTestFolder.Text = CustomSettings.TEST_VIRUS_FOLDER;
-
-            txtbFCVirusFolder.Text = CustomSettings.FILE_CLASSIFIER_VIRUS_FOLDER;
-            txtbFCBenignFolder.Text = CustomSettings.FILE_CLASSIFIER_BENIGN_FOLDER;
-
-            txtbDDetectorFile.Text = CustomSettings.DETECTOR_FILE;
-            txtbDBenignFile.Text = CustomSettings.BENIGN_FILE;
-            txtbCMixDetectorFile.Text = CustomSettings.MIX_DETECTOR_FILE;
-            txtbCClusteringFile.Text = CustomSettings.CLUSTERING_FILE;
-            txtbFCFileClassifierFile.Text = CustomSettings.FILE_CLASSIFIER_FILE;
-
-        }
-
-        private void _initialize()
-        {
-            _isWorking = false;
-
-            GroupData = new List<byte[][]>();
-            groups = new List<Cluster>();
-
-            NegativeSelectionData = new DataTable();
-            groupshowingDataTable = new DataTable();
-
-            //represetation
-            dataSet = new DataSet();
-
-            _doneScan = false;
-
-            _lFileScanInfo = new List<FileScanInfo>();
-
-            _currentProcessType = EProcessType.None;
-        }
-
-        // Add patch for gui to show the program is working
-        private void _lkPatch()
-        {
-            Utils.Utils.GUI_SUPPORT = new GuiSupport(this);
-        }
+        #region Menu
 
         private void navAbout_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            MessageBox.Show("novi");
+            xtcContent.SelectedTabPage = xtpAbout;
         }
 
         private void navExit_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -173,6 +137,413 @@ namespace VirusDetector
         {
             xtcContent.SelectedTabPage = xtpScanRs;
         }
+        #endregion
 
+        #region Detector Event
+        private void btnDVirusFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbDVirusFolder.Text = folderSelectDialog.FileName;
+            }
+        }
+
+        private void btnDBenignFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbDBenignFolder.Text = folderSelectDialog.FileName;
+            }
+        }
+
+        private void btnDDetectorFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbDDetectorFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void btnDAdditionFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbDAdditionFolder.Text = folderSelectDialog.FileName;
+            }
+        }
+        private void rbtnDBuildAddDetector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EDetectorType detectorType = EDetectorType.BuildDetector;
+            Boolean isBuild;
+            isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
+            if (isBuild)
+            {
+                detectorType = EDetectorType.BuildDetector;
+            }
+            else
+            {
+                detectorType = EDetectorType.AdditionNegative;
+            }
+
+            _updateDetectorType(detectorType);
+        }
+        private void btnDStart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _startDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnDLoadDetector_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _loadDetection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnDBenignFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbDBenignFile.Text = openFileDialog1.FileName;
+            }
+        }
+        private void btnDStop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                datageneration.stopBuildDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDSaveDetector_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _saveDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Clustering Event
+        private void btnCSaveMixDetector_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                _saveMixDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnCLoadMixDetector_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _loadMixDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnCStartClustering_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _startClustering();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnCStop_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                _clusteringManager.stopTrainDistanceNetwork();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+        private void cbxCUseRate_CheckedChanged(object sender, EventArgs e)
+        {
+            txtbCBenignVirusRate.ReadOnly = !txtbCBenignVirusRate.ReadOnly;
+
+            txtbCVirusSize.ReadOnly = !txtbCVirusSize.ReadOnly;
+            txtbCBenignSize.ReadOnly = !txtbCBenignSize.ReadOnly;
+        }
+        private void btnCMixDetector_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _mixDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnCClusteringFile_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.RestoreDirectory = true;
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbCClusteringFile.Text = openFileDialog1.FileName;
+            }
+
+        }
+        private void btnCSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _saveClustering();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnCLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _loadClustering();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnCMixDetectorFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbCMixDetectorFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        #endregion
+
+        #region Classifier Event
+        private void btnFCVirusFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbFCVirusFolder.Text = folderSelectDialog.FileName;
+            }
+        }
+        private void btnFCBenignFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbFCBenignFolder.Text = folderSelectDialog.FileName;
+            }
+
+        }
+        private void btnFCPreprocesser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _preprocesserFileClassifier();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnFCStop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _fileClassifierManager.stopTrainActiveNetwork();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnFCStartFileClassifier_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _startFileClassifier();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnFCSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _saveFileClassifier();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+        private void btnFCLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _loadFileClassifier();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnFCFileClassifierFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.RestoreDirectory = true;
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbFCFileClassifierFile.Text = openFileDialog1.FileName;
+            }
+        }
+        #endregion
+
+        #region Scaner Event
+
+        private void btnScanVirus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _startVirusScanner();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnTestFolder_Click(object sender, EventArgs e)
+        {
+            FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
+            folderSelectDialog.Title = "Select Folder";
+            bool result = folderSelectDialog.ShowDialog();
+            if (result)
+            {
+                txtbVSTestFolder.Text = folderSelectDialog.FileName;
+            }
+        }
+        private void btnVSStop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _worker.Abort();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        #endregion
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                // Return if thead working
+                if (_worker == null || _worker.IsAlive)
+                    return;
+
+                _turnToWorkingStatus(false);
+
+                switch (_currentProcessType)
+                {
+                    case EProcessType.Detector:
+                        _detectorThread_Stopped();
+                        break;
+                    case EProcessType.Clustering:
+                        break;
+                    case EProcessType.FileClassifier:
+                        break;
+
+                    case EProcessType.VirusScaner:
+                        _virusScannerThread_Stopped();
+                        break;
+                    default:
+                        break;
+                }
+
+                _currentProcessType = EProcessType.None;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                _turnToWorkingStatus(false);
+                _currentProcessType = EProcessType.None;
+            }
+
+        }
     }
 }
