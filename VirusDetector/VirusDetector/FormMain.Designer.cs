@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DevExpress.XtraCharts.XYDiagram xyDiagram7 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.XYDiagram xyDiagram8 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.PointSeriesView pointSeriesView4 = new DevExpress.XtraCharts.PointSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesView pointSeriesView1 = new DevExpress.XtraCharts.PointSeriesView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
@@ -258,8 +258,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).BeginInit();
             this.pnlUR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             this.xtpClasSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).BeginInit();
             this.pnlAS.SuspendLayout();
@@ -281,9 +281,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).BeginInit();
             this.pnlAR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartFC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).BeginInit();
             this.xtpScan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).BeginInit();
             this.pnlScan.SuspendLayout();
@@ -777,24 +777,29 @@
             // 
             // cbxDRContinuous
             // 
+            this.cbxDRContinuous.EditValue = true;
             this.cbxDRContinuous.Location = new System.Drawing.Point(243, 128);
             this.cbxDRContinuous.Name = "cbxDRContinuous";
             this.cbxDRContinuous.Properties.OffText = "Off";
             this.cbxDRContinuous.Properties.OnText = "On";
             this.cbxDRContinuous.Size = new System.Drawing.Size(95, 24);
             this.cbxDRContinuous.TabIndex = 9;
+            this.cbxDRContinuous.Toggled += new System.EventHandler(this.cbxDRContinuous_Toggled);
             // 
             // cbxDHamming
             // 
+            this.cbxDHamming.EditValue = true;
             this.cbxDHamming.Location = new System.Drawing.Point(243, 100);
             this.cbxDHamming.Name = "cbxDHamming";
             this.cbxDHamming.Properties.OffText = "Off";
             this.cbxDHamming.Properties.OnText = "On";
             this.cbxDHamming.Size = new System.Drawing.Size(95, 24);
             this.cbxDHamming.TabIndex = 6;
+            this.cbxDHamming.Toggled += new System.EventHandler(this.cbxDHamming_Toggled);
             // 
             // txtbDContinuous
             // 
+            this.txtbDContinuous.EditValue = 12;
             this.txtbDContinuous.Location = new System.Drawing.Point(117, 129);
             this.txtbDContinuous.Name = "txtbDContinuous";
             this.txtbDContinuous.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -804,6 +809,7 @@
             // 
             // txtbDHamming
             // 
+            this.txtbDHamming.EditValue = 10;
             this.txtbDHamming.Location = new System.Drawing.Point(117, 101);
             this.txtbDHamming.Name = "txtbDHamming";
             this.txtbDHamming.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -818,6 +824,7 @@
             this.txtDStepSize.Name = "txtDStepSize";
             this.txtDStepSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDStepSize.Properties.Appearance.Options.UseFont = true;
+            this.txtDStepSize.Properties.ReadOnly = true;
             this.txtDStepSize.Size = new System.Drawing.Size(114, 22);
             this.txtDStepSize.StyleController = this.styleMain;
             this.txtDStepSize.TabIndex = 3;
@@ -828,6 +835,7 @@
             this.txtDLength.Name = "txtDLength";
             this.txtDLength.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDLength.Properties.Appearance.Options.UseFont = true;
+            this.txtDLength.Properties.ReadOnly = true;
             this.txtDLength.Size = new System.Drawing.Size(114, 22);
             this.txtDLength.StyleController = this.styleMain;
             this.txtDLength.TabIndex = 1;
@@ -904,6 +912,7 @@
             // 
             // txtbDAdditionFolder
             // 
+            this.txtbDAdditionFolder.Enabled = false;
             this.txtbDAdditionFolder.Location = new System.Drawing.Point(6, 200);
             this.txtbDAdditionFolder.Name = "txtbDAdditionFolder";
             this.txtbDAdditionFolder.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -953,6 +962,7 @@
             // 
             this.btnDAdditionFolder.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDAdditionFolder.Appearance.Options.UseFont = true;
+            this.btnDAdditionFolder.Enabled = false;
             this.btnDAdditionFolder.Location = new System.Drawing.Point(340, 200);
             this.btnDAdditionFolder.Name = "btnDAdditionFolder";
             this.btnDAdditionFolder.Size = new System.Drawing.Size(46, 23);
@@ -1220,6 +1230,7 @@
             // 
             // txtbCErrorThresold
             // 
+            this.txtbCErrorThresold.EditValue = 0.2D;
             this.txtbCErrorThresold.Location = new System.Drawing.Point(140, 311);
             this.txtbCErrorThresold.Name = "txtbCErrorThresold";
             this.txtbCErrorThresold.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1229,6 +1240,7 @@
             // 
             // txtbCNumIterator
             // 
+            this.txtbCNumIterator.EditValue = 1000;
             this.txtbCNumIterator.Location = new System.Drawing.Point(140, 266);
             this.txtbCNumIterator.Name = "txtbCNumIterator";
             this.txtbCNumIterator.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1238,6 +1250,7 @@
             // 
             // txtbCLearningRadius
             // 
+            this.txtbCLearningRadius.EditValue = 4;
             this.txtbCLearningRadius.Location = new System.Drawing.Point(140, 221);
             this.txtbCLearningRadius.Name = "txtbCLearningRadius";
             this.txtbCLearningRadius.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1247,7 +1260,7 @@
             // 
             // txtbCLearningRate
             // 
-            this.txtbCLearningRate.EditValue = "";
+            this.txtbCLearningRate.EditValue = 0.3D;
             this.txtbCLearningRate.Location = new System.Drawing.Point(140, 176);
             this.txtbCLearningRate.Name = "txtbCLearningRate";
             this.txtbCLearningRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1257,6 +1270,7 @@
             // 
             // txtbCNumNeuronY
             // 
+            this.txtbCNumNeuronY.EditValue = 10;
             this.txtbCNumNeuronY.Location = new System.Drawing.Point(140, 131);
             this.txtbCNumNeuronY.Name = "txtbCNumNeuronY";
             this.txtbCNumNeuronY.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1267,6 +1281,7 @@
             // 
             // txtbCNumInputNeuron
             // 
+            this.txtbCNumInputNeuron.EditValue = 4;
             this.txtbCNumInputNeuron.Location = new System.Drawing.Point(140, 41);
             this.txtbCNumInputNeuron.Name = "txtbCNumInputNeuron";
             this.txtbCNumInputNeuron.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1276,6 +1291,7 @@
             // 
             // txtbCNumNeuronX
             // 
+            this.txtbCNumNeuronX.EditValue = 10;
             this.txtbCNumNeuronX.Location = new System.Drawing.Point(140, 86);
             this.txtbCNumNeuronX.Name = "txtbCNumNeuronX";
             this.txtbCNumNeuronX.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1451,36 +1467,42 @@
             // 
             // cbxCUseRate
             // 
+            this.cbxCUseRate.EditValue = true;
             this.cbxCUseRate.Location = new System.Drawing.Point(8, 39);
             this.cbxCUseRate.Name = "cbxCUseRate";
             this.cbxCUseRate.Properties.OffText = "Off";
             this.cbxCUseRate.Properties.OnText = "On";
             this.cbxCUseRate.Size = new System.Drawing.Size(95, 24);
             this.cbxCUseRate.TabIndex = 0;
+            this.cbxCUseRate.Toggled += new System.EventHandler(this.cbxCUseRate_Toggled);
             // 
             // txtbCBenignSize
             // 
+            this.txtbCBenignSize.EditValue = 0;
             this.txtbCBenignSize.Location = new System.Drawing.Point(130, 131);
             this.txtbCBenignSize.Name = "txtbCBenignSize";
             this.txtbCBenignSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCBenignSize.Properties.Appearance.Options.UseFont = true;
+            this.txtbCBenignSize.Properties.ReadOnly = true;
             this.txtbCBenignSize.Size = new System.Drawing.Size(239, 22);
             this.txtbCBenignSize.StyleController = this.styleMain;
             this.txtbCBenignSize.TabIndex = 6;
             // 
             // txtbCVirusSize
             // 
+            this.txtbCVirusSize.EditValue = "0";
             this.txtbCVirusSize.Location = new System.Drawing.Point(130, 86);
             this.txtbCVirusSize.Name = "txtbCVirusSize";
             this.txtbCVirusSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbCVirusSize.Properties.Appearance.Options.UseFont = true;
+            this.txtbCVirusSize.Properties.ReadOnly = true;
             this.txtbCVirusSize.Size = new System.Drawing.Size(239, 22);
             this.txtbCVirusSize.StyleController = this.styleMain;
             this.txtbCVirusSize.TabIndex = 4;
             // 
             // txtbCBenignVirusRate
             // 
-            this.txtbCBenignVirusRate.EditValue = "2";
+            this.txtbCBenignVirusRate.EditValue = 2;
             this.txtbCBenignVirusRate.Location = new System.Drawing.Point(231, 39);
             this.txtbCBenignVirusRate.Name = "txtbCBenignVirusRate";
             this.txtbCBenignVirusRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1573,15 +1595,15 @@
             // 
             // dangerLevel
             // 
-            xyDiagram7.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram7.AxisY.VisibleInPanesSerializable = "-1";
-            this.dangerLevel.Diagram = xyDiagram7;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.dangerLevel.Diagram = xyDiagram1;
             this.dangerLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dangerLevel.Location = new System.Drawing.Point(3, 3);
             this.dangerLevel.Name = "dangerLevel";
-            series7.Name = "dangerLevel";
+            series1.Name = "dangerLevel";
             this.dangerLevel.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series7};
+        series1};
             this.dangerLevel.Size = new System.Drawing.Size(824, 607);
             this.dangerLevel.TabIndex = 0;
             // 
@@ -1723,7 +1745,7 @@
             // 
             // txtbCFErrorThresold
             // 
-            this.txtbCFErrorThresold.EditValue = "";
+            this.txtbCFErrorThresold.EditValue = "0.2";
             this.txtbCFErrorThresold.Location = new System.Drawing.Point(139, 198);
             this.txtbCFErrorThresold.Name = "txtbCFErrorThresold";
             this.txtbCFErrorThresold.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1733,6 +1755,7 @@
             // 
             // txtbCFNumIterator
             // 
+            this.txtbCFNumIterator.EditValue = "1000";
             this.txtbCFNumIterator.Location = new System.Drawing.Point(139, 144);
             this.txtbCFNumIterator.Name = "txtbCFNumIterator";
             this.txtbCFNumIterator.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1743,6 +1766,7 @@
             // 
             // txtbFCNumHiddenNeuron
             // 
+            this.txtbFCNumHiddenNeuron.EditValue = "5";
             this.txtbFCNumHiddenNeuron.Location = new System.Drawing.Point(139, 36);
             this.txtbFCNumHiddenNeuron.Name = "txtbFCNumHiddenNeuron";
             this.txtbFCNumHiddenNeuron.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1752,6 +1776,7 @@
             // 
             // txtbCFNumOutputNeuron
             // 
+            this.txtbCFNumOutputNeuron.EditValue = "1";
             this.txtbCFNumOutputNeuron.Location = new System.Drawing.Point(139, 90);
             this.txtbCFNumOutputNeuron.Name = "txtbCFNumOutputNeuron";
             this.txtbCFNumOutputNeuron.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1852,6 +1877,7 @@
             // 
             // txtbCFFormatRange
             // 
+            this.txtbCFFormatRange.EditValue = "0,3,5,7,10";
             this.txtbCFFormatRange.Location = new System.Drawing.Point(6, 200);
             this.txtbCFFormatRange.Name = "txtbCFFormatRange";
             this.txtbCFFormatRange.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1973,16 +1999,16 @@
             // 
             // chartFC
             // 
-            xyDiagram8.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram8.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartFC.Diagram = xyDiagram8;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartFC.Diagram = xyDiagram2;
             this.chartFC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartFC.Location = new System.Drawing.Point(3, 3);
             this.chartFC.Name = "chartFC";
-            series8.Name = "chartFC";
-            series8.View = pointSeriesView4;
+            series2.Name = "chartFC";
+            series2.View = pointSeriesView1;
             this.chartFC.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series8};
+        series2};
             this.chartFC.Size = new System.Drawing.Size(824, 607);
             this.chartFC.TabIndex = 0;
             // 
@@ -2041,6 +2067,7 @@
             this.txtbFCNumVirus.Name = "txtbFCNumVirus";
             this.txtbFCNumVirus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbFCNumVirus.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumVirus.Properties.ReadOnly = true;
             this.txtbFCNumVirus.Size = new System.Drawing.Size(247, 22);
             this.txtbFCNumVirus.TabIndex = 13;
             // 
@@ -2050,6 +2077,7 @@
             this.txtbFCNumBenign.Name = "txtbFCNumBenign";
             this.txtbFCNumBenign.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbFCNumBenign.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumBenign.Properties.ReadOnly = true;
             this.txtbFCNumBenign.Size = new System.Drawing.Size(247, 22);
             this.txtbFCNumBenign.StyleController = this.styleMain;
             this.txtbFCNumBenign.TabIndex = 15;
@@ -2291,8 +2319,8 @@
             this.xtpClusReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlUR)).EndInit();
             this.pnlUR.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dangerLevel)).EndInit();
             this.xtpClasSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAS)).EndInit();
@@ -2317,9 +2345,9 @@
             this.xtpClassReult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlAR)).EndInit();
             this.pnlAR.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartFC)).EndInit();
             this.xtpScan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlScan)).EndInit();

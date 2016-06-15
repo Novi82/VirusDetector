@@ -14,6 +14,7 @@ using VirusDetector.FileClassifier;
 using VirusDetector.VirusScanner;
 using VirusDetector.StringCompare;
 using VirusDetector.Utils;
+using DevExpress.XtraCharts;
 
 namespace VirusDetector
 {
@@ -141,27 +142,27 @@ namespace VirusDetector
         }
         private void _loadDangerLevel()
         {
-            //dangerLevel.Series.Clear();
-            //dangerLevel.Series.Add("Benign");
-            //dangerLevel.Series["Benign"].ChartType = SeriesChartType.Point;
-            //dangerLevel.Series.Add("Virus");
-            //dangerLevel.Series["Virus"].ChartType = SeriesChartType.Point;
+            dangerLevel.Series.Clear();
+            dangerLevel.Series.Add("Benign",ViewType.Point);
+            dangerLevel.Series.Add("Virus",ViewType.Point);
+            //todo
             //dangerLevel.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
             //dangerLevel.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+
             ////dangerLevel.ChartAreas[0].Position.Y = 100;
-            //////dangerLevel.ChartAreas[0].Position.Height = 60;
+            ////dangerLevel.ChartAreas[0].Position.Height = 60;
             ////dangerLevel.ChartAreas[0].AxisX.Maximum = 500;
             //dangerLevel.ChartAreas[0].AxisX.Minimum = 0;
             ////dangerLevel.ChartAreas[0].AxisY.Maximum = 500;
             //dangerLevel.ChartAreas[0].AxisY.Minimum = 0;
-            //double[][] cluster = _clusteringManager.DangerLevel();
-            //for (int i = 0; i < cluster.Length; i++)
-            //{
-            //    if (cluster[i][1] == Utils.Utils.BENIGN_MARK)
-            //        dangerLevel.Series["Benign"].Points.AddXY(i, cluster[i][0]);
-            //    else if (cluster[i][1] == Utils.Utils.VIRUS_MARK)
-            //        dangerLevel.Series["Virus"].Points.AddXY(i, cluster[i][0]);
-            //}
+            double[][] cluster = _clusteringManager.DangerLevel();
+            for (int i = 0; i < cluster.Length; i++)
+            {
+                if (cluster[i][1] == Utils.Utils.BENIGN_MARK)
+                    dangerLevel.Series["Benign"].Points.Add(new SeriesPoint( i, cluster[i][0]));
+                else if (cluster[i][1] == Utils.Utils.VIRUS_MARK)
+                    dangerLevel.Series["Virus"].Points.Add(new SeriesPoint(i, cluster[i][0]));
+            }
         }
         #endregion
     }

@@ -31,13 +31,11 @@ namespace VirusDetector
                 startTime = DateTime.Now;
                 txtTimeBox.Text = "";
                 txtStatusBar.Text = "";
-                // todo  progressBar.value = 0
                 progressBar.EditValue = 0;
 
                 // Set busy cursor
                 this.Cursor = Cursors.WaitCursor;
-
-
+                
                 // Start timer
                 _timer.Start();
 
@@ -50,7 +48,6 @@ namespace VirusDetector
             else
             {
                 progressBar.EditValue = progressBar.Properties.Maximum;
-
 
                 this.Cursor = Cursors.Default;
 
@@ -423,14 +420,20 @@ namespace VirusDetector
             switch (detectorType)
             {
                 case EDetectorType.BuildDetector:
-                    txtbDAdditionFolder.ReadOnly = true;
-                    txtbDBenignFolder.ReadOnly = false;
-                    txtbDVirusFolder.ReadOnly = false;
+                    txtbDAdditionFolder.Enabled = false;
+                    txtbDBenignFolder.Enabled = true;
+                    txtbDVirusFolder.Enabled = true;
+                    btnDVirusFolder.Enabled = true;
+                    btnDBenignFolder.Enabled = true;
+                    btnDAdditionFolder.Enabled = false;
                     break;
                 case EDetectorType.AdditionNegative:
-                    txtbDAdditionFolder.ReadOnly = false;
-                    txtbDBenignFolder.ReadOnly = true;
-                    txtbDVirusFolder.ReadOnly = true;
+                    txtbDAdditionFolder.Enabled = true;
+                    txtbDBenignFolder.Enabled = false;
+                    txtbDVirusFolder.Enabled = false;
+                    btnDVirusFolder.Enabled = false;
+                    btnDBenignFolder.Enabled = false;
+                    btnDAdditionFolder.Enabled = true;
                     break;
                 default:
                     break;
@@ -438,5 +441,5 @@ namespace VirusDetector
         }
         #endregion
 
-    }          
+    }
 }

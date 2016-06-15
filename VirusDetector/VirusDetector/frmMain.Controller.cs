@@ -40,6 +40,11 @@ namespace VirusDetector
 
         private void _initialize()
         {
+           //todo debug xtcContent.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+
+            txtDLength.EditValue = Utils.Utils.GLOBAL_LENGTH;
+            txtDStepSize.EditValue = Utils.Utils.GLOBAL_STEP_SIZE;
+
             _isWorking = false;
 
             GroupData = new List<byte[][]>();
@@ -70,8 +75,6 @@ namespace VirusDetector
 
         private void _patchForProgressBar()
         {
-            //progressBar.Minimum = 0;
-            //progressBar.Maximum = Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX;
             progressBar.Properties.Minimum= 0;
             progressBar.Properties.Maximum = Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX;
         }
@@ -96,9 +99,9 @@ namespace VirusDetector
                 Invoke(method);
                 return;
             }
-            // todo
-            //progressBar.Maximum = progressBar.Value + Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX;
-            //progressBar.Step = 1;
+
+            progressBar.Properties.Maximum = (int)progressBar.EditValue + Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX;
+            progressBar.Properties.Step = 1;
         }
 
         internal void updateVirusFragmentCallBack()

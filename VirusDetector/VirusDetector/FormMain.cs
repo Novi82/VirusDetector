@@ -150,7 +150,6 @@ namespace VirusDetector
                 txtbDVirusFolder.Text = folderSelectDialog.FileName;
             }
         }
-
         private void btnDBenignFolder_Click(object sender, EventArgs e)
         {
             FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
@@ -161,7 +160,6 @@ namespace VirusDetector
                 txtbDBenignFolder.Text = folderSelectDialog.FileName;
             }
         }
-
         private void btnDDetectorFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -171,7 +169,6 @@ namespace VirusDetector
                 txtbDDetectorFile.Text = openFileDialog1.FileName;
             }
         }
-
         private void btnDAdditionFolder_Click(object sender, EventArgs e)
         {
             FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
@@ -210,7 +207,6 @@ namespace VirusDetector
             }
 
         }
-
         private void btnDLoadDetector_Click(object sender, EventArgs e)
         {
             try
@@ -223,7 +219,6 @@ namespace VirusDetector
             }
 
         }
-
         private void btnDBenignFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -244,7 +239,6 @@ namespace VirusDetector
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnDSaveDetector_Click(object sender, EventArgs e)
         {
             try
@@ -256,7 +250,21 @@ namespace VirusDetector
                 MessageBox.Show(ex.Message);
             }
         }
+        private void cbxDHamming_Toggled(object sender, EventArgs e)
+        {
+            txtbDHamming.Enabled = cbxDHamming.IsOn;
+        }
+        private void cbxDRContinuous_Toggled(object sender, EventArgs e)
+        {
+            txtbDContinuous.Enabled = cbxDRContinuous.IsOn;
+        }
+        private void cbxCUseRate_Toggled(object sender, EventArgs e)
+        {
+            txtbCBenignVirusRate.ReadOnly = cbxCUseRate.IsOn;
 
+            txtbCVirusSize.ReadOnly = !cbxCUseRate.IsOn;
+            txtbCBenignSize.ReadOnly = !cbxCUseRate.IsOn;
+        }
         #endregion
 
         #region Clustering Event
@@ -545,5 +553,7 @@ namespace VirusDetector
             }
 
         }
+
+
     }
 }

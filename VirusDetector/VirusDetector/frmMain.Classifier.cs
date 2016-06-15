@@ -14,7 +14,7 @@ using VirusDetector.FileClassifier;
 using VirusDetector.VirusScanner;
 using VirusDetector.StringCompare;
 using VirusDetector.Utils;
-
+using DevExpress.XtraCharts;
 namespace VirusDetector
 {
     public partial class FormMain : Form
@@ -51,12 +51,6 @@ namespace VirusDetector
                 int numOfOutputNeuron = int.Parse(txtbCFNumOutputNeuron.Text);
                 int numOfIterator = int.Parse(txtbCFNumIterator.Text);
                 double errorThresold = double.Parse(txtbCFErrorThresold.Text);
-
-
-                //_fileClassifierManager.trainActiveNetwork(numOfHiddenNeuron,
-                //    numOfOutputNeuron,
-                //    numOfIterator,
-                //    errorThresold);
 
                 _fileClassifierManager.trainActiveNetwork(numOfHiddenNeuron,
                     numOfOutputNeuron,
@@ -100,21 +94,19 @@ namespace VirusDetector
         }
         public void LoadStyleChart()
         {
-            //chartFC.Series.Clear();
-
-            //chartFC.Series.Add("Benign");
-            //chartFC.Series["Benign"].ChartType = SeriesChartType.Point;
-            //chartFC.Series.Add("Virus");
-            //chartFC.Series["Virus"].ChartType = SeriesChartType.Point;
+            chartFC.Series.Clear();
+            chartFC.Series.Add("Benign", ViewType.Point);
+            chartFC.Series.Add("Virus",ViewType.Point);
+            //Todo
             //chartFC.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
             //chartFC.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
-            //for (int i = 0; i < _fileClassifierManager._graphMap.Length; i++)
-            //{
-            //    if (_fileClassifierManager._graphMap[i][1] == Utils.Utils.BENIGN_MARK)
-            //        chartFC.Series["Benign"].Points.AddXY(i, _fileClassifierManager._graphMap[i][0]);
-            //    else if (_fileClassifierManager._graphMap[i][1] == Utils.Utils.VIRUS_MARK)
-            //        chartFC.Series["Virus"].Points.AddXY(i, _fileClassifierManager._graphMap[i][0]);
-            //}
+            for (int i = 0; i < _fileClassifierManager._graphMap.Length; i++)
+            {
+                if (_fileClassifierManager._graphMap[i][1] == Utils.Utils.BENIGN_MARK)
+                    chartFC.Series["Benign"].Points.Add(new SeriesPoint(i, _fileClassifierManager._graphMap[i][0]));
+                else if (_fileClassifierManager._graphMap[i][1] == Utils.Utils.VIRUS_MARK)
+                    chartFC.Series["Virus"].Points.Add(new SeriesPoint(i, _fileClassifierManager._graphMap[i][0]));
+            }
         }
         #endregion
     }
