@@ -12,7 +12,7 @@ namespace VirusDetector.Clustering
 {
     class ClusteringManager
     {
-
+        #region Variable
         int _numInputNeuron;
         private int _networkWidth;
         private int _networkHeight;
@@ -26,7 +26,6 @@ namespace VirusDetector.Clustering
         float _maxInputRange;
 
         bool _done;
-
         public int NumInputNeuron
         {
             get { return _numInputNeuron; }
@@ -43,13 +42,17 @@ namespace VirusDetector.Clustering
                 return _networkWidth * _networkHeight;
             }
         }
-
         internal LKDistanceNetwork DistanceNetwork
         {
             get { return _network; }
             set { _network = value; }
         }
 
+        #endregion
+        #region Method
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public ClusteringManager()
         {
             _input = new double[0][];
@@ -63,6 +66,18 @@ namespace VirusDetector.Clustering
             _initialize();
         }
 
+        /// <summary>
+        ///  constructor with param
+        /// </summary>
+        /// <param name="inputCount_"></param>
+        /// <param name="networkWidth_"></param>
+        /// <param name="networkHeight_"></param>
+        /// <param name="learningRate_"></param>
+        /// <param name="learningRadius_"></param>
+        /// <param name="numOfIterator_"></param>
+        /// <param name="errorThresold_"></param>
+        /// <param name="input_"></param>
+        /// <param name="maxInputRange_"></param>
         public ClusteringManager(int inputCount_, int networkWidth_, int networkHeight_, double learningRate_, double learningRadius_, int numOfIterator_, double errorThresold_, double[][] input_, float maxInputRange_)
         {
             _numInputNeuron = inputCount_;
@@ -78,12 +93,18 @@ namespace VirusDetector.Clustering
 
             _initialize();
         }
-
+       
+        /// <summary>
+        /// init variable
+        /// </summary>
         private void _initialize()
         {
             _done = false;
         }
 
+        /// <summary>
+        /// training detector
+        /// </summary>
         public void trainDistanceNetwork()
         {
             // Init progressbar here
@@ -104,6 +125,7 @@ namespace VirusDetector.Clustering
 
 
             int count = 0;// iterations
+            //todo ???
             while (!_done)
             {
                 trainer.LearningRate = driftingLearningRate * (_numOfIterator - count) / _numOfIterator + fixedLearningRate;
@@ -111,7 +133,7 @@ namespace VirusDetector.Clustering
 
                 // run training epoch
                 double error = trainer.RunEpoch(_input);
-                Console.WriteLine("Error: " + error + "; [" + count + "/ " + _numOfIterator + "]");
+                //Console.WriteLine("Error: " + error + "; [" + count + "/ " + _numOfIterator + "]");
 
                 // increase current iteration
                 count++;
@@ -127,9 +149,10 @@ namespace VirusDetector.Clustering
 
         }
 
-
-
-        //hunghn
+        /// <summary>
+        /// init data to chart
+        /// </summary>
+        /// <returns></returns>
         public double[][] DangerLevel()
         {
             int inputLen = _input.Length;
@@ -144,6 +167,7 @@ namespace VirusDetector.Clustering
                 LKDistanceNeuron noronWin = _network.getWinnerNeuron();
 
                 dangerLevel[i] = new double[2];
+                // so luong detector virus
                 dangerLevel[i][0] = (noronWin.BenignDetectedCount > 0 ? 0 : noronWin.VirusDetectedCount);
                 dangerLevel[i][1] = inputI[inputILen - 1];
 
@@ -161,8 +185,15 @@ namespace VirusDetector.Clustering
             _network = (LKDistanceNetwork)Utils.Utils.loadNetwork(fileName_);
 
             _numInputNeuron = _network.InputsCount;
+        } 
+        internal void stopTrainDistanceNetwork()
+        {
+            _done = true;
         }
 
+        #endregion
+
+        //todo del region
         #region Test Method
         public void Test_Data(double[][] testDB)
         {
@@ -194,13 +225,6 @@ namespace VirusDetector.Clustering
             return winner;
         }
         #endregion
-
-
-
-
-        internal void stopTrainDistanceNetwork()
-        {
-            _done = true;
-        }
+      
     }
 }

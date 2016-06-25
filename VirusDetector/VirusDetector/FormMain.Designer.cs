@@ -37,9 +37,6 @@
             DevExpress.XtraCharts.PointSeriesView pointSeriesView1 = new DevExpress.XtraCharts.PointSeriesView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navScan = new DevExpress.XtraNavBar.NavBarItem();
-            this.navScanResult = new DevExpress.XtraNavBar.NavBarItem();
             this.navHome = new DevExpress.XtraNavBar.NavBarGroup();
             this.navAbout = new DevExpress.XtraNavBar.NavBarItem();
             this.navExit = new DevExpress.XtraNavBar.NavBarItem();
@@ -52,6 +49,9 @@
             this.navClassifier = new DevExpress.XtraNavBar.NavBarGroup();
             this.navClaSetting = new DevExpress.XtraNavBar.NavBarItem();
             this.navClaResult = new DevExpress.XtraNavBar.NavBarItem();
+            this.navDetection = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navScan = new DevExpress.XtraNavBar.NavBarItem();
+            this.navScanResult = new DevExpress.XtraNavBar.NavBarItem();
             this.panelFooter = new DevExpress.XtraEditors.PanelControl();
             this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
             this.styleMain = new DevExpress.XtraEditors.StyleController(this.components);
@@ -327,7 +327,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navDetection;
+            this.navBarControl1.ActiveGroup = this.navHome;
             this.navBarControl1.Appearance.Background.BackColor = System.Drawing.Color.Gray;
             this.navBarControl1.Appearance.Background.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.navBarControl1.Appearance.Background.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -397,33 +397,10 @@
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Office 2016 Dark");
             // 
-            // navDetection
-            // 
-            this.navDetection.Caption = "Detection";
-            this.navDetection.Expanded = true;
-            this.navDetection.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
-            this.navDetection.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navScan),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navScanResult)});
-            this.navDetection.Name = "navDetection";
-            // 
-            // navScan
-            // 
-            this.navScan.Caption = "Scan";
-            this.navScan.LargeImage = global::VirusDetector.Properties.Resources.scan;
-            this.navScan.Name = "navScan";
-            this.navScan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScan_LinkClicked);
-            // 
-            // navScanResult
-            // 
-            this.navScanResult.Caption = "Scan Result";
-            this.navScanResult.LargeImage = global::VirusDetector.Properties.Resources.result2;
-            this.navScanResult.Name = "navScanResult";
-            this.navScanResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScanResult_LinkClicked);
-            // 
             // navHome
             // 
             this.navHome.Caption = "Home";
+            this.navHome.Expanded = true;
             this.navHome.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
             this.navHome.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navAbout),
@@ -513,6 +490,29 @@
             this.navClaResult.Name = "navClaResult";
             this.navClaResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navClaResult_LinkClicked);
             // 
+            // navDetection
+            // 
+            this.navDetection.Caption = "Detection";
+            this.navDetection.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
+            this.navDetection.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navScan),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navScanResult)});
+            this.navDetection.Name = "navDetection";
+            // 
+            // navScan
+            // 
+            this.navScan.Caption = "Scan";
+            this.navScan.LargeImage = global::VirusDetector.Properties.Resources.scan;
+            this.navScan.Name = "navScan";
+            this.navScan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScan_LinkClicked);
+            // 
+            // navScanResult
+            // 
+            this.navScanResult.Caption = "Scan Result";
+            this.navScanResult.LargeImage = global::VirusDetector.Properties.Resources.result2;
+            this.navScanResult.Name = "navScanResult";
+            this.navScanResult.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navScanResult_LinkClicked);
+            // 
             // panelFooter
             // 
             this.panelFooter.Appearance.BackColor = System.Drawing.Color.Gray;
@@ -551,9 +551,12 @@
             // 
             // txtStatusBar
             // 
-            this.txtStatusBar.Location = new System.Drawing.Point(128, 7);
+            this.txtStatusBar.Location = new System.Drawing.Point(150, 7);
             this.txtStatusBar.Name = "txtStatusBar";
-            this.txtStatusBar.Size = new System.Drawing.Size(703, 26);
+            this.txtStatusBar.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtStatusBar.Properties.Appearance.Options.UseBackColor = true;
+            this.txtStatusBar.Properties.ReadOnly = true;
+            this.txtStatusBar.Size = new System.Drawing.Size(681, 26);
             this.txtStatusBar.StyleController = this.styleMain;
             this.txtStatusBar.TabIndex = 1;
             // 
@@ -561,7 +564,10 @@
             // 
             this.txtTimeBox.Location = new System.Drawing.Point(5, 7);
             this.txtTimeBox.Name = "txtTimeBox";
-            this.txtTimeBox.Size = new System.Drawing.Size(117, 26);
+            this.txtTimeBox.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtTimeBox.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTimeBox.Properties.ReadOnly = true;
+            this.txtTimeBox.Size = new System.Drawing.Size(139, 26);
             this.txtTimeBox.StyleController = this.styleMain;
             this.txtTimeBox.TabIndex = 0;
             // 
@@ -644,7 +650,7 @@
             this.grpOutput.Controls.Add(this.btnDDetectorFile);
             this.grpOutput.Controls.Add(this.labelControl9);
             this.grpOutput.Controls.Add(this.labelControl10);
-            this.grpOutput.Location = new System.Drawing.Point(412, 179);
+            this.grpOutput.Location = new System.Drawing.Point(412, 118);
             this.grpOutput.Name = "grpOutput";
             this.grpOutput.Size = new System.Drawing.Size(400, 227);
             this.grpOutput.TabIndex = 0;
@@ -769,16 +775,16 @@
             this.grpParam.Controls.Add(this.labelControl4);
             this.grpParam.Controls.Add(this.labelControl5);
             this.grpParam.Controls.Add(this.labelControl6);
-            this.grpParam.Location = new System.Drawing.Point(412, 6);
+            this.grpParam.Location = new System.Drawing.Point(6, 6);
             this.grpParam.Name = "grpParam";
-            this.grpParam.Size = new System.Drawing.Size(400, 167);
+            this.grpParam.Size = new System.Drawing.Size(806, 106);
             this.grpParam.TabIndex = 1;
             this.grpParam.Text = "Parameters";
             // 
             // cbxDRContinuous
             // 
             this.cbxDRContinuous.EditValue = true;
-            this.cbxDRContinuous.Location = new System.Drawing.Point(243, 128);
+            this.cbxDRContinuous.Location = new System.Drawing.Point(706, 66);
             this.cbxDRContinuous.Name = "cbxDRContinuous";
             this.cbxDRContinuous.Properties.OffText = "Off";
             this.cbxDRContinuous.Properties.OnText = "On";
@@ -789,7 +795,7 @@
             // cbxDHamming
             // 
             this.cbxDHamming.EditValue = true;
-            this.cbxDHamming.Location = new System.Drawing.Point(243, 100);
+            this.cbxDHamming.Location = new System.Drawing.Point(706, 38);
             this.cbxDHamming.Name = "cbxDHamming";
             this.cbxDHamming.Properties.OffText = "Off";
             this.cbxDHamming.Properties.OnText = "On";
@@ -800,21 +806,21 @@
             // txtbDContinuous
             // 
             this.txtbDContinuous.EditValue = 12;
-            this.txtbDContinuous.Location = new System.Drawing.Point(117, 129);
+            this.txtbDContinuous.Location = new System.Drawing.Point(523, 67);
             this.txtbDContinuous.Name = "txtbDContinuous";
             this.txtbDContinuous.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDContinuous.Properties.Appearance.Options.UseFont = true;
-            this.txtbDContinuous.Size = new System.Drawing.Size(114, 22);
+            this.txtbDContinuous.Size = new System.Drawing.Size(177, 22);
             this.txtbDContinuous.TabIndex = 8;
             // 
             // txtbDHamming
             // 
             this.txtbDHamming.EditValue = 10;
-            this.txtbDHamming.Location = new System.Drawing.Point(117, 101);
+            this.txtbDHamming.Location = new System.Drawing.Point(523, 39);
             this.txtbDHamming.Name = "txtbDHamming";
             this.txtbDHamming.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbDHamming.Properties.Appearance.Options.UseFont = true;
-            this.txtbDHamming.Size = new System.Drawing.Size(114, 22);
+            this.txtbDHamming.Size = new System.Drawing.Size(177, 22);
             this.txtbDHamming.StyleController = this.styleMain;
             this.txtbDHamming.TabIndex = 5;
             // 
@@ -822,10 +828,12 @@
             // 
             this.txtDStepSize.Location = new System.Drawing.Point(117, 65);
             this.txtDStepSize.Name = "txtDStepSize";
+            this.txtDStepSize.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDStepSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDStepSize.Properties.Appearance.Options.UseBackColor = true;
             this.txtDStepSize.Properties.Appearance.Options.UseFont = true;
             this.txtDStepSize.Properties.ReadOnly = true;
-            this.txtDStepSize.Size = new System.Drawing.Size(114, 22);
+            this.txtDStepSize.Size = new System.Drawing.Size(267, 22);
             this.txtDStepSize.StyleController = this.styleMain;
             this.txtDStepSize.TabIndex = 3;
             // 
@@ -833,17 +841,19 @@
             // 
             this.txtDLength.Location = new System.Drawing.Point(117, 39);
             this.txtDLength.Name = "txtDLength";
+            this.txtDLength.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDLength.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDLength.Properties.Appearance.Options.UseBackColor = true;
             this.txtDLength.Properties.Appearance.Options.UseFont = true;
             this.txtDLength.Properties.ReadOnly = true;
-            this.txtDLength.Size = new System.Drawing.Size(114, 22);
+            this.txtDLength.Size = new System.Drawing.Size(267, 22);
             this.txtDLength.StyleController = this.styleMain;
             this.txtDLength.TabIndex = 1;
             // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(6, 131);
+            this.labelControl7.Location = new System.Drawing.Point(412, 69);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(92, 18);
             this.labelControl7.TabIndex = 7;
@@ -852,7 +862,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Location = new System.Drawing.Point(6, 103);
+            this.labelControl4.Location = new System.Drawing.Point(412, 41);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(64, 18);
             this.labelControl4.StyleController = this.styleMain;
@@ -903,7 +913,7 @@
             this.grpInput.Controls.Add(this.labelControl3);
             this.grpInput.Controls.Add(this.labelControl2);
             this.grpInput.Controls.Add(this.labelControl1);
-            this.grpInput.Location = new System.Drawing.Point(6, 6);
+            this.grpInput.Location = new System.Drawing.Point(6, 118);
             this.grpInput.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpInput.Name = "grpInput";
             this.grpInput.Size = new System.Drawing.Size(400, 400);
@@ -1080,6 +1090,7 @@
             this.dtNegativeSelection.Location = new System.Drawing.Point(3, 3);
             this.dtNegativeSelection.MainView = this.gridView2;
             this.dtNegativeSelection.Name = "dtNegativeSelection";
+            this.dtNegativeSelection.ShowOnlyPredefinedDetails = true;
             this.dtNegativeSelection.Size = new System.Drawing.Size(824, 607);
             this.dtNegativeSelection.TabIndex = 0;
             this.dtNegativeSelection.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1089,6 +1100,7 @@
             // 
             this.gridView2.GridControl = this.dtNegativeSelection;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // xtpClusSetting
             // 
@@ -1595,10 +1607,24 @@
             // 
             // dangerLevel
             // 
+            this.dangerLevel.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.Tickmarks.MinorVisible = false;
+            xyDiagram1.AxisX.Tickmarks.Visible = false;
+            xyDiagram1.AxisX.Title.Text = "Detector No.";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.Default;
+            xyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.GridLines.Visible = false;
+            xyDiagram1.AxisY.Tickmarks.MinorVisible = false;
+            xyDiagram1.AxisY.Tickmarks.Visible = false;
+            xyDiagram1.AxisY.Title.Text = "Danger Level";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.Default;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.dangerLevel.Diagram = xyDiagram1;
             this.dangerLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dangerLevel.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Left;
+            this.dangerLevel.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.dangerLevel.Legend.UseCheckBoxes = true;
             this.dangerLevel.Location = new System.Drawing.Point(3, 3);
             this.dangerLevel.Name = "dangerLevel";
             series1.Name = "dangerLevel";
@@ -1827,7 +1853,7 @@
             // 
             this.btnFCStop.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFCStop.Appearance.Options.UseFont = true;
-            this.btnFCStop.Location = new System.Drawing.Point(121, 242);
+            this.btnFCStop.Location = new System.Drawing.Point(140, 242);
             this.btnFCStop.Name = "btnFCStop";
             this.btnFCStop.Size = new System.Drawing.Size(81, 34);
             this.btnFCStop.StyleController = this.styleButon;
@@ -1999,10 +2025,15 @@
             // 
             // chartFC
             // 
+            xyDiagram2.AxisX.Tickmarks.MinorVisible = false;
+            xyDiagram2.AxisX.Title.Text = "Files No.";
+            xyDiagram2.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Tickmarks.MinorVisible = false;
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             this.chartFC.Diagram = xyDiagram2;
             this.chartFC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartFC.Legend.UseCheckBoxes = true;
             this.chartFC.Location = new System.Drawing.Point(3, 3);
             this.chartFC.Name = "chartFC";
             series2.Name = "chartFC";
@@ -2065,8 +2096,12 @@
             // 
             this.txtbFCNumVirus.Location = new System.Drawing.Point(139, 36);
             this.txtbFCNumVirus.Name = "txtbFCNumVirus";
+            this.txtbFCNumVirus.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtbFCNumVirus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbFCNumVirus.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtbFCNumVirus.Properties.Appearance.Options.UseBackColor = true;
             this.txtbFCNumVirus.Properties.Appearance.Options.UseFont = true;
+            this.txtbFCNumVirus.Properties.Appearance.Options.UseForeColor = true;
             this.txtbFCNumVirus.Properties.ReadOnly = true;
             this.txtbFCNumVirus.Size = new System.Drawing.Size(247, 22);
             this.txtbFCNumVirus.TabIndex = 13;

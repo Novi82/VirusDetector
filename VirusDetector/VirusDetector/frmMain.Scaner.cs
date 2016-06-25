@@ -72,6 +72,57 @@ namespace VirusDetector
             }
 
         }
+        private void _virusScannerThread_Stopped()
+        {
+            int virusCount = 0;
+            int benignCount = 0;
+            DataColumn column;
+            DataRow row;
+            DataView view;
+            DataTable resultList = new DataTable();
+            resultList.Columns.Clear();
+
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "File";
+            resultList.Columns.Add(column);
+
+            // Create second column.
+            column = new DataColumn();
+            column.DataType = Type.GetType("System.String");
+            column.ColumnName = "Status";
+            resultList.Columns.Add(column);
+            resultList.Rows.Clear();
+
+            foreach (FileScanInfo fileScanInfo in _lFileScanInfo)
+            {
+                if (fileScanInfo.Result)
+                {
+                    row = resultList.NewRow();
+                    row["File"] = fileScanInfo.FileName;
+                    row["Status"] = "Virus";
+                    resultList.Rows.Add(row);
+
+                    virusCount++;
+                }
+                else
+                {
+                    row = resultList.NewRow();
+                    row["File"] = fileScanInfo.FileName;
+                    row["Status"] = "Benign";
+                    resultList.Rows.Add(row);
+
+                    benignCount++;
+                }
+            }
+
+            txtbFCNumVirus.Text = virusCount.ToString();
+            txtbFCNumBenign.Text = benignCount.ToString();
+
+            view = new DataView(resultList);
+            dgvVirus.DataSource = view;
+        }
 
         #endregion
     }

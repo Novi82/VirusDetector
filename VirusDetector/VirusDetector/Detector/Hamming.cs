@@ -6,51 +6,61 @@ using System.Threading.Tasks;
 
 namespace VirusDetector.Detector
 {
-    class RContiguous
+    class Hamming
     {
         /// <summary>
-        ///  calculate r-contiguous distance between 2 detector
+        /// calculate Distance between 2 detector
+        /// </summary>
+        /// <param name="s1">detector 1</param>
+        /// <param name="s2">detector 2</param>
+        /// <returns></returns>
+        public static int Distance(byte[] s1, byte[] s2)
+        {
+            int rs = 0;
+            for (int i = 0; i < s1.Length && i < s2.Length; i++)
+            {
+                if (s1[i] != s2[i])
+                    rs += 1;
+            }
+            return rs;
+        }
+        /// <summary>
+        /// calculate Distance between 2 detector
         /// </summary>
         /// <param name="s1">detector 1</param>
         /// <param name="start1">start index 1</param>
-        /// <param name="s2">detector 2 </param>
+        /// <param name="s2">detector 2</param>
         /// <param name="start2">start index 2</param>
         /// <returns></returns>
         public static int Distance(byte[] s1, int start1, byte[] s2, int start2)
         {
-            int length = 0;
-            int max = 0;
+            int rs = 0;
             for (int i = start1, j = start2; i < s1.Length && j < s2.Length; i++, j++)
             {
-                if (s1[i] == s2[j])
-                    length += 1;
-                else
-                    length = 0;
-                if (max < length)
-                    max = length;
+                if (s1[i] != s2[j])
+                    rs += 1;
             }
-            return max;
+            return rs;
         }
         /// <summary>
-        /// 
+        /// calculate max Hamming Distance between 2 detector
         /// </summary>
         /// <param name="s1"></param>
         /// <param name="s2"></param>
-        /// <remarks>shift 8 bit of 2 detector and find max distance</remarks>
+        /// <remarks>shift 8 bits of 2 detector and find max distance</remarks>
         /// <returns></returns>
         public static int MaxDistance(byte[] s1, byte[] s2)
         {
             int start1 = 0;
             int start2 = 0;
             int stepSize = 8;
-            int max = 0;
+            int maxDistance = 0;
             // shift detector 1  by 8 bits, then compare with detector 2
             while (start1 <= s1.Length - stepSize)
             {
-
-                int temp = Distance(s1, start1, s2, start2);
-                if (max < temp)
-                    max = temp;
+                int distance = Distance(s1, start1, s2, start2);
+                if (maxDistance < distance)
+                    maxDistance = distance;
                 start1 += stepSize;
             }
             //reset start1 index
@@ -60,11 +70,11 @@ namespace VirusDetector.Detector
             {
                 start2 += stepSize;
                 int temp = Distance(s1, start1, s2, start2);
-                if (max < temp)
-                    max = temp;
+                if (maxDistance < temp)
+                    maxDistance = temp;
 
             }
-            return max;
+            return maxDistance;
         }
     }
 }

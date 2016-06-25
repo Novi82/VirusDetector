@@ -59,7 +59,9 @@ namespace VirusDetector.FileClassifier
         {
             _done = false;
         }
-
+        /// <summary>
+        /// build training set
+        /// </summary>
         public void buildTrainingSet()
         {
             // Read virus folder and benign folder

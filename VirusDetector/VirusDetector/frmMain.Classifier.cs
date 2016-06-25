@@ -15,6 +15,7 @@ using VirusDetector.VirusScanner;
 using VirusDetector.StringCompare;
 using VirusDetector.Utils;
 using DevExpress.XtraCharts;
+
 namespace VirusDetector
 {
     public partial class FormMain : Form

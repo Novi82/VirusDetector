@@ -20,8 +20,16 @@ namespace VirusDetector
     public partial class FormMain : Form
     {
         #region init methods
-        private void initDemo()
+        /// <summary>
+        /// load default data
+        /// </summary>
+        private void LoadDefaultData()
         {
+            //setting length = 32 bits
+            txtDLength.EditValue = Utils.Utils.GLOBAL_LENGTH;
+            // setting overlap step = 16 bits
+            txtDStepSize.EditValue = Utils.Utils.GLOBAL_STEP_SIZE;
+
             txtbDVirusFolder.Text = CustomSettings.DETECTOR_VIRUS_FOLDER;
             txtbDBenignFolder.Text = CustomSettings.DETECTOR_BENIGN_FOLDER;
 
@@ -37,17 +45,16 @@ namespace VirusDetector
             txtbFCFileClassifierFile.Text = CustomSettings.FILE_CLASSIFIER_FILE;
 
         }
-
-        private void _initialize()
+        /// <summary>
+        /// setup variable
+        /// </summary>
+        private void InitVariable()
         {
            //todo debug xtcContent.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            txtDLength.EditValue = Utils.Utils.GLOBAL_LENGTH;
-            txtDStepSize.EditValue = Utils.Utils.GLOBAL_STEP_SIZE;
+            _isTrainingDectector = false;
 
-            _isWorking = false;
-
-            GroupData = new List<byte[][]>();
+            //todo GroupData = new List<byte[][]>();
             groups = new List<Cluster>();
 
             NegativeSelectionData = new DataTable();
@@ -91,6 +98,9 @@ namespace VirusDetector
                 progressBar.PerformStep();
         }
 
+        /// <summary>
+        /// Gui support call to initProgress
+        /// </summary>
         internal void initProgressBarCallBack()
         {
             if (InvokeRequired)
@@ -104,6 +114,9 @@ namespace VirusDetector
             progressBar.Properties.Step = 1;
         }
 
+        /// <summary>
+        /// Update info bar
+        /// </summary>
         internal void updateVirusFragmentCallBack()
         {
             if (InvokeRequired)
@@ -123,72 +136,6 @@ namespace VirusDetector
             });
         }
 
-
-        #endregion
-
-        #region Methods
-        private void _virusScannerThread_Stopped()
-        {
-            int virusCount = 0;
-            int benignCount = 0;
-            DataColumn column;
-            DataRow row;
-            DataView view;
-            DataTable resultList = new DataTable();
-            resultList.Columns.Clear();
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "File";
-            resultList.Columns.Add(column);
-
-            // Create second column.
-            column = new DataColumn();
-            column.DataType = Type.GetType("System.String");
-            column.ColumnName = "Status";
-            resultList.Columns.Add(column);
-            resultList.Rows.Clear();
-
-            foreach (FileScanInfo fileScanInfo in _lFileScanInfo)
-            {
-                if (fileScanInfo.Result)
-                {
-                    row = resultList.NewRow();
-                    row["File"] = fileScanInfo.FileName;
-                    row["Status"] = "Virus";
-                    resultList.Rows.Add(row);
-
-                    virusCount++;
-                }
-                else
-                {
-                    row = resultList.NewRow();
-                    row["File"] = fileScanInfo.FileName;
-                    row["Status"] = "Benign";
-                    resultList.Rows.Add(row);
-
-                    benignCount++;
-                }
-            }
-
-            txtbFCNumVirus.Text = virusCount.ToString();
-            txtbFCNumBenign.Text = benignCount.ToString();
-
-            view = new DataView(resultList);
-            dgvVirus.DataSource = view;
-        }
-
-        private void _detectorThread_Stopped()
-        {
-            this._virusFragments = datageneration.VirusFragmentOutput;
-            Boolean isBuild;
-            isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
-            if (isBuild)
-                this._benignFragments = datageneration.BenignFragmentInput;
-
-            showDetectorResult();
-        }
         #endregion
     }
 }

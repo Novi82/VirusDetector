@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +22,48 @@ namespace VirusDetector
     public partial class FormMain : Form
     {
         #region Clustering Method
+        /// <summary>
+        /// init param
+        /// </summary>
+        private void _initParamMixDetector()
+        {
+            // todo
+            int virusLen = 0;
+            // todo 
+            int benignLen = 0;
 
+            if (cbxCUseRate.IsOn)
+            {
+                // output frament in step detector   
+                virusLen = _virusFragments.Count;
+                // load rate
+                String strRate = txtbCBenignVirusRate.Text;
+                int rate = int.Parse(strRate);
+                // calculate benign len
+                benignLen = virusLen * rate;
+            }
+            else
+            {
+                // load from UI
+                String strVirusLen = txtbCVirusSize.Text;
+                virusLen = int.Parse(strVirusLen);
+                // load from UI
+                String strBenignLen = txtbCBenignSize.Text;
+                benignLen = int.Parse(strBenignLen);
+            }
+
+            // Select algorithm
+            int inputCount = int.Parse(txtbCNumInputNeuron.Text);
+            if (inputCount == 4)
+            {
+                _detectorData = Utils.Utils.mixDetectorBase10(_virusFragments, virusLen, _benignFragments, benignLen);
+            }
+            else
+            {
+                _detectorData = Utils.Utils.mixDetectorBase2(_virusFragments, virusLen, _benignFragments, benignLen);
+            }
+
+        }
 
         public void startClustering()
         {
@@ -39,27 +81,91 @@ namespace VirusDetector
         }
 
         #endregion
+        #region Mix detector
+        /// <summary>
+        /// save mixed detector to text fife
+        /// </summary>
+        /// <param name="input_"></param>
+        /// <param name="fileName_"></param>
+        public static void saveMixDetector(double[][] input_, String fileName_)
+        {
+            StreamWriter file = new StreamWriter(fileName_);
+            int len0 = input_.Length;
+            int len1 = input_[0].Length;
 
+            for (int i = 0; i < len0 - 1; i++)
+            {
+                for (int j = 0; j < len1 - 1; j++)
+                {
+                    file.Write(input_[i][j] + ",");
+                }
+                file.WriteLine(input_[i][len1 - 1]);
+            }
+
+            // Write the last one
+            for (int j = 0; j < len1 - 1; j++)
+            {
+                file.Write(input_[len0 - 1][j] + ",");
+            }
+            file.Write(input_[len0 - 1][len1 - 1]);
+
+            // Close file
+            file.Close();
+        }
+
+        /// <summary>
+        /// load mixed detector from text file
+        /// </summary>
+        /// <param name="fileName_"></param>
+        /// <returns></returns>
+        public static double[][] loadMixDetector(String fileName_)
+        {
+            double[][] _input;
+            var lines = File.ReadAllLines(fileName_);
+            var len = lines.Length;
+            _input = new double[len][];
+            int countX = 0;
+            foreach (var line in lines)
+            {
+                String[] raw = line.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                int countY = 0;
+                _input[countX] = new double[raw.Length];
+                foreach (var item in raw)
+                {
+                    _input[countX][countY] = double.Parse(item);
+                    countY++;
+                }
+                countX++;
+            }
+            return _input;
+        }
+        #endregion
         #region EventSupport
         private void _saveMixDetector()
         {
             String savePath = txtbCMixDetectorFile.Text;
-            Utils.Utils.saveMixDetector(_detectorData, savePath);
+            saveMixDetector(_detectorData, savePath);
             MessageBox.Show("Successful!");
         }
         private void _loadMixDetector()
         {
             String fileName = txtbCMixDetectorFile.Text;
-            _detectorData = Utils.Utils.loadMixDetector(fileName);
+            _detectorData = loadMixDetector(fileName);
             _calcNumOfDetector();
             MessageBox.Show("Successful!");
         }
+        /// <summary>
+        /// calculate numb of detector and show its to UI
+        /// </summary>
         private void _calcNumOfDetector()
         {
             int[] detectorCount = Utils.Utils.calcNumOfDetector(_detectorData);
             txtbCVirusSize.Text = detectorCount[0].ToString();
             txtbCBenignSize.Text = detectorCount[1].ToString();
         }
+        /// <summary>
+        /// start clustering
+        /// </summary>
         private void _startClustering()
         {
             _currentProcessType = EProcessType.Clustering;
@@ -67,11 +173,16 @@ namespace VirusDetector
             _worker = new Thread(_clusteringThread);
             _worker.Start();
         }
+        /// <summary>
+        /// clustering Thread
+        /// </summary>
         private void _clusteringThread()
         {
             try
             {
                 int inputCount = int.Parse(txtbCNumInputNeuron.Text);
+                // 4 neuron ->dec -> value 0 ~ 255
+                // else 0 ~ 1
                 int maxInputRange = (inputCount == 4 ? 255 : 1);
                 int numNeuronX = int.Parse(txtbCNumNeuronX.Text);
                 int numNeuronY = int.Parse(txtbCNumNeuronY.Text);
@@ -79,7 +190,6 @@ namespace VirusDetector
                 double learningRadius = double.Parse(txtbCLearningRadius.Text);
                 int numOfIterator = int.Parse(txtbCNumIterator.Text);
                 double errorThresold = double.Parse(txtbCErrorThresold.Text);
-
                 _clusteringManager = new ClusteringManager(
                     inputCount,
                     numNeuronX,
@@ -91,7 +201,7 @@ namespace VirusDetector
                     _detectorData,
                     maxInputRange
                     );
-
+                // training
                 _clusteringManager.trainDistanceNetwork();
 
                 LoadDangerLevel();
@@ -124,12 +234,17 @@ namespace VirusDetector
             _clusteringManager.saveDistanceNetwork(fileName);
             MessageBox.Show("Successful!");
         }
+        /// <summary>
+        /// start mix detector into 2side matrix
+        /// </summary>
         private void _mixDetector()
         {
-            _correctDetectorData();
+            _initParamMixDetector();
             _calcNumOfDetector();
-            MessageBox.Show("Successful!");
+            // todo del msg
+            MessageBox.Show("Mix Detector.\nSuccessful!");
         }
+
         private void LoadDangerLevel()
         {
             if (InvokeRequired)
@@ -148,7 +263,7 @@ namespace VirusDetector
             //todo
             //dangerLevel.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
             //dangerLevel.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
-
+            //dangerLevel.Series["ChartArea1"].
             ////dangerLevel.ChartAreas[0].Position.Y = 100;
             ////dangerLevel.ChartAreas[0].Position.Height = 60;
             ////dangerLevel.ChartAreas[0].AxisX.Maximum = 500;

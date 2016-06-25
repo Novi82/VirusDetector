@@ -5,72 +5,101 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using VirusDetector.Utils;
 
 namespace VirusDetector.Detector
 {
     class DataGeneration
     {
+        #region Variable
+        
         List<string> filenames = new List<string>();
         public TrainingData BenignFragmentInput = new TrainingData();
         public TrainingData VirusFragmentInput = new TrainingData();
         public TrainingData VirusFragmentOutput = new TrainingData();
-        public int[] state;
+        /// <summary>
+        /// todo
+        /// </summary>
+        public EFragmentType[] state;
         private int filesRemains = 0;
-        private Matching M;
+        /// <summary>
+        /// Matching object
+        /// </summary>
+        private Matching oMatching;
         private string virusDirectory = "";
         private string benignDirectory = "";
-        public string VirusDirectory 
-        { 
-            get { return virusDirectory; } 
-            set { virusDirectory = value; } 
+        public string VirusDirectory
+        {
+            get { return virusDirectory; }
+            set { virusDirectory = value; }
         }
-        public string BenignDirectory 
-        { 
-            get { return benignDirectory; } 
-            set { benignDirectory = value; } 
+        public string BenignDirectory
+        {
+            get { return benignDirectory; }
+            set { benignDirectory = value; }
         }
         private string outputFile = "";
         public string OutputFile
-        { 
-            get { return outputFile; } 
-            set { outputFile = value; } 
+        {
+            get { return outputFile; }
+            set { outputFile = value; }
         }
-        private int length;
-        private int stepsize;// 1 byte= 8 bit       
-        public int Length 
-        { 
+        private int length;     // 4 bytes (32 bits )
+        private int stepsize;   // 2 bytes (16 bits )
+        public int Length
+        {
             get { return length; }
-            set 
-            { 
-                length = value; 
-            } 
+            set
+            {
+                length = value;
+            }
         }
-        public int Stepsize 
-        { 
-            get { return stepsize; } 
+        public int Stepsize
+        {
+            get { return stepsize; }
         }
+        #endregion
+
+        #region event
         private ManualResetEvent Event;
 
         // Stop support
         Boolean _done;
-
-        public DataGeneration(string _VirusDirectory, string _BenignDirectory, int d, int r, int _length, int _stepsize, bool Flag1, bool Flag2)
+        #endregion
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="_VirusDirectory"></param>
+        /// <param name="_BenignDirectory"></param>
+        /// <param name="_Hamming"></param>
+        /// <param name="_RContiguous"></param>
+        /// <param name="_length"></param>
+        /// <param name="_stepsize"></param>
+        /// <param name="Flag1"></param>
+        /// <param name="Flag2"></param>
+        public DataGeneration(string _VirusDirectory, string _BenignDirectory, int _Hamming, int _RContiguous, int _length, int _stepsize, bool Flag1, bool Flag2)
         {
-            M = new Matching(d, r, Flag1, Flag2);
+            oMatching = new Matching(_Hamming, _RContiguous, Flag1, Flag2);
             length = _length;
             stepsize = _stepsize;
             benignDirectory = _BenignDirectory;
             virusDirectory = _VirusDirectory;
 
             _initialize();
-
         }
-
+        /// <summary>
+        /// init variable
+        /// </summary>
         private void _initialize()
         {
             _done = false;
         }
-        private void Readfile(string Path, bool flag)
+        /// <summary>
+        /// Read [Benign|Virus] File
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <param name="pMode">1: Benign | 2: Virus</param>
+        private void ReadFile(string Path, Utils.Utils.EMode pMode)
         {
             byte[] bytes = File.ReadAllBytes(Path);
             byte[] temp = new byte[length];
@@ -81,61 +110,44 @@ namespace VirusDetector.Detector
                 binaryArray = Utils.Utils.ConvertBytesIntoBinary(temp);
                 String strBinary = String.Join("", binaryArray);
 
-                if (flag)
+                if (pMode == Utils.Utils.EMode.Benign)
                 {
                     if (binaryArray != null)
                         BenignFragmentInput.Add(binaryArray);
                 }
-                else
+                else if (pMode == Utils.Utils.EMode.Virus)
                 {
                     if (binaryArray != null)
                     {
                         VirusFragmentInput.Add(binaryArray);
                     }
-                        
+
                 }
             }
         }
 
-        //public static void ProcessDirectory(string targetDirectory)
-        //{
-        //    // Process the list of files found in the directory.
-        //    string[] fileEntries = Directory.GetFiles(targetDirectory);
-        //    foreach (string fileName in fileEntries)
-        //        ProcessFile(fileName);
-        //    // Recurse into subdirectories of this directory.
-        //    string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
-        //    foreach (string subdirectory in subdirectoryEntries)
-        //        ProcessDirectory(subdirectory);
-        //}
-        private void ReadDirectory(string directory, bool flag)
+        /// <summary>
+        /// Read [Benign|Virus] Directory
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <param name="pMode">True: Benign | False: Virus</param>
+        private void ReadDirectory(string directory, Utils.Utils.EMode pMode)
         {
             // Process the list of files found in the directory.
             string[] fileEntries = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
             foreach (string fileName in fileEntries)
-                Readfile(fileName, flag);
+                ReadFile(fileName, pMode);
         }
 
-        //private void ReadDirectory(string directory, bool flag)
-        //{
-        //    filenames.Clear();
-        //    filenames.AddRange(Directory.GetFiles(directory, "*.exe", SearchOption.AllDirectories));
-        //    filenames.AddRange(Directory.GetFiles(directory, "*.com", SearchOption.AllDirectories));
-        //    filenames.AddRange(Directory.GetFiles(directory, "*.bat", SearchOption.AllDirectories));
-
-        //    foreach (string file in filenames)
-        //    {
-        //        Readfile(file, flag);
-        //    }
-        //}
-
-
+        /// <summary>
+        /// Start Building
+        /// </summary>
         public void startBuildDetector()
         {
             _done = false;
 
-            ReadDirectory(benignDirectory, true);
-            ReadDirectory(virusDirectory, false);
+            this.ReadDirectory(benignDirectory,Utils.Utils.EMode.Benign);
+            this.ReadDirectory(virusDirectory, Utils.Utils.EMode.Virus);
 
             // Init progressbar before work
             Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX = VirusFragmentInput.Count;
@@ -149,22 +161,29 @@ namespace VirusDetector.Detector
             NegativeSelection();
         }
 
-
+        /// <summary>
+        /// NegativeSelection -- remove benign in virus data set
+        /// </summary>
         private void NegativeSelection()
         {
-            if ((filesRemains = VirusFragmentInput.Count) == 0)
+            filesRemains = VirusFragmentInput.Count;
+            if (filesRemains == 0)
             {
                 return;
             }
-                
-            state = new int[VirusFragmentInput.Count];
+
+            state = new EFragmentType[VirusFragmentInput.Count];
             Event = new ManualResetEvent(false);
-            for (int i = 0; i < VirusFragmentInput.Count ; i++)
+            for (int i = 0; i < VirusFragmentInput.Count; i++)
             {
                 ThreadPool.QueueUserWorkItem(ThreadCallBack, i);
             }
             Event.WaitOne();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ob">integer - index of element in VirusFragmentInput</param>
         private void ThreadCallBack(Object ob)
         {
 
@@ -172,28 +191,30 @@ namespace VirusDetector.Detector
             {
                 return;
             }
-
+            //index of element in VirusFragmentInput
             int index = (int)ob;
+            //detector
             byte[] binaryArray = VirusFragmentInput[index];
+            // not contain in Benign set
             if (binaryArray != null && !IsMatchSelf(binaryArray))
             {
-                state[index] = 0;
+                //  virus
+                state[index] = EFragmentType.Virus;
 
                 lock (VirusFragmentOutput)
                 {
+                    // add to output Fragement
                     VirusFragmentOutput.Add(binaryArray);
                 }
-
+                // update global info
                 Utils.Utils.GLOBAL_VIRUS_COUNT++;
                 Utils.Utils.GUI_SUPPORT.updateVirusFragment();
-
             }
             else
             {
-                state[index] = 1;
+                // benign
+                state[index] = EFragmentType.Benign;
             }
-
-            
 
             if (Interlocked.Decrement(ref filesRemains) == 0)
             {
@@ -204,30 +225,39 @@ namespace VirusDetector.Detector
             Utils.Utils.GUI_SUPPORT.updateProgressBar();
 
         }
-        private bool IsMatchSelf(byte[] _byte)
+        /// <summary>
+        /// is Contain pBytes in BenignFragmentInput
+        /// </summary>
+        /// <param name="pBytes">Input bytes list</param>
+        /// <returns></returns>
+        private bool IsMatchSelf(byte[] pBytes)
         {
-
-            for (int j = 0; j < BenignFragmentInput.Count; j++)
+            foreach (byte[] temp in BenignFragmentInput)
             {
-                if (M.Match(_byte, BenignFragmentInput[j]))
+                if (oMatching.Match(pBytes, temp))
                     return true;
             }
             return false;
         }
 
-
+        /// <summary>
+        /// Stop Building detector
+        /// </summary>
         internal void stopBuildDetector()
         {
             _done = true;
             Event.Set();
         }
-
-        internal void startAdditionNegative(TrainingData virusFragments_)
+        /// <summary>
+        /// add detector into system
+        /// </summary>
+        /// <param name="pVirusFragments"></param>
+        internal void startAdditionNegative(TrainingData pVirusFragments)
         {
             _done = false;
 
-            VirusFragmentInput = virusFragments_;
-            ReadDirectory(benignDirectory, true);
+            VirusFragmentInput = pVirusFragments;
+            ReadDirectory(benignDirectory, Utils.Utils.EMode.Benign);
 
             // Init progressbar before work
             Utils.Utils.GLOBAL_PROGRESSBAR_COUNT_MAX = VirusFragmentInput.Count;

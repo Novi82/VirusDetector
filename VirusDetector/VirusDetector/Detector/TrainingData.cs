@@ -9,61 +9,97 @@ using System.Threading.Tasks;
 
 namespace VirusDetector.Detector
 {
+    /// <summary>
+    /// A list byte
+    /// </summary>
     [Serializable]
     class TrainingData : List<byte[]>
     {
-        public bool contains(byte[] elements)
+        /// <summary>
+        /// is contains elements in list
+        /// </summary>
+        /// <param name="pElements"></param>
+        /// <returns></returns>
+        public bool contains(byte[] pElements)
         {
             if (this.Count == 0)
+            {
                 return false;
+            }
             for (int i = 0; i < this.Count; i++)
             {
-                if (Equals(this[i], elements))
+                if (Equals(this[i], pElements))
                     return true;
             }
             return false;
         }
-        private bool Equals(byte[] a, byte[] b)
+
+        /// <summary>
+        /// is pObject1 equals to pObject2
+        /// </summary>
+        /// <param name="pObject1"></param>
+        /// <param name="pObject2"></param>
+        /// <returns></returns>
+        private bool Equals(byte[] pObject1, byte[] pObject2)
         {
-            if (a.Length != b.Length)
-                return false;
-            for (int i = 0; i < a.Length; i++)
+            if (pObject1.Length != pObject2.Length)
             {
-                if (a[i] != b[i])
+                return false;
+            }
+            for (int i = 0; i < pObject1.Length; i++)
+            {
+                if (pObject1[i] != pObject2[i])
                     return false;
             }
             return true;
         }
-        public static TrainingData Load(string fileName)
+
+        /// <summary>
+        ///  Read objects from file
+        /// </summary>
+        /// <param name="pFileName"></param>
+        /// <returns></returns>
+        public static TrainingData Read(string pFileName)
         {
-            TrainingData D;
-            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            TrainingData pTrainningData;
+            using (FileStream stream = new FileStream(pFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                D = Load(stream);
+                pTrainningData = Read(stream);
             }
-            return D;
+            return pTrainningData;
         }
-        public static TrainingData Load(Stream stream)
+
+        /// <summary>
+        /// Read objects from stream
+        /// </summary>
+        /// <param name="pStream"></param>
+        /// <returns></returns>
+        public static TrainingData Read(Stream pStream)
         {
             IFormatter formatter = new BinaryFormatter();
-            TrainingData HT = (TrainingData)formatter.Deserialize(stream);
+            TrainingData HT = (TrainingData)formatter.Deserialize(pStream);
             return HT;
         }
+
         /// <summary>
         /// write this objects into a new file
         /// </summary>
-        /// <param name="fileName"></param>
-        public void Write(string fileName)
+        /// <param name="pFileName">Target File Name</param>
+        public void Write(string pFileName)
         {
-            Stream stream = File.Open(fileName, FileMode.Create);
+            Stream stream = File.Open(pFileName, FileMode.Create);
             Write(stream);
             stream.Close();
         }
-        public void Write(Stream stream)
+
+        /// <summary>
+        /// write this objects into stream
+        /// </summary>
+        /// <param name="pStream">Target File</param>
+        public void Write(Stream pStream)
         {
             BinaryFormatter bformatter = new BinaryFormatter();
-            bformatter.Serialize(stream, this);
-
+            bformatter.Serialize(pStream, this);
         }
     }
 }

@@ -32,26 +32,34 @@ namespace VirusDetector
         FileClassifier,
         VirusScaner
     }
-
+    enum EFragmentType
+    {
+        Benign,
+        Virus
+    }
     public partial class FormMain : Form
     {
         #region variable
 
         // Declare variable
-        private bool _isWorking;
+        /// <summary>
+        /// is training detector
+        /// </summary>
+        private bool _isTrainingDectector;
         private DateTime startTime;
         private Thread _worker;
 
         // Data generation
         private DataGeneration datageneration;
 
+        // Virus Fragment output
         private TrainingData _virusFragments;
+        // benign Fragment input
         private TrainingData _benignFragments;
 
         private double[][] _detectorData;
-
         private int[] Label;
-        private List<byte[][]> GroupData;
+
         private List<Cluster> groups;
 
         private DataTable NegativeSelectionData;
@@ -78,15 +86,21 @@ namespace VirusDetector
 
         #endregion
 
+        #region Form Event
         public FormMain()
         {
+            // default init layout
             InitializeComponent();
-            initDemo();
+            // load data
+            LoadDefaultData();
+            // init gui support
             _lkPatch();
-            _initialize();
+            // init variable
+            InitVariable();
         }
+        #endregion
 
-        #region Menu
+        #region Menu click event
 
         private void navAbout_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
@@ -140,6 +154,11 @@ namespace VirusDetector
         #endregion
 
         #region Detector Event
+        /// <summary>
+        /// Browse Virus Folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDVirusFolder_Click(object sender, EventArgs e)
         {
             FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
@@ -150,6 +169,11 @@ namespace VirusDetector
                 txtbDVirusFolder.Text = folderSelectDialog.FileName;
             }
         }
+        /// <summary>
+        /// browse Benign Folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDBenignFolder_Click(object sender, EventArgs e)
         {
             FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
@@ -160,25 +184,28 @@ namespace VirusDetector
                 txtbDBenignFolder.Text = folderSelectDialog.FileName;
             }
         }
-        private void btnDDetectorFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                txtbDDetectorFile.Text = openFileDialog1.FileName;
-            }
-        }
+        /// <summary>
+        /// Browse Addition Folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDAdditionFolder_Click(object sender, EventArgs e)
         {
+            // Show the dialog.
             FolderSelectDialog folderSelectDialog = new FolderSelectDialog();
             folderSelectDialog.Title = "Select Folder";
+            // get result.
             bool result = folderSelectDialog.ShowDialog();
             if (result)
             {
                 txtbDAdditionFolder.Text = folderSelectDialog.FileName;
             }
         }
+        /// <summary>
+        /// Change Build | Addition
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtnDBuildAddDetector_SelectedIndexChanged(object sender, EventArgs e)
         {
             EDetectorType detectorType = EDetectorType.BuildDetector;
@@ -195,39 +222,32 @@ namespace VirusDetector
 
             _updateDetectorType(detectorType);
         }
+        /// <summary>
+        /// Start training detector button event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDStart_Click(object sender, EventArgs e)
         {
             try
             {
                 _startDetector();
+
+                txtbFCBenignFolder.Text = txtbDBenignFolder.Text;
+                txtbFCVirusFolder.Text = txtbDVirusFolder.Text;
+                xtcContent.SelectedTabPage = xtpDeResult;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
 
-        }
-        private void btnDLoadDetector_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _loadDetection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        private void btnDBenignFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                txtbDBenignFile.Text = openFileDialog1.FileName;
-            }
-        }
+        /// <summary>
+        /// Buton Stop Training
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDStop_Click(object sender, EventArgs e)
         {
             try
@@ -239,6 +259,62 @@ namespace VirusDetector
                 MessageBox.Show(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Browse Detector File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDDetectorFile_Click(object sender, EventArgs e)
+        {
+            // Show the dialog.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
+            openFileDialog1.Title = "Select Folder";
+            // get result.
+            if (result == DialogResult.OK) 
+            {
+                txtbDDetectorFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        /// <summary>
+        /// Browser Benign File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDBenignFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtbDBenignFile.Text = openFileDialog1.FileName;
+            }
+        }
+        /// <summary>
+        /// btn Load detector
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDLoadDetector_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _loadDetector();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }     
+
+        /// <summary>
+        /// Browser Save Folder Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDSaveDetector_Click(object sender, EventArgs e)
         {
             try
@@ -250,14 +326,32 @@ namespace VirusDetector
                 MessageBox.Show(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Toggle Hamming Distance
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbxDHamming_Toggled(object sender, EventArgs e)
         {
             txtbDHamming.Enabled = cbxDHamming.IsOn;
         }
+
+        /// <summary>
+        /// Toggle R-Contiguous distance
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbxDRContinuous_Toggled(object sender, EventArgs e)
         {
             txtbDContinuous.Enabled = cbxDRContinuous.IsOn;
         }
+
+        /// <summary>
+        /// Toogle Use rate Percent
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbxCUseRate_Toggled(object sender, EventArgs e)
         {
             txtbCBenignVirusRate.ReadOnly = cbxCUseRate.IsOn;
@@ -292,6 +386,11 @@ namespace VirusDetector
             }
 
         }
+        /// <summary>
+        /// clustering click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCStartClustering_Click(object sender, EventArgs e)
         {
             try
@@ -325,6 +424,11 @@ namespace VirusDetector
             txtbCVirusSize.ReadOnly = !txtbCVirusSize.ReadOnly;
             txtbCBenignSize.ReadOnly = !txtbCBenignSize.ReadOnly;
         }
+        /// <summary>
+        /// mix detector click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCMixDetector_Click(object sender, EventArgs e)
         {
             try
@@ -515,6 +619,12 @@ namespace VirusDetector
 
         #endregion
 
+        #region Timer Event
+        /// <summary>
+        /// Tick event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
             try
@@ -554,6 +664,6 @@ namespace VirusDetector
 
         }
 
-
+        #endregion
     }
 }

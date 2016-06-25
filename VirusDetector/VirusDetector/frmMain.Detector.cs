@@ -23,6 +23,11 @@ namespace VirusDetector
     {
 
         #region Detecter Method
+
+        /// <summary>
+        /// turn working [on|off]
+        /// </summary>
+        /// <param name="working_"></param>
         private void _turnToWorkingStatus(bool working_)
         {
             if (working_)
@@ -43,7 +48,7 @@ namespace VirusDetector
                 this.Capture = true;
 
                 // Set state
-                _isWorking = true;
+                _isTrainingDectector = true;
             }
             else
             {
@@ -58,10 +63,11 @@ namespace VirusDetector
                 this.Capture = false;
 
                 // Set state
-                _isWorking = false;
+                _isTrainingDectector = false;
             }
         }
 
+        //todo del it plz
         private List<byte[][]> Group(TrainingData TD, double _SelectionRate, int _numberOfCluster)
         {
             for (int i = 0; i < TD.Count; i++)
@@ -117,8 +123,12 @@ namespace VirusDetector
             return tempnew;
 
         }
-
-        private void ShowDetectorDataTable(TrainingData TD, int[] state)
+        /// <summary>
+        /// show detector DataTable
+        /// </summary>
+        /// <param name="TD"></param>
+        /// <param name="state"></param>
+        private void ShowDetectorDataTable(TrainingData TD, EFragmentType[] state)
         {
             // Declare DataColumn and DataRow variables.
             DataColumn column;
@@ -144,13 +154,13 @@ namespace VirusDetector
                 row = NegativeSelectionData.NewRow();
                 row["Virus Data Fragments"] = ConvertByteArrayToString(TD[i]);
                 //row[0] = ConvertByteArrayToString(TD[i]);
-                if (state[i] == 0)
+                if (state[i] == EFragmentType.Benign)
                 {
-                    row["Status"] = "Passed";
+                    row["Status"] = "Benign";
                 }
                 else
                 {
-                    row["Status"] = "Failed";
+                    row["Status"] = "==========Virus=========";
                 }
                 NegativeSelectionData.Rows.Add(row);
 
@@ -160,7 +170,9 @@ namespace VirusDetector
             // Set a DataGrid control's DataSource to the DataView.
             dtNegativeSelection.DataSource = view;
         }
-
+        /// <summary>
+        /// show reult to datagridview
+        /// </summary>
         private void ShowingData()
         {
             DataColumn column;
@@ -221,54 +233,25 @@ namespace VirusDetector
                 s += bytes[i].ToString();
             return s;
         }
-
+        /// <summary>
+        /// show detector result
+        /// </summary>
         private void showDetectorResult()
         {
             //ShowDetectorDataTable(datageneration.VirusFragmentInput, datageneration.state);
-            ShowDetectorDataTable(datageneration.VirusFragmentOutput, datageneration.state);
-        }
-
-        private void _correctDetectorData()
-        {
-
-            int virusLen = 0;
-            int benignLen = 0;
-
-            if (cbxCUseRate.IsOn)
-            {
-                virusLen = _virusFragments.Count;
-
-                String strRate = txtbCBenignVirusRate.Text;
-                int rate = int.Parse(strRate);
-                benignLen = virusLen * rate;
-            }
-            else
-            {
-                String strVirusLen = txtbCVirusSize.Text;
-                virusLen = int.Parse(strVirusLen);
-
-                String strBenignLen = txtbCBenignSize.Text;
-                benignLen = int.Parse(strBenignLen);
-            }
-
-            // Select algorithm
-            int inputCount = int.Parse(txtbCNumInputNeuron.Text);
-            if (inputCount == 4)
-            {
-                _detectorData = Utils.Utils.mixDetectorBase10(_virusFragments, virusLen, _benignFragments, benignLen);
-            }
-            else
-            {
-                _detectorData = Utils.Utils.mixDetectorBase2(_virusFragments, virusLen, _benignFragments, benignLen);
-            }
-
+            ShowDetectorDataTable(datageneration.VirusFragmentInput, datageneration.state);
         }
 
         #endregion
-
+        
         #region Event Support
+
+        /// <summary>
+        /// start training Detector
+        /// </summary>
         private void _startDetector()
         {
+            // check input path
             Boolean isOk = _checkForStartDetector();
             if (!isOk)
             {
@@ -276,10 +259,10 @@ namespace VirusDetector
                 return;
             }
 
-            if (_isWorking)
+            if (_isTrainingDectector)
                 return;
 
-            // Do job
+            // clear data
             NegativeSelectionData.Rows.Clear();
             groupshowingDataTable.Rows.Clear();
 
@@ -294,7 +277,7 @@ namespace VirusDetector
             _currentProcessType = EProcessType.Detector;
 
             _turnToWorkingStatus(true);
-            _isWorking = true;
+            _isTrainingDectector = true;
 
             Boolean isBuild;
             isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
@@ -306,6 +289,56 @@ namespace VirusDetector
             _worker.Start();
         }
 
+        /// <summary>
+        /// thread for Building detector 
+        /// </summary>
+        private void _detectorThread()
+        {
+            try
+            {
+                // load param from UI
+                int length = int.Parse(txtDLength.Text);
+                int stepSize = int.Parse(txtDStepSize.Text);
+                bool useHamming = cbxDHamming.IsOn;
+                bool useR = cbxDRContinuous.IsOn;
+                int HammingDistance = Math.Max(0, Math.Min(length * 8, int.Parse(txtbDHamming.Text)));
+                int RContiguousDistance = Math.Max(0, Math.Min(length * 8, int.Parse(txtbDContinuous.Text)));
+                String virusFolder = txtbDVirusFolder.Text;
+                String benignFolder = txtbDBenignFolder.Text;
+
+                datageneration = new DataGeneration(virusFolder, benignFolder, HammingDistance, RContiguousDistance, length, stepSize, useHamming, useR);
+
+                datageneration.startBuildDetector();
+                //MessageBox.Show("Successful!");
+
+                //xtcContent.SelectedTabPage = xtpDeResult;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Thread Stopped
+        /// </summary>
+        private void _detectorThread_Stopped()
+        {
+            this._virusFragments = datageneration.VirusFragmentOutput;
+            Boolean isBuild;
+            isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
+            if (isBuild)
+                this._benignFragments = datageneration.BenignFragmentInput;
+
+            showDetectorResult();
+        }
+
+        /// <summary>
+        /// stop thread for Building detector 
+        /// </summary>
+        /// <summary>
+        /// thread for addition detector
+        /// </summary>
         private void _additionNegativeThread()
         {
             try
@@ -330,91 +363,10 @@ namespace VirusDetector
             }
         }
 
-        private void _detectorThread()
-        {
-            try
-            {
-                int length = Utils.Utils.GLOBAL_LENGTH;
-                int stepSize = Utils.Utils.GLOBAL_STEP_SIZE;
-                bool useHamming = cbxDHamming.IsOn;
-                bool useR = cbxDRContinuous.IsOn;
-                int d = Math.Max(0, Math.Min(length * 8, int.Parse(txtbDHamming.Text)));
-                int r = Math.Max(0, Math.Min(length * 8, int.Parse(txtbDContinuous.Text)));
-                String virusFolder = txtbDVirusFolder.Text;
-                String benignFolder = txtbDBenignFolder.Text;
-
-                datageneration = new DataGeneration(virusFolder, benignFolder, d, r, length, stepSize, useHamming, useR);
-
-                datageneration.startBuildDetector();
-                MessageBox.Show("Successful!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private bool _checkForStartDetector()
-        {
-            Boolean isBuild;
-            isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
-            if (isBuild)
-            {
-                if (String.IsNullOrEmpty(txtbDVirusFolder.Text) || String.IsNullOrEmpty(txtbDBenignFolder.Text))
-                    return false;
-                return true;
-            }
-
-            if (String.IsNullOrEmpty(txtbDAdditionFolder.Text))
-                return false;
-            return true;
-        }
-
-        private void _saveDetector()
-        {
-            Boolean isOk = _checkForSaveDetector();
-            if (!isOk)
-            {
-                MessageBox.Show("Empty input or data!");
-                return;
-            }
-
-            String virusSavePath = txtbDDetectorFile.Text;
-            String benignSavePath = txtbDBenignFile.Text;
-            Utils.Utils.saveDetector(_virusFragments, virusSavePath, _benignFragments, benignSavePath);
-            MessageBox.Show("Successful!");
-        }
-
-        private bool _checkForSaveDetector()
-        {
-            if (String.IsNullOrEmpty(txtbDDetectorFile.Text) || _virusFragments == null || _benignFragments == null || _virusFragments.Count + _benignFragments.Count == 0)
-                return false;
-            return true;
-        }
-
-        private void _loadDetection()
-        {
-
-            Boolean isOk = _checkForLoadDetector();
-            if (!isOk)
-            {
-                MessageBox.Show("Empty input!");
-                return;
-            }
-            String virusSavePath = txtbDDetectorFile.Text;
-            String benignSavePath = txtbDBenignFile.Text;
-            Utils.Utils.loadDetector(ref _virusFragments, virusSavePath, ref _benignFragments, benignSavePath);
-
-            ShowingData();
-            MessageBox.Show("Successful!");
-        }
-
-        private bool _checkForLoadDetector()
-        {
-            if (String.IsNullOrEmpty(txtbDDetectorFile.Text))
-                return false;
-            return true;
-        }
+        /// <summary>
+        /// _updateDetectorType
+        /// </summary>
+        /// <param name="detectorType"></param>
         private void _updateDetectorType(EDetectorType detectorType)
         {
             switch (detectorType)
@@ -439,7 +391,90 @@ namespace VirusDetector
                     break;
             }
         }
+
+        /// <summary>
+        /// Save detector into file
+        /// </summary>
+        private void _saveDetector()
+        {
+            Boolean isOk = _checkForSaveDetector();
+            if (!isOk)
+            {
+                MessageBox.Show("Empty input or data!");
+                return;
+            }
+
+            String virusSavePath = txtbDDetectorFile.Text;
+            String benignSavePath = txtbDBenignFile.Text;
+            Utils.Utils.saveDetector(_virusFragments, virusSavePath, _benignFragments, benignSavePath);
+            MessageBox.Show("Successful!");
+        }
+
+        /// <summary>
+        /// Load detector from file
+        /// </summary>
+        private void _loadDetector()
+        {
+
+            Boolean isOk = _checkForLoadDetector();
+            if (!isOk)
+            {
+                MessageBox.Show("Empty input!");
+                return;
+            }
+            String virusSavePath = txtbDDetectorFile.Text;
+            String benignSavePath = txtbDBenignFile.Text;
+            Utils.Utils.loadDetector(ref _virusFragments, virusSavePath, ref _benignFragments, benignSavePath);
+
+            ShowingData();
+            MessageBox.Show("Successful!");
+        }
+
         #endregion
 
+        #region Check Error
+        /// <summary>
+        /// check detector input path
+        /// </summary>
+        /// <returns></returns>
+        private bool _checkForStartDetector()
+        {
+            Boolean isBuild;
+            isBuild = (rbtnDBuildAddDetector.SelectedIndex == 0);
+            // in the case of Build new
+            if (isBuild)
+            {
+                if (String.IsNullOrEmpty(txtbDVirusFolder.Text) || String.IsNullOrEmpty(txtbDBenignFolder.Text))
+                    return false;
+                return true;
+            }
+            // in the case of Addition
+            if (String.IsNullOrEmpty(txtbDAdditionFolder.Text))
+                return false;
+            return true;
+        }
+
+        /// <summary>
+        /// Check befor save detector
+        /// </summary>
+        /// <returns></returns>
+        private bool _checkForSaveDetector()
+        {
+            if (String.IsNullOrEmpty(txtbDDetectorFile.Text) || _virusFragments == null || _benignFragments == null || _virusFragments.Count + _benignFragments.Count == 0)
+                return false;
+            return true;
+        }
+
+        /// <summary>
+        /// check error befor Load detector
+        /// </summary>
+        /// <returns></returns>
+        private bool _checkForLoadDetector()
+        {
+            if (String.IsNullOrEmpty(txtbDDetectorFile.Text))
+                return false;
+            return true;
+        }
+        #endregion
     }
 }
