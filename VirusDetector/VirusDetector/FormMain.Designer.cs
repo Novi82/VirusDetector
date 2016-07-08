@@ -1740,7 +1740,7 @@ namespace VirusDetector
             // 
             // txtCacheSize
             // 
-            this.txtCacheSize.EditValue = "500";
+            this.txtCacheSize.EditValue = "50";
             this.txtCacheSize.Location = new System.Drawing.Point(139, 253);
             this.txtCacheSize.Name = "txtCacheSize";
             this.txtCacheSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1750,7 +1750,7 @@ namespace VirusDetector
             // 
             // txtTolenace
             // 
-            this.txtTolenace.EditValue = "0.2";
+            this.txtTolenace.EditValue = "0.01";
             this.txtTolenace.Location = new System.Drawing.Point(139, 198);
             this.txtTolenace.Name = "txtTolenace";
             this.txtTolenace.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1771,7 +1771,7 @@ namespace VirusDetector
             // 
             // txtSigma
             // 
-            this.txtSigma.EditValue = "10";
+            this.txtSigma.EditValue = "5";
             this.txtSigma.Location = new System.Drawing.Point(139, 36);
             this.txtSigma.Name = "txtSigma";
             this.txtSigma.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1781,7 +1781,7 @@ namespace VirusDetector
             // 
             // txtEpsilon
             // 
-            this.txtEpsilon.EditValue = "1";
+            this.txtEpsilon.EditValue = "0.00001";
             this.txtEpsilon.Location = new System.Drawing.Point(139, 90);
             this.txtEpsilon.Name = "txtEpsilon";
             this.txtEpsilon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

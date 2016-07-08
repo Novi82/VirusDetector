@@ -44,9 +44,9 @@ namespace VirusDetector.VirusScanner
             //result = Math.Sign(result);
 
             // Test
-            Console.WriteLine(pFileName + ", " + result);
+            Console.WriteLine(pFileName + ", [" + result+"]" );
 
-            double thresold = 0; // Thresold = 0.5 with BipolarSigmoidFunction and virus mark as 1, benign mark as -1
+            double thresold =0; 
             return (result >= thresold);
         }
 

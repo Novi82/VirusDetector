@@ -25,6 +25,7 @@ namespace VirusDetector
                 );
             _fileClassifierManager.BuildTrainingSetSvm();
             LoadStyleChart();
+            MessageBox.Show(Resources.Message_Successful);
         }
         private void _startFileClassifier()
         {

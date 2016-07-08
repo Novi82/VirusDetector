@@ -120,8 +120,8 @@ namespace VirusDetector
             chartScan.Series.Clear();
             chartScan.Series.Add("Scaner", ViewType.Pie3D);
             //chartScan.Series.Add("Virus", ViewType.Pie3D);
-            chartScan.Series["Scaner"].Points.Add(new SeriesPoint("Virus", virusCount+10));
-            chartScan.Series["Scaner"].Points.Add(new SeriesPoint("Benign", benignCount+10));
+            chartScan.Series["Scaner"].Points.Add(new SeriesPoint("Virus", virusCount));
+            chartScan.Series["Scaner"].Points.Add(new SeriesPoint("Benign", benignCount));
             chartScan.Series["Scaner"].LegendTextPattern = @"{A}: {V}";
             var view = new DataView(resultList);
             dgvVirus.DataSource = view;

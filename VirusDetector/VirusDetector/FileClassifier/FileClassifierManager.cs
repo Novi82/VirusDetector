@@ -331,21 +331,31 @@ namespace VirusDetector.FileClassifier
             _svmKernel = new Linear(1);
             
             int numInputSize = _inputSvm[0].Length;
-
+            //_svm = new KernelSupportVectorMachine(new Linear(), numInputSize);
             _svm = new KernelSupportVectorMachine(new Gaussian(_epsilon),numInputSize);
+
             // Instantiate a new learning algorithm for SVMs
+            //SequentialMinimalOptimization smo = new SequentialMinimalOptimization(_svm, _inputSvm, _outputSvm)
+            //{
+            //    Complexity = _complexity,
+            //    Strategy = _strategy,
+            //    CacheSize = _cacheSize,
+            //    Epsilon = _epsilon,
+            //    Tolerance = _tolenace
+            //};
             SequentialMinimalOptimization smo = new SequentialMinimalOptimization(_svm, _inputSvm, _outputSvm)
-            {
-                Complexity = _complexity,
-                Strategy = _strategy,
-                CacheSize = _cacheSize,
-                Epsilon = _epsilon,
-                Tolerance = _tolenace
-            };
+                        {
+                            Complexity = _complexity,
+                            Strategy = _strategy,
+                            CacheSize = _cacheSize,
+                            Epsilon = _epsilon,
+                            Tolerance = _tolenace
+                        };
             // Set up the learning algorithm
 
             // Run the learning algorithm
             double error = smo.Run();
+            double rs = _svm.Compute(new double[]{17,95,1});
             test_printSvmCompute(_svm);}
 
         private void test_printSvmCompute(KernelSupportVectorMachine pSVm)
