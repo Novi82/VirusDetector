@@ -1,5 +1,7 @@
-D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.exe.config
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\Accord.dll.config
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.exe.config
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.exe.manifest
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.application
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.exe
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\VirusDetector.pdb
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\bin\Release\Accord.dll
@@ -20,5 +22,7 @@ D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.Form
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.Properties.Resources.resources
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.csproj.GenerateResource.Cache
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.exe.licenses
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.exe.manifest
+D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.application
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.exe
 D:\VirusDetector\KLTN\VirusDetector\VirusDetector\obj\Release\VirusDetector.pdb

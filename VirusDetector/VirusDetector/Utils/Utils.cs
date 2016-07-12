@@ -421,12 +421,12 @@ namespace VirusDetector.Utils
             double total = 0;
             for (int i = 0; i < len; i++)
             {
-                total += pInputs[i] * i;
+                total += pInputs[i] * i *i;
             }
             double count = (double)len * (len - 1) / 2;
             double result = total / count;
             result = Math.Round(result, 4);
-            return total;
+            return result;
         }
         #region Unused Method
 

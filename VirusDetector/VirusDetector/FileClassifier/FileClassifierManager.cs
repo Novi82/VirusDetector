@@ -355,7 +355,6 @@ namespace VirusDetector.FileClassifier
 
             // Run the learning algorithm
             double error = smo.Run();
-            double rs = _svm.Compute(new double[]{17,95,1});
             test_printSvmCompute(_svm);}
 
         private void test_printSvmCompute(KernelSupportVectorMachine pSVm)
